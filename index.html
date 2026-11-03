@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ホテル一楽周辺 子連れ祝日ディナー探索ガイド【渡辺通・薬院・高砂・清川 全60店】</title>
+  <title>ホテル一楽周辺 子連れ祝日ディナー＆モーニング探索ガイド【渡辺通・薬院・高砂・清川 全65店】</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -122,7 +122,7 @@
             </h1>
           </div>
           <p class="text-[11px] text-teal-200 flex items-center gap-1.5 mt-0.5 truncate">
-            <span><i class="fa-solid fa-child-reaching text-amber-300"></i> 大人1名＋5歳児安心（食べログ・ホットペッパー・マップ連携・全60店）</span>
+            <span><i class="fa-solid fa-child-reaching text-amber-300"></i> 大人1名＋5歳児安心（食べログ・ホットペッパー・マップ連携・全65店・モーニング対応）</span>
           </p>
         </div>
       </div>
@@ -156,19 +156,23 @@
         </div>
         <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar" id="topQuickFilterButtons">
           <button data-quick="all" class="top-filter-btn active bg-white text-brand-900 font-extrabold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition shadow-xs flex items-center gap-1 cursor-pointer">
-            すべて (60)
+            すべて (65)
+          </button>
+          <button data-quick="morning" class="top-filter-btn bg-amber-600/90 hover:bg-amber-500 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-300/40 cursor-pointer">
+            <i class="fa-solid fa-sun text-yellow-300"></i>
+            <span>☀️ モーニング (11)</span>
           </button>
           <button data-quick="open" class="top-filter-btn bg-emerald-800/90 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-emerald-500/40 cursor-pointer">
             <i class="fa-solid fa-calendar-check text-emerald-300"></i>
-            <span>祝日営業 (54)</span>
+            <span>祝日営業 (59)</span>
           </button>
           <button data-quick="kids" class="top-filter-btn bg-amber-700/90 hover:bg-amber-600 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-400/40 cursor-pointer">
             <i class="fa-solid fa-child-reaching text-amber-200"></i>
-            <span>キッズメニュー有 (15)</span>
+            <span>キッズメニュー有 (17)</span>
           </button>
           <button data-quick="hotel_near" class="top-filter-btn bg-purple-800/90 hover:bg-purple-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-purple-400/40 cursor-pointer">
             <i class="fa-solid fa-person-walking text-purple-200"></i>
-            <span>徒歩3分以内 (23)</span>
+            <span>徒歩3分以内 (24)</span>
           </button>
           <button data-quick="tatami" class="top-filter-btn bg-amber-800/90 hover:bg-amber-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-400/40 cursor-pointer">
             <i class="fa-solid fa-couch text-amber-200"></i>
@@ -180,7 +184,7 @@
           </button>
           <button data-quick="casual_kids" class="top-filter-btn bg-cyan-800/90 hover:bg-cyan-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-cyan-400/40 cursor-pointer">
             <i class="fa-solid fa-bowl-food text-cyan-200"></i>
-            <span>うどん・定食 (18)</span>
+            <span>うどん・定食 (22)</span>
           </button>
           <button data-quick="local" class="top-filter-btn bg-red-800/90 hover:bg-red-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-red-400/40 cursor-pointer">
             <i class="fa-solid fa-fire text-red-200"></i>
@@ -245,17 +249,21 @@
               </span>
             </div>
             <div class="flex flex-wrap gap-2" id="heroQuickButtons">
+              <button data-quick="morning" class="hero-chip-btn bg-amber-500 hover:bg-amber-600 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
+                <i class="fa-solid fa-sun text-yellow-200"></i>
+                <span>☀️ モーニング・朝食 (11)</span>
+              </button>
               <button data-quick="open" class="hero-chip-btn bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
                 <i class="fa-solid fa-calendar-check text-emerald-200"></i>
-                <span>祝日営業 (54)</span>
+                <span>祝日営業 (59)</span>
               </button>
-              <button data-quick="kids" class="hero-chip-btn bg-amber-500 hover:bg-amber-600 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
+              <button data-quick="kids" class="hero-chip-btn bg-amber-600 hover:bg-amber-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
                 <i class="fa-solid fa-child-reaching text-amber-100"></i>
-                <span>キッズメニュー有 (15)</span>
+                <span>キッズメニュー有 (17)</span>
               </button>
               <button data-quick="hotel_near" class="hero-chip-btn bg-purple-600 hover:bg-purple-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
                 <i class="fa-solid fa-person-walking text-purple-200"></i>
-                <span>徒歩3分以内 (23)</span>
+                <span>徒歩3分以内 (24)</span>
               </button>
               <button data-quick="tatami" class="hero-chip-btn bg-amber-700 hover:bg-amber-800 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
                 <i class="fa-solid fa-couch text-amber-200"></i>
@@ -267,11 +275,11 @@
               </button>
               <button data-quick="casual_kids" class="hero-chip-btn bg-teal-600 hover:bg-teal-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
                 <i class="fa-solid fa-bowl-food text-teal-200"></i>
-                <span>うどん・定食 (18)</span>
+                <span>うどん・定食 (22)</span>
               </button>
               <button data-quick="all" class="hero-chip-btn bg-white hover:bg-slate-100 active:scale-95 text-slate-700 text-xs px-3 py-2 rounded-xl font-bold transition border border-slate-300 flex items-center gap-1.5 cursor-pointer shadow-2xs">
                 <i class="fa-solid fa-rotate-left text-slate-500"></i>
-                <span>全60店表示</span>
+                <span>全65店表示</span>
               </button>
             </div>
           </div>
@@ -536,28 +544,31 @@
         
         <div class="flex flex-wrap gap-1.5 sm:gap-2" id="categoryTabContainer">
           <button data-cat="all" class="cat-btn active bg-brand-600 text-white text-xs px-3.5 py-2 rounded-xl font-semibold transition shadow-xs">
-            すべて (60)
+            すべて (65)
+          </button>
+          <button data-cat="morning" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
+            <i class="fa-solid fa-sun text-amber-500 mr-1"></i>☀️ モーニング・朝食 (11)
           </button>
           <button data-cat="hotel_near" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-person-walking text-purple-600 mr-1"></i>ホテル徒歩3分以内 (23)
+            <i class="fa-solid fa-person-walking text-purple-600 mr-1"></i>ホテル徒歩3分以内 (24)
           </button>
           <button data-cat="tatami" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
             <i class="fa-solid fa-couch text-amber-600 mr-1"></i>座敷・小上がり・個室 (22)
           </button>
           <button data-cat="casual_kids" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-bowl-food text-blue-600 mr-1"></i>子連れ定番・うどん定食 (18)
+            <i class="fa-solid fa-bowl-food text-blue-600 mr-1"></i>子連れ定番・うどん定食 (22)
           </button>
           <button data-cat="local" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
             <i class="fa-solid fa-fire text-red-600 mr-1"></i>ご当地（もつ鍋・水炊き・焼鳥）(15)
           </button>
           <button data-cat="cheap_delicious" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-thumbs-up text-emerald-600 mr-1"></i>安くて美味い・中華・居酒屋 (14)
+            <i class="fa-solid fa-thumbs-up text-emerald-600 mr-1"></i>安くて美味い・中華・居酒屋 (24)
           </button>
           <button data-cat="buffet" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-utensils text-orange-600 mr-1"></i>食べ放題・焼肉・鍋 (5)
+            <i class="fa-solid fa-utensils text-orange-600 mr-1"></i>食べ放題・焼肉・鍋 (4)
           </button>
           <button data-cat="upscale" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-gem text-indigo-600 mr-1"></i>大衆でない上質・ホテル内 (5)
+            <i class="fa-solid fa-gem text-indigo-600 mr-1"></i>大衆でない上質・ホテル内 (9)
           </button>
           <button data-cat="caution" class="cat-btn bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs px-3 py-2 rounded-xl font-semibold transition">
             <i class="fa-solid fa-triangle-exclamation text-rose-500 mr-1"></i>要注意・祝日休店 (6)
@@ -657,6 +668,16 @@
           </div>
           <p id="modalKidsMenu" class="text-xs text-amber-950 font-bold leading-relaxed mb-1"></p>
         </div>
+        <!-- モーニング・朝食営業情報（モーニング提供店のみ表示） -->
+        <div id="modalMorningBox" class="bg-amber-50/90 p-3 rounded-xl border border-amber-300 hidden mt-3">
+          <div class="flex items-center justify-between gap-1 mb-1.5">
+            <span class="text-amber-950 font-extrabold text-xs flex items-center gap-1.5">
+              <i class="fa-solid fa-sun text-amber-500"></i> 朝食・モーニング営業
+            </span>
+            <span id="modalMorningHours" class="bg-amber-200 text-amber-900 text-[10px] font-black px-2 py-0.5 rounded-full"></span>
+          </div>
+          <p id="modalMorningMenu" class="text-amber-900 font-bold text-xs leading-relaxed"></p>
+        </div>
 
         <!-- Highlight -->
         <div>
@@ -753,7 +774,7 @@
     // スプレッドシートを「ウェブに公開（CSV）」にしたURLを設定済み。自動的にスプレッドシートから最新データを同期します。
     const GOOGLE_SHEETS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTzJ5H8NmTalFAxn8bngdZNrVPzerXu4EvMMXUzzTk8Fcw5CFf9rkvFyBqMBkQr7RlTavAl4sppPbud/pub?gid=0&single=true&output=csv";
 
-    // 60店舗のマスターデータベース
+    // 65店舗のマスターデータベース（モーニング対応店舗追加）
     let RESTAURANTS = [
   {
     "id": 1,
@@ -791,7 +812,8 @@
     "dishPrice": "魚定食 980円〜1,680円 / 刺身盛 1,280円 / 豚汁 380円",
     "drinkPrice": "生ビール 550円 / ハイボール 480円 / お茶無料",
     "kidsMenu": "なし（魚定食・ご飯・豚汁を取り分け推奨・小椀あり）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 2,
@@ -829,7 +851,8 @@
     "dishPrice": "ごぼ天うどん 600円 / 丸天うどん 580円 / かしわ飯 240円",
     "drinkPrice": "瓶ビール 600円 / 日本酒 450円 / お茶無料",
     "kidsMenu": "なし（やわらか博多うどん・フォーク小皿あり・取り分け抜群）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 3,
@@ -847,7 +870,8 @@
     "categories": [
       "casual_kids",
       "hotel_near",
-      "cheap_delicious"
+      "cheap_delicious",
+      "morning"
     ],
     "seatType": "テーブル・小上がり座敷あり",
     "smoke": "全席禁煙",
@@ -868,7 +892,10 @@
     "dishPrice": "ごぼう天うどん 480円 / かき揚げ丼セット 790円 / もつ鍋 390円",
     "drinkPrice": "生ビール 450円 / ハイボール 350円 / ジュース 180円",
     "kidsMenu": "あり（お子様うどんセット 420円・おもちゃ付）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": true,
+    "morningHours": "24時間営業（朝うどん・朝定食あり）",
+    "morningMenu": "朝得うどん 390円〜 / 朝定食（鮭・生卵・納豆）480円〜"
   },
   {
     "id": 4,
@@ -905,7 +932,8 @@
     "dishPrice": "博多やりうどん 850円 / 白丸うどん 680円 / かしわ飯 220円",
     "drinkPrice": "生ビール 550円 / レモンサワー 450円 / ジュース 250円",
     "kidsMenu": "あり（お子様うどんプレート 550円・ゼリー付）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": false
   },
   {
     "id": 5,
@@ -944,7 +972,8 @@
     "dishPrice": "焼鳥 160円〜280円 / 出汁巻き卵 650円 / 唐揚げ 680円 / おにぎり 220円",
     "drinkPrice": "生ビール 580円 / ハイボール 480円 / ジュース 300円",
     "kidsMenu": "なし（卵焼き・つくね・おにぎり等でお子様取り分け◎）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 6,
@@ -983,7 +1012,8 @@
     "dishPrice": "名物炊き餃子 900円 / おでん各種 150円〜250円 / 鶏白湯ラーメン 750円",
     "drinkPrice": "生ビール 550円 / ハイボール 450円 / オレンジジュース 280円",
     "kidsMenu": "なし（おでんの大根・玉子や炊き餃子〆うどんの取り分けが人気）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 7,
@@ -1021,7 +1051,8 @@
     "dishPrice": "博多皿うどん 850円 / ちゃんぽん 850円 / 炒飯 750円 / 一口餃子 450円",
     "drinkPrice": "生ビール 550円 / 瓶ビール 600円 / ウーロン茶 220円",
     "kidsMenu": "なし（皿うどんや炒飯の大盛りを取り分け推奨）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 8,
@@ -1059,7 +1090,8 @@
     "dishPrice": "一口鉄鍋餃子(10個) 600円 / 地鶏炭火焼 780円 / おにぎり 200円",
     "drinkPrice": "生ビール 550円 / サワー各種 450円 / ソフトドリンク 250円",
     "kidsMenu": "なし（パリパリ一口餃子や白ご飯・スープを取り分け）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 9,
@@ -1096,7 +1128,8 @@
     "dishPrice": "名物焼き餃子(8個特大) 660円 / 水餃子 660円 / 五目炒飯 780円",
     "drinkPrice": "青島ビール 550円 / 生ビール 550円 / ジュース 250円",
     "kidsMenu": "なし（肉汁たっぷりの巨大餃子やチャーハンを親子でシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 10,
@@ -1134,7 +1167,8 @@
     "dishPrice": "焼餃子(7個) 250円(ハッピーアワー125円) / ルーロー飯 580円",
     "drinkPrice": "生ビール 480円(ハッピーアワー半額) / ハイボール 380円",
     "kidsMenu": "なし（安価な小皿料理・焼餃子・炒飯を取り分け）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 11,
@@ -1173,7 +1207,8 @@
     "dishPrice": "水炊きコース 4,800円〜 / 鶏唐揚げ 850円 / 〆卵雑炊 コース内",
     "drinkPrice": "生ビール 680円 / 地酒 750円〜 / ソフトドリンク 350円",
     "kidsMenu": "なし（黄金鶏スープ・鶏肉・卵雑炊を子供と安心シェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 12,
@@ -1212,7 +1247,8 @@
     "dishPrice": "極み白味噌もつ鍋 1,680円(辛味抜可) / 馬刺し 1,480円 / 〆麺 300円",
     "drinkPrice": "生ビール 600円 / ハイボール 500円 / ソフトドリンク 300円",
     "kidsMenu": "なし（辛味抜きの甘口白味噌スープ＋〆麺をシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 13,
@@ -1250,7 +1286,8 @@
     "dishPrice": "やましょう鍋(豚と白菜) 1,500円 / もつ鍋 1,500円 / 酢もつ 600円",
     "drinkPrice": "生ビール 600円 / 焼酎 450円〜 / ソフトドリンク 300円",
     "kidsMenu": "なし（辛くない豚肉と白菜のミルフィーユ鍋はお子さまに最適）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 14,
@@ -1288,7 +1325,8 @@
     "dishPrice": "名物とりかわ 1本160円 / 豚バラ 160円 / つくね 180円 / おにぎり 200円",
     "drinkPrice": "生ビール 550円 / ハイボール 450円 / ウーロン茶 250円",
     "kidsMenu": "なし（タレが甘辛いとりかわ串やつくねを1本ずつシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 15,
@@ -1324,7 +1362,8 @@
     "dishPrice": "名物とり皮 1本150円 / ささみしぎ焼き 380円 / 焼きおにぎり 220円",
     "drinkPrice": "生ビール 550円 / 焼酎 400円 / ジュース 250円",
     "kidsMenu": "なし（カリッと香ばしい皮焼きや焼きおにぎりを取り分け）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 16,
@@ -1362,7 +1401,8 @@
     "dishPrice": "もつ鍋 1,400円 / 牛サガリ焼き 1,200円 / 雑炊セット 400円",
     "drinkPrice": "生ビール 580円 / レモンサワー 450円 / ソフトドリンク 250円",
     "kidsMenu": "なし（醤油ベースのあっさり出汁を唐辛子別皿でシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 17,
@@ -1400,7 +1440,8 @@
     "dishPrice": "串焼き 180円〜450円 / えんどう豆串揚げ 350円 / 親子丼 850円",
     "drinkPrice": "生ビール 650円 / グラスワイン 600円〜 / ジュース 350円",
     "kidsMenu": "なし（絶品親子丼や甘だれつくね串をお子さまとシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 18,
@@ -1439,7 +1480,8 @@
     "dishPrice": "串焼きおまかせ5本 900円 / つくねチーズ 250円 / 鶏そぼろご飯 450円",
     "drinkPrice": "生ビール 550円 / ハイボール 450円 / ソフトドリンク 250円",
     "kidsMenu": "なし（子供に人気の鶏そぼろご飯やつくね串あり）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 19,
@@ -1477,7 +1519,8 @@
     "dishPrice": "水炊きコース 5,500円〜 / とり田たまご 400円 / 〆雑炊 コース内",
     "drinkPrice": "生ビール 700円 / 日本酒 800円〜 / 自家製ジュース 450円",
     "kidsMenu": "なし（無添加・丸鶏を煮込んだ極上スープと具材をシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 20,
@@ -1515,7 +1558,8 @@
     "dishPrice": "名物黒かしわ串 220円〜 / ポテサラ 480円 / 鶏スープ茶漬け 500円",
     "drinkPrice": "生ビール 580円 / ハイボール 480円 / ソフトドリンク 300円",
     "kidsMenu": "なし（優しい鶏スープやポテサラ、串焼きをシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 21,
@@ -1555,7 +1599,8 @@
     "dishPrice": "牛すじ煮込み 450円 / 焼き鳥 120円〜 / ハムカツ 380円 / おにぎり 180円",
     "drinkPrice": "生ビール 450円 / レモンサワー 380円 / ソフトドリンク 200円",
     "kidsMenu": "なし（ポテトフライや唐揚げ、おにぎり等安価な単品充実）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 22,
@@ -1595,7 +1640,8 @@
     "dishPrice": "ラーメン炒飯セット 850円 / 小籠包(4個) 480円 / 鶏唐揚げ 650円",
     "drinkPrice": "生ビール 480円 / ハイボール 380円 / ジュース 200円",
     "kidsMenu": "なし（大盛りチャーハンやラーメン・餃子を取り分け）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 23,
@@ -1635,7 +1681,8 @@
     "dishPrice": "日替わり定食 750円 / から揚げ定食 800円 / 生姜焼き定食 850円",
     "drinkPrice": "瓶ビール 550円 / 缶チューハイ 350円 / お茶無料",
     "kidsMenu": "なし（定食のご飯・小鉢・おかずをそのまま取り分け）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 24,
@@ -1674,7 +1721,8 @@
     "dishPrice": "志成うどん 780円 / 天ぷら盛合せ 650円 / かしわご飯 200円",
     "drinkPrice": "生ビール 550円 / 日本酒 500円〜 / ソフトドリンク 250円",
     "kidsMenu": "なし（出汁うどん・揚げたてちくわ天を取り分け）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 25,
@@ -1713,7 +1761,8 @@
     "dishPrice": "焼鳥各種 120円〜200円 / 豚バラ串 140円 / フライドポテト 350円",
     "drinkPrice": "生ビール 500円 / 酎ハイ 400円 / ウーロン茶 200円",
     "kidsMenu": "なし（小上がり席でポテトやつくね串を取り分け）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 26,
@@ -1751,7 +1800,8 @@
     "dishPrice": "焼肉食べ放題 3,980円〜（未就学児無料・シニア割引あり）",
     "drinkPrice": "飲み放題 1,500円 / 単品生ビール 550円 / キッズドリンクバー 200円",
     "kidsMenu": "あり（食べ放題内にキッズうどん・ウインナー・ポテト等多数）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": false
   },
   {
     "id": 27,
@@ -1789,7 +1839,8 @@
     "dishPrice": "特選カルビ 1,280円 / 上ホルモン 750円 / 玉子クッパ 650円 / ライス 300円",
     "drinkPrice": "生ビール 550円 / ハイボール 450円 / ソフトドリンク 250円",
     "kidsMenu": "なし（辛くない玉子クッパや甘だれカルビを取り分け）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 28,
@@ -1826,7 +1877,8 @@
     "dishPrice": "しゃぶしゃぶ食べ放題 3,280円〜（未就学児無料・小学生半額）",
     "drinkPrice": "生ビール 550円 / 飲み放題 1,500円 / キッズドリンク無料〜150円",
     "kidsMenu": "あり（未就学児無料・専用キッズメニュー＆つみれ作り体験あり）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": false
   },
   {
     "id": 29,
@@ -1863,7 +1915,8 @@
     "dishPrice": "きんぐコース食べ放題 3,180円（未就学児無料・小学生半額）",
     "drinkPrice": "幼児ドリンク無料 / ソフトドリンク放題 390円 / アルコール放題 1,390円",
     "kidsMenu": "あり（お子様そぼろごはん・お子様うどん・ポテト等食べ放題内多数）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": false
   },
   {
     "id": 30,
@@ -1899,7 +1952,8 @@
     "dishPrice": "牛角コース食べ放題 3,480円（小学生未満無料・小学生半額）",
     "drinkPrice": "生ビール 550円 / ハイボール 450円 / キッズドリンク飲み放題 120円",
     "kidsMenu": "あり（キッズカレープレート 450円・キッズ焼肉プレートあり）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": false
   },
   {
     "id": 31,
@@ -1916,7 +1970,8 @@
     "budgetScore": 5250,
     "categories": [
       "upscale",
-      "casual_kids"
+      "casual_kids",
+      "morning"
     ],
     "seatType": "広々ホテルラウンジソファー席",
     "smoke": "完全禁煙",
@@ -1937,7 +1992,10 @@
     "dishPrice": "特製オムライス 1,800円 / ハンバーグ 2,400円 / ケーキセット 1,500円",
     "drinkPrice": "生ビール 900円 / グラスワイン 1,000円〜 / アップルジュース 500円",
     "kidsMenu": "あり（ホテル特製キッズプレート 1,500円・スープデザート付）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": true,
+    "morningHours": "07:00〜10:00（朝食ビュッフェ）",
+    "morningMenu": "ブレックファストビュッフェ 3,800円（キッズ優待あり） / アメリカンブレックファスト"
   },
   {
     "id": 32,
@@ -1975,7 +2033,8 @@
     "dishPrice": "会席コース 8,000円〜 / 天婦羅御膳 4,500円 / 鯛茶漬け 2,200円",
     "drinkPrice": "生ビール 1,000円 / 日本酒 1,200円〜 / 烏龍茶 600円",
     "kidsMenu": "あり（お祝い・お子様和風御膳 3,000円〜 要事前確認）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": false
   },
   {
     "id": 33,
@@ -2013,7 +2072,8 @@
     "dishPrice": "旬の割烹コース 7,000円〜 / アラカルト一品 1,000円〜 / 雑炊 800円",
     "drinkPrice": "生ビール 750円 / 地酒 900円〜 / ソフトドリンク 400円",
     "kidsMenu": "なし（事前予約時に子供用味付けや焼き魚等の相談可能）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 34,
@@ -2050,7 +2110,8 @@
     "dishPrice": "ビストロディナーコース 4,800円 / パスタ 1,400円 / 肉料理 2,200円",
     "drinkPrice": "グラスワイン 700円〜 / ビール 650円 / ぶどうジュース 450円",
     "kidsMenu": "なし（辛くないトマトパスタやパン・スープをシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 35,
@@ -2087,7 +2148,8 @@
     "dishPrice": "五目あんかけ焼きそば 1,800円 / フカヒレスープ 2,000円 / 炒飯 1,600円",
     "drinkPrice": "生ビール 950円 / 紹興酒 900円 / 中国茶 600円",
     "kidsMenu": "あり（お子様中華プレート 1,800円）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": false
   },
   {
     "id": 36,
@@ -2125,7 +2187,8 @@
     "dishPrice": "名物カレー 650円 / チキンカツ定食 700円 / ラーメン 550円",
     "drinkPrice": "缶ビール 350円 / お茶無料",
     "kidsMenu": "なし（甘口対応や定食の大盛りライスをシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 37,
@@ -2164,7 +2227,8 @@
     "dishPrice": "長浜ラーメン 550円 / 替玉 120円 / チャーハン 550円 / 餃子 350円",
     "drinkPrice": "瓶ビール 550円 / ジュース 150円 / お水無料",
     "kidsMenu": "なし（子供用小椀・スプーンあり、ラーメン・炒飯をシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 38,
@@ -2203,7 +2267,8 @@
     "dishPrice": "ラーメン 550円 / 皿うどん 700円 / 焼きめし 650円 / 酢豚 850円",
     "drinkPrice": "瓶ビール 550円 / 日本酒 400円 / ウーロン茶 200円",
     "kidsMenu": "なし（家庭的な町中華、甘みのある焼きめしを取り分け）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 39,
@@ -2240,7 +2305,8 @@
     "dishPrice": "かけうどん 450円 / 志成ぶっかけ 780円 / 鶏天 200円 / おにぎり 180円",
     "drinkPrice": "瓶ビール 500円 / お茶無料",
     "kidsMenu": "なし（モチモチうどんとサクサク天ぷらをハサミで切ってシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 40,
@@ -2278,7 +2344,8 @@
     "dishPrice": "わっぱ定食 980円 / とんかつ定食 1,050円 / 肉吸い定食 880円",
     "drinkPrice": "生ビール 500円 / ハイボール 400円 / ウーロン茶 200円",
     "kidsMenu": "なし（ご飯おかわり自由、子供用小椀でおかずシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 41,
@@ -2316,7 +2383,8 @@
     "dishPrice": "鮮魚刺身盛 980円 / 魚串各種 180円〜 / 出汁茶漬け 450円",
     "drinkPrice": "生ビール 500円 / レモンサワー 420円 / ソフトドリンク 250円",
     "kidsMenu": "なし（焼き魚やおにぎり、出汁巻き玉子をシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 42,
@@ -2354,7 +2422,8 @@
     "dishPrice": "焼き鳥1本 100円〜 / 名物ハムカツ 300円 / ポテトサラダ 280円",
     "drinkPrice": "生ビール 400円 / ハイボール 350円 / ジュース 200円",
     "kidsMenu": "なし（小上がり席でポテサラやウインナー串を取り分け）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 43,
@@ -2392,7 +2461,8 @@
     "dishPrice": "鉄板焼肉 850円(辛味噌別添可) / ご飯味噌汁セット 250円",
     "drinkPrice": "生ビール 500円 / ハイボール 400円 / ウーロン茶 200円",
     "kidsMenu": "なし（辛味噌を混ぜずにキャベツとお肉をご飯に取り分け）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 44,
@@ -2430,7 +2500,8 @@
     "dishPrice": "カルビ 680円 / ロース 680円 / ホルモン 480円 / たまごスープ 350円",
     "drinkPrice": "生ビール 500円 / 酎ハイ 400円 / ソフトドリンク 200円",
     "kidsMenu": "なし（座敷席で甘口タレカルビやたまごスープをシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 45,
@@ -2467,7 +2538,8 @@
     "dishPrice": "博多皿うどん 850円 / ちゃんぽん 850円 / 餃子 450円",
     "drinkPrice": "生ビール 550円 / 瓶ビール 600円 / ジュース 200円",
     "kidsMenu": "なし（具だくさんの香ばしい皿うどんを子供とシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 46,
@@ -2505,7 +2577,8 @@
     "dishPrice": "肉うどん 600円 / ごぼう天うどん 480円 / いなり寿司(2個) 160円",
     "drinkPrice": "瓶ビール 550円 / お茶無料",
     "kidsMenu": "なし（甘口出汁のやわらか博多うどんを取り分け）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 47,
@@ -2521,7 +2594,8 @@
     "budget": "1,200円〜1,800円",
     "budgetScore": 1500,
     "categories": [
-      "casual_kids"
+      "casual_kids",
+      "morning"
     ],
     "seatType": "テーブル・ボックス席",
     "smoke": "全席禁煙",
@@ -2542,7 +2616,10 @@
     "dishPrice": "モスバーガー 440円 / ポテトS 250円 / オニポテ 300円",
     "drinkPrice": "セットドリンク 240円 / くだものと野菜ジュース 140円",
     "kidsMenu": "あり（モスワイワイセット 540円〜 おもちゃ・ドリンク付）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": true,
+    "morningHours": "07:00〜10:30（朝モス）",
+    "morningMenu": "朝モスバーガーセット 480円〜 / トーストセット 390円〜 / ワイワイセット（おもちゃ付）"
   },
   {
     "id": 48,
@@ -2558,7 +2635,8 @@
     "budget": "2,000円〜3,000円",
     "budgetScore": 2500,
     "categories": [
-      "casual_kids"
+      "casual_kids",
+      "morning"
     ],
     "seatType": "広々ウッドボックス席",
     "smoke": "全席禁煙",
@@ -2579,7 +2657,10 @@
     "dishPrice": "レギュラーバーグディッシュ 790円 / チーズバーグ 970円 / ポテト 440円",
     "drinkPrice": "生ビール 600円 / カフェオンザロック 310円 / 太陽のオレンジ 310円",
     "kidsMenu": "あり（ぶ〜ぶ〜バーグディッシュ 600円・おこさまうどん 380円・おもちゃ付）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": true,
+    "morningHours": "08:00〜11:00（モーニング）",
+    "morningMenu": "ミニマムディッシュセット 550円〜 / トーストセット 380円〜（珈琲おかわり自由）"
   },
   {
     "id": 49,
@@ -2616,7 +2697,8 @@
     "dishPrice": "ボロネーゼ 790円 / マルゲリータピザ 790円 / カルボナーラ 890円",
     "drinkPrice": "グラスワイン 290円 / 生ビール 550円 / ドリンクバー 290円(未就学児無料)",
     "kidsMenu": "あり（キッズパスタ 490円・キッズピッツァ 490円・ゼリーおもちゃ付）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": false
   },
   {
     "id": 50,
@@ -2633,7 +2715,8 @@
     "budgetScore": 1850,
     "categories": [
       "casual_kids",
-      "cheap_delicious"
+      "cheap_delicious",
+      "morning"
     ],
     "seatType": "テーブル・ボックス席",
     "smoke": "全席禁煙",
@@ -2654,7 +2737,10 @@
     "dishPrice": "しょうが焼定食 730円 / から揚げ定食 790円 / サバ塩焼定食 860円",
     "drinkPrice": "生ビール 450円 / ハイボール 350円 / お茶・だし無料",
     "kidsMenu": "あり（お子様ランチ 500円・お子様カレー 500円・ゼリーおもちゃ付）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": true,
+    "morningHours": "06:00〜11:00（朝定食）",
+    "morningMenu": "納豆朝定食 390円 / 目玉焼き朝定食 490円 / しゃけ朝定食 610円（ご飯おかわり自由）"
   },
   {
     "id": 51,
@@ -2671,7 +2757,8 @@
     "budgetScore": 1300,
     "categories": [
       "hotel_near",
-      "cheap_delicious"
+      "cheap_delicious",
+      "morning"
     ],
     "seatType": "テイクアウト専用（ホテルの部屋で食事）",
     "smoke": "完全禁煙",
@@ -2692,7 +2779,10 @@
     "dishPrice": "から揚弁当 490円 / のり弁当 390円 / 特製豚汁 140円",
     "drinkPrice": "お茶・缶ジュース 120円〜",
     "kidsMenu": "あり（ドラえもんランチ / ドラミちゃんランチ 490円・シール付）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": true,
+    "morningHours": "08:00〜11:00（朝食対応）",
+    "morningMenu": "幕の内弁当 630円〜 / から揚弁当 490円〜 / のり弁当 390円（ホテル部屋食に最適）"
   },
   {
     "id": 52,
@@ -2730,7 +2820,8 @@
     "dishPrice": "刺身 680円 / だし巻き玉子 500円 / 若鶏唐揚げ 550円 / お茶漬け 400円",
     "drinkPrice": "生ビール 500円 / ハイボール 420円 / ソフトドリンク 250円",
     "kidsMenu": "なし（掘りごたつ座敷で玉子焼きや唐揚げを取り分け）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 53,
@@ -2768,7 +2859,8 @@
     "dishPrice": "炭火串焼き 130円〜 / チーズつくね 220円 / ポテトフライ 380円",
     "drinkPrice": "生ビール 520円 / 酎ハイ 420円 / ソフトドリンク 250円",
     "kidsMenu": "なし（甘ダレつくねやウインナー串、ポテトをお子さまとシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 54,
@@ -2805,7 +2897,8 @@
     "dishPrice": "窯焼きマルゲリータ 1,300円 / 生パスタ 1,200円 / 前菜盛 980円",
     "drinkPrice": "グラスワイン 600円〜 / 生ビール 600円 / オレンジジュース 450円",
     "kidsMenu": "なし（ピザをハサミで小さくカットして取り分け・パスタシェア）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 55,
@@ -2841,7 +2934,8 @@
     "dishPrice": "【祝日定休】うどん 450円 / 肉うどん 650円",
     "drinkPrice": "瓶ビール 550円",
     "kidsMenu": "なし（祝日休業のため代替店推奨）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 56,
@@ -2879,7 +2973,8 @@
     "dishPrice": "すだちうどん 800円 / 鶏天 550円 / 一品料理 400円〜800円",
     "drinkPrice": "生ビール 600円 / レモンサワー 500円 / ソフトドリンク 300円",
     "kidsMenu": "なし（大人の酒場空間・代替店やりうどん推奨）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 57,
@@ -2914,7 +3009,8 @@
     "dishPrice": "【祝日休業】ラーメン 500円 / チャーハン 550円",
     "drinkPrice": "瓶ビール 500円",
     "kidsMenu": "なし（祝日休業のため代替店推奨）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 58,
@@ -2950,7 +3046,8 @@
     "dishPrice": "焼鳥1本 100円〜 / 酢もつ 300円 / 煮込み 380円",
     "drinkPrice": "生ビール 450円 / 焼酎 350円",
     "kidsMenu": "なし（喫煙店舗多いため禁煙店推奨）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 59,
@@ -2988,7 +3085,8 @@
     "dishPrice": "焼きラーメン 850円 / おでん 200円〜 / ラーメン 700円",
     "drinkPrice": "缶ビール 500円 / 焼酎 500円",
     "kidsMenu": "なし（席超狭小・5歳児には屋内店舗推奨）",
-    "hasKidsMenu": false
+    "hasKidsMenu": false,
+    "hasMorning": false
   },
   {
     "id": 60,
@@ -3024,7 +3122,216 @@
     "dishPrice": "天然とんこつラーメン 980円 / 替玉 210円 / ゆでたまご 140円",
     "drinkPrice": "生ビール 580円 / 脂解美茶 250円",
     "kidsMenu": "あり（一蘭公式アプリでお子様ラーメン無料サービスあり・仕切り席注意）",
-    "hasKidsMenu": true
+    "hasKidsMenu": true,
+    "hasMorning": false
+  },
+  {
+    "id": 61,
+    "name": "sandelica（サンデリカ）",
+    "kana": "さんでりか",
+    "zone": "zone_d",
+    "area": "清川",
+    "distWalk": "徒歩1分",
+    "distMeters": 80,
+    "holidayHours": "09:00〜15:00（売切次第終了）",
+    "openTime": 9,
+    "holidayStatus": "open",
+    "budget": "500円〜900円",
+    "budgetScore": 700,
+    "categories": [
+      "morning",
+      "hotel_near",
+      "casual_kids",
+      "cheap_delicious"
+    ],
+    "seatType": "テイクアウト中心（イートイン数席あり）",
+    "smoke": "完全禁煙",
+    "isCaution": false,
+    "recommended": 97,
+    "tags": [
+      "モーニング",
+      "サンドイッチ",
+      "ホテル徒歩1分",
+      "テイクアウト部屋食"
+    ],
+    "highlight": "ホテル一楽から徒歩1分！具材を2種類選んでその場で作ってくれるカスタムサンドイッチ専門店。5歳のお子様とホテル部屋で食べる朝食に最高峰。",
+    "kidsPoint": "タマゴやポテサラ、フルーツなど子供が大好きな具材が豊富。お部屋に持ち帰って周りを気にせずゆっくり朝食が楽しめます。",
+    "gourmet": {
+      "provider": "食べログ",
+      "url": "https://tabelog.com/fukuoka/A4001/A400103/40030495/"
+    },
+    "dishPrice": "サンドイッチ 350円〜680円（具材2種チョイス） / フルーツサンド 420円〜 / スープ 250円",
+    "drinkPrice": "コーヒー 300円 / カフェラテ 380円 / オレンジジュース 280円",
+    "kidsMenu": "なし（具材を選べるサンドイッチでお子様好みにカスタム可能）",
+    "hasKidsMenu": false,
+    "hasMorning": true,
+    "morningHours": "09:00〜15:00（売切次第終了）",
+    "morningMenu": "具材2種選べる手作りサンドイッチ 350円〜 / フルーツサンド / スープセット"
+  },
+  {
+    "id": 62,
+    "name": "BROT LAND 電気ビル共創館店",
+    "kana": "ぶろーとらんと",
+    "zone": "zone_a",
+    "area": "渡辺通",
+    "distWalk": "徒歩7分",
+    "distMeters": 550,
+    "holidayHours": "07:30〜19:00（通し営業）",
+    "openTime": 7.5,
+    "holidayStatus": "open",
+    "budget": "600円〜1,100円",
+    "budgetScore": 850,
+    "categories": [
+      "morning",
+      "casual_kids",
+      "cheap_delicious"
+    ],
+    "seatType": "テーブル席（イートインカフェ併設・ベビーカー可）",
+    "smoke": "完全禁煙",
+    "isCaution": false,
+    "recommended": 94,
+    "tags": [
+      "ベーカリーカフェ",
+      "モーニング",
+      "渡辺通駅直結",
+      "パンとスープ"
+    ],
+    "highlight": "渡辺通駅直結の電気ビル1Fにある人気ベーカリー。朝7:30からモーニング営業。焼きたてクロワッサンやホットサンド、温かいスープセットが揃います。",
+    "kidsPoint": "ビル内テナントで通路が広くベビーカーの乗り入れも楽々。甘いデニッシュやメロンパン、ジュースもあり家族連れで利用しやすいです。",
+    "gourmet": {
+      "provider": "食べログ",
+      "url": "https://tabelog.com/fukuoka/A4001/A400103/40032906/"
+    },
+    "dishPrice": "モーニングセット（トースト+スープ+ドリンク）650円 / クロワッサン 240円 / ホットサンド 480円",
+    "drinkPrice": "ブレンドコーヒー 350円 / カフェオレ 420円 / りんごジュース 320円",
+    "kidsMenu": "なし（各種焼きたてパン・ジュースあり、取り分け容易）",
+    "hasKidsMenu": false,
+    "hasMorning": true,
+    "morningHours": "07:30〜11:00（モーニングセット）",
+    "morningMenu": "モーニングセット（パン+スープ+ドリンク）650円 / 焼きたてパン各種"
+  },
+  {
+    "id": 63,
+    "name": "コメダ珈琲店 福岡渡辺通5丁目店",
+    "kana": "こめだこーひーてん",
+    "zone": "zone_a",
+    "area": "渡辺通",
+    "distWalk": "徒歩10分",
+    "distMeters": 800,
+    "holidayHours": "07:00〜23:00（通し営業）",
+    "openTime": 7,
+    "holidayStatus": "open",
+    "budget": "600円〜1,000円",
+    "budgetScore": 800,
+    "categories": [
+      "morning",
+      "casual_kids"
+    ],
+    "seatType": "ボックスソファー席（広々シート・全席禁煙）",
+    "smoke": "完全禁煙",
+    "isCaution": false,
+    "recommended": 95,
+    "tags": [
+      "モーニング無料",
+      "ソファー席",
+      "キッズドリンク",
+      "定番喫茶"
+    ],
+    "highlight": "朝7:00〜11:00までドリンク注文で『選べる無料モーニング（トースト/ローブパン＋ゆで卵/たまごペースト/小倉あん）』が付く大定番。ソファー席でくつろげます。",
+    "kidsPoint": "全席ゆったりした赤いソファー席で5歳児も落ちにくく安心。お子様用だるまグラスのジュースやミニシロノワールも大人気。",
+    "gourmet": {
+      "provider": "食べログ",
+      "url": "https://tabelog.com/fukuoka/A4001/A400103/40058865/"
+    },
+    "dishPrice": "モーニング無料（ドリンク代のみ） / シロノワール 700円 / ミックスサンド 720円",
+    "drinkPrice": "コメダブレンド 540円 / カフェオレ 560円 / キッズドリンク（だるまグラス）350円",
+    "kidsMenu": "あり（キッズドリンク、お子様プレート・取り分け用トーストあり）",
+    "hasKidsMenu": true,
+    "hasMorning": true,
+    "morningHours": "07:00〜11:00（選べるモーニング）",
+    "morningMenu": "選べる無料モーニング（トースト+ゆで卵/たまごペースト/小倉あん）※ドリンク代540円〜のみ"
+  },
+  {
+    "id": 64,
+    "name": "珈琲 ふじた",
+    "kana": "こーひーふじた",
+    "zone": "zone_a",
+    "area": "渡辺通",
+    "distWalk": "徒歩8分",
+    "distMeters": 650,
+    "holidayHours": "07:00〜18:00（通し営業）",
+    "openTime": 7,
+    "holidayStatus": "open",
+    "budget": "600円〜950円",
+    "budgetScore": 750,
+    "categories": [
+      "morning",
+      "cheap_delicious"
+    ],
+    "seatType": "テーブル席・カウンター席",
+    "smoke": "完全禁煙",
+    "isCaution": false,
+    "recommended": 91,
+    "tags": [
+      "純喫茶",
+      "モーニング",
+      "厚切りトースト",
+      "朝カレー"
+    ],
+    "highlight": "昭和の風情が残る渡辺通の老舗純喫茶。朝7時から糸島産たまごを使ったスクランブルエッグや厚切りバタートーストのモーニングセット、コクのある朝カレーが味わえます。",
+    "kidsPoint": "バタートーストや卵料理、バナナジュースなど子供が食べやすいメニューが充実。朝早い出発前の腹ごしらえに便利。",
+    "gourmet": {
+      "provider": "食べログ",
+      "url": "https://tabelog.com/fukuoka/A4001/A400103/40018596/"
+    },
+    "dishPrice": "モーニングA（トースト+卵+サラダ+珈琲）650円 / 朝カレー 750円 / ピザトースト 600円",
+    "drinkPrice": "ブレンド珈琲 480円 / アイスコーヒー 500円 / バナナジュース 550円",
+    "kidsMenu": "なし（トースト・卵・ジュースの取り分け容易）",
+    "hasKidsMenu": false,
+    "hasMorning": true,
+    "morningHours": "07:00〜11:00（モーニング）",
+    "morningMenu": "モーニングセット（厚切りトースト・糸島産卵・サラダ・珈琲）650円 / 朝カレー 750円"
+  },
+  {
+    "id": 65,
+    "name": "ロイヤルホスト 住吉店",
+    "kana": "ろいやるほすと",
+    "zone": "zone_c",
+    "area": "住吉（高砂東隣・ホテル徒歩9分）",
+    "distWalk": "徒歩9分",
+    "distMeters": 720,
+    "holidayHours": "07:00〜23:00（通し営業）",
+    "openTime": 7,
+    "holidayStatus": "open",
+    "budget": "800円〜1,600円",
+    "budgetScore": 1200,
+    "categories": [
+      "morning",
+      "casual_kids"
+    ],
+    "seatType": "ボックスソファー席（広々シート・お子様椅子完備）",
+    "smoke": "完全禁煙",
+    "isCaution": false,
+    "recommended": 96,
+    "tags": [
+      "朝7時開店",
+      "パンケーキ",
+      "お子様モーニング",
+      "ドリンクバー"
+    ],
+    "highlight": "福岡発祥のファミレスの最高峰。朝7時から黄金色の名物パンケーキ、オニオングラタンスープ付きモーニングプレート、おもちゃ付きキッズモーニングをゆったり満喫できます。",
+    "kidsPoint": "おもちゃ付き『おこさまモーニングパンケーキプレート』や低アレルゲンメニュー、ドリンクバー完備。ソファー席で5歳児連れも完全ストレスフリー。",
+    "gourmet": {
+      "provider": "食べログ",
+      "url": "https://tabelog.com/fukuoka/A4001/A400101/40003443/"
+    },
+    "dishPrice": "モーニングパンケーキ 680円 / モーニングプレート（トースト+スクランブルエッグ）780円 / ロイヤルホストモーニング 1,280円",
+    "drinkPrice": "パラダイストロピカルティー・ドリンクバー 380円 / 生ビール 630円",
+    "kidsMenu": "あり（おこさまモーニングパンケーキプレート 550円・おもちゃ付、おこさまドリンクバー）",
+    "hasKidsMenu": true,
+    "hasMorning": true,
+    "morningHours": "07:00〜10:30（モーニング）",
+    "morningMenu": "おこさまモーニングパンケーキ 550円 / モーニングプレート 780円 / パンケーキモーニング 680円"
   }
 ];
 
@@ -3182,6 +3489,9 @@
             drinkPrice: existing.drinkPrice || '要問合せ',
             kidsMenu: existing.kidsMenu || '取り分け可能',
             hasKidsMenu: !!existing.hasKidsMenu,
+            hasMorning: !!existing.hasMorning,
+            morningHours: existing.morningHours || '',
+            morningMenu: existing.morningMenu || '',
             gourmet: { provider: provider, url: url }
           });
         }
@@ -3467,7 +3777,8 @@
             btn.className = 'top-filter-btn active bg-white text-brand-900 font-black text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition shadow-md flex items-center gap-1.5 cursor-pointer ring-2 ring-amber-400 scale-[1.03]';
           } else {
             btn.classList.remove('active', 'bg-white', 'text-brand-900', 'ring-2', 'ring-amber-400', 'font-black', 'scale-[1.03]');
-            if (q === 'open') btn.className = 'top-filter-btn bg-emerald-800/90 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-emerald-500/40 cursor-pointer';
+            if (q === 'morning') btn.className = 'top-filter-btn bg-amber-600/90 hover:bg-amber-500 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-300/40 cursor-pointer';
+            else if (q === 'open') btn.className = 'top-filter-btn bg-emerald-800/90 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-emerald-500/40 cursor-pointer';
             else if (q === 'kids') btn.className = 'top-filter-btn bg-amber-700/90 hover:bg-amber-600 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-400/40 cursor-pointer';
             else if (q === 'hotel_near') btn.className = 'top-filter-btn bg-purple-800/90 hover:bg-purple-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-purple-400/40 cursor-pointer';
             else if (q === 'tatami') btn.className = 'top-filter-btn bg-amber-800/90 hover:bg-amber-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-400/40 cursor-pointer';
@@ -3595,6 +3906,20 @@
           modalKidsBadge.textContent = '通常メニュー取り分け';
         }
       }
+
+      // モーニング・朝食情報のモーダル表示
+      const modalMorningBox = document.getElementById('modalMorningBox');
+      const modalMorningHours = document.getElementById('modalMorningHours');
+      const modalMorningMenu = document.getElementById('modalMorningMenu');
+      if (modalMorningBox) {
+        if (item.hasMorning) {
+          modalMorningBox.classList.remove('hidden');
+          if (modalMorningHours) modalMorningHours.textContent = item.morningHours || '朝営業あり';
+          if (modalMorningMenu) modalMorningMenu.textContent = item.morningMenu || '朝食メニュー提供あり';
+        } else {
+          modalMorningBox.classList.add('hidden');
+        }
+      }
       
       // ゾーンバッジと祝日バッジ
       modalZoneBadgeContainer.innerHTML = `
@@ -3701,7 +4026,7 @@
 
         // 検索クエリフィルター
         if (searchQuery) {
-          const matchTarget = `${item.name} ${item.kana} ${item.area} ${item.highlight} ${item.kidsPoint} ${item.dishPrice} ${item.drinkPrice} ${item.kidsMenu} ${item.tags.join(' ')} ${item.seatType}`.toLowerCase();
+          const matchTarget = `${item.name} ${item.kana} ${item.area} ${item.highlight} ${item.kidsPoint} ${item.dishPrice} ${item.drinkPrice} ${item.kidsMenu} ${item.tags.join(' ')} ${item.seatType} ${item.hasMorning ? 'モーニング 朝食 朝ごはん' : ''} ${item.morningMenu || ''}`.toLowerCase();
           if (!matchTarget.includes(searchQuery)) return false;
         }
 
@@ -3859,6 +4184,19 @@
                   <span class="font-bold text-slate-800 truncate block text-[11px]" title="${item.drinkPrice}">${item.drinkPrice}</span>
                 </div>
               </div>
+              ${item.hasMorning ? `
+              <!-- 朝食・モーニング情報 -->
+              <div class="mt-1.5 bg-amber-50/90 rounded-lg p-2 border border-amber-300 text-[11px] leading-relaxed text-amber-950 flex items-start gap-1.5 shadow-2xs">
+                <i class="fa-solid fa-sun text-amber-500 mt-0.5 text-xs"></i>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between gap-1">
+                    <span class="font-black text-amber-950">☀️ 朝食・モーニング</span>
+                    <span class="bg-amber-200 text-amber-900 text-[10px] font-bold px-1.5 py-0.2 rounded whitespace-nowrap">${item.morningHours || '朝営業あり'}</span>
+                  </div>
+                  <span class="text-amber-900 block truncate text-[11px] font-bold mt-0.5" title="${item.morningMenu || ''}">${item.morningMenu || '朝食メニュー提供あり'}</span>
+                </div>
+              </div>
+              ` : ''}
             </div>
 
             <!-- Highlights & Kids Details -->
@@ -3964,6 +4302,7 @@
 
       // 複数選択されたカテゴリータグ
       const catNameMap = {
+        'morning': '☀️ モーニング・朝食',
         'hotel_near': '徒歩3分以内',
         'tatami': '座敷・個室',
         'casual_kids': 'うどん・定食',
