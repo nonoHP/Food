@@ -3007,131 +3007,32 @@
       renderCards();
     };
 
-    // 祝日営業バッジ生成ヘルパー
+    // 祝日営業バッジ生成ヘルパー（清潔感のあるミニピル）
     function getHolidayBadgeHtml(status) {
       if (status === 'closed') {
-        return '<span class="bg-rose-100 text-rose-800 text-[10px] font-black px-2 py-0.5 rounded-md border border-rose-300 flex items-center gap-1 shadow-2xs shrink-0"><i class="fa-solid fa-circle-xmark text-rose-600"></i>祝日定休</span>';
+        return '<span class="bg-rose-50 text-rose-700 text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-rose-200 flex items-center gap-1 shrink-0"><i class="fa-solid fa-circle-xmark text-rose-500"></i>祝日休業</span>';
       } else if (status === 'caution') {
-        return '<span class="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-md border border-amber-300 flex items-center gap-1 shadow-2xs shrink-0"><i class="fa-solid fa-triangle-exclamation text-amber-600"></i>祝日注意</span>';
+        return '<span class="bg-amber-50 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-200 flex items-center gap-1 shrink-0"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i>祝日注意</span>';
       } else {
-        return '<span class="bg-emerald-100 text-emerald-900 text-[10px] font-extrabold px-2 py-0.5 rounded-md border border-emerald-300 flex items-center gap-1 shadow-2xs shrink-0"><i class="fa-solid fa-circle-check text-emerald-600"></i>祝日営業</span>';
+        return '<span class="bg-emerald-50 text-emerald-800 text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1 shrink-0"><i class="fa-solid fa-circle-check text-emerald-600"></i>祝日営業</span>';
       }
     }
 
-    // 店舗詳細モーダルを開く
-    window.openDetail = function(id) {
-      const item = RESTAURANTS.find(r => r.id === id);
-      if (!item) return;
-
-      modalName.textContent = item.name;
-      modalKana.textContent = item.kana;
-      modalDist.textContent = `${item.distWalk}（約${item.distMeters}m）`;
-      modalHours.textContent = item.holidayHours;
-      modalBudget.textContent = item.budget;
-      modalSeat.textContent = `${item.seatType} / ${item.smoke}`;
-      modalHighlight.innerHTML = item.highlight;
-      modalKidsPoint.innerHTML = item.kidsPoint;
-
-      // 料理・お酒価格およびお子様メニュー
-      if (modalDishPrice) modalDishPrice.textContent = item.dishPrice || '要問合せ';
-      if (modalDrinkPrice) modalDrinkPrice.textContent = item.drinkPrice || '要問合せ';
-      if (modalKidsMenu) modalKidsMenu.textContent = item.kidsMenu || '取り分け対応可能';
-      if (modalKidsBadge) {
-        if (item.hasKidsMenu) {
-          modalKidsBadge.className = 'text-[10px] font-black px-2.5 py-0.5 rounded-full bg-emerald-600 text-white shadow-2xs';
-          modalKidsBadge.textContent = '専用メニューあり';
-        } else {
-          modalKidsBadge.className = 'text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-amber-200 text-amber-900 shadow-2xs';
-          modalKidsBadge.textContent = '通常メニュー取り分け';
-        }
-      }
-
-      // モーニング・朝食情報のモーダル表示
-      const modalMorningBox = document.getElementById('modalMorningBox');
-      const modalMorningHours = document.getElementById('modalMorningHours');
-      const modalMorningMenu = document.getElementById('modalMorningMenu');
-      if (modalMorningBox) {
-        if (item.hasMorning) {
-          modalMorningBox.classList.remove('hidden');
-          if (modalMorningHours) modalMorningHours.textContent = item.morningHours || '朝営業あり';
-          if (modalMorningMenu) modalMorningMenu.textContent = item.morningMenu || '朝食メニュー提供あり';
-        } else {
-          modalMorningBox.classList.add('hidden');
-        }
-      }
-      
-      // ゾーンバッジと祝日バッジ
-      modalZoneBadgeContainer.innerHTML = `
-        ${getZoneBadgeHtml(item.zone)}
-        ${getHolidayBadgeHtml(item.holidayStatus)}
-      `;
-
-      // モーダル内の祝日営業ステータスバナー
-      if (item.holidayStatus === 'closed') {
-        modalHolidayBanner.className = 'p-3 rounded-xl border flex items-center gap-2.5 bg-rose-50 border-rose-200 text-rose-900';
-        modalHolidayBanner.innerHTML = `
-          <i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i>
-          <div>
-            <span class="font-extrabold block text-rose-950">11/3(祝) は休業日（営業していません）</span>
-            <span class="text-[11px] text-rose-700">現地に行って閉まっているトラブルを避けるため、代替店をご利用ください。</span>
-          </div>
-        `;
-      } else if (item.holidayStatus === 'caution') {
-        modalHolidayBanner.className = 'p-3 rounded-xl border flex items-center gap-2.5 bg-amber-50 border-amber-200 text-amber-900';
-        modalHolidayBanner.innerHTML = `
-          <i class="fa-solid fa-triangle-exclamation text-amber-600 text-lg"></i>
-          <div>
-            <span class="font-bold block text-amber-950">祝日営業：時間帯・混雑・受動喫煙に注意</span>
-            <span class="text-[11px] text-amber-800">5歳児連れでの利用時は事前の確認や早めの入店を推奨します。</span>
-          </div>
-        `;
-      } else {
-        modalHolidayBanner.className = 'p-3 rounded-xl border flex items-center gap-2.5 bg-emerald-50 border-emerald-200 text-emerald-900';
-        modalHolidayBanner.innerHTML = `
-          <i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>
-          <div>
-            <span class="font-extrabold block text-emerald-950">11/3(祝) 営業確認済み</span>
-            <span class="text-[11px] text-emerald-800">祝日ディナー営業を行っています。16:30〜17:30の早めスタートが特におすすめです。</span>
-          </div>
-        `;
-      }
-
-      // タグ
-      modalTags.innerHTML = item.tags.map(t => `<span class="bg-slate-100 text-slate-700 text-[10px] px-2 py-0.5 rounded-md font-medium border border-slate-200">${t}</span>`).join('');
-
-      // グルメサイトリンク（安全なURL＆ボタン色）
-      const { provider, url: safeGourmetUrl } = getSafeGourmetInfo(item);
-      const gourmetStyle = getGourmetBtnStyle(provider);
-      modalGourmetBtn.href = safeGourmetUrl;
-      modalGourmetBtn.className = `flex-1 ${gourmetStyle.btnClass} font-bold py-2.5 px-3 rounded-xl text-center text-xs transition flex items-center justify-center gap-1.5 shadow-sm`;
-      modalGourmetBtn.innerHTML = `${gourmetStyle.iconHtml}<span>${provider}で見る</span>`;
-
-      // マップURL
-      const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' 福岡')}`;
-      modalMapBtn.href = mapUrl;
-
-      detailModal.classList.remove('hidden');
-    };
-
-    // ゾーンバッジ生成ヘルパー
+    // ゾーンバッジ生成ヘルパー（シンプルで統一感のあるミニピル）
     function getZoneBadgeHtml(zone) {
       if (zone === 'zone_d') {
-        return '<span class="bg-purple-100 text-purple-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-purple-200 shrink-0"><i class="fa-solid fa-hotel mr-1 text-purple-600"></i>清川ホテル直近</span>';
+        return '<span class="bg-purple-50 text-purple-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-purple-200 shrink-0"><i class="fa-solid fa-hotel mr-1 text-purple-500"></i>清川・ホテル直近</span>';
       } else if (zone === 'zone_c') {
-        return '<span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-amber-200 shrink-0"><i class="fa-solid fa-arrows-split-up-and-left mr-1 text-amber-600"></i>高砂エリア</span>';
+        return '<span class="bg-amber-50 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-200 shrink-0"><i class="fa-solid fa-arrows-split-up-and-left mr-1 text-amber-500"></i>高砂エリア</span>';
       } else if (zone === 'zone_a') {
-        return '<span class="bg-blue-100 text-blue-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-blue-200 shrink-0"><i class="fa-solid fa-train-subway mr-1 text-blue-600"></i>渡辺通エリア</span>';
+        return '<span class="bg-blue-50 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-200 shrink-0"><i class="fa-solid fa-train-subway mr-1 text-blue-500"></i>渡辺通エリア</span>';
       } else {
-        return '<span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-emerald-200 shrink-0"><i class="fa-solid fa-train mr-1 text-emerald-600"></i>薬院エリア</span>';
+        return '<span class="bg-teal-50 text-teal-800 text-[10px] font-bold px-2 py-0.5 rounded-full border border-teal-200 shrink-0"><i class="fa-solid fa-train mr-1 text-teal-500"></i>薬院エリア</span>';
       }
     }
 
-    // ゾーン上部ストリップカラー
     function getZoneTopBorderClass(zone) {
-      if (zone === 'zone_d') return 'bg-purple-500';
-      if (zone === 'zone_c') return 'bg-amber-500';
-      if (zone === 'zone_a') return 'bg-blue-500';
-      return 'bg-emerald-500';
+      return ''; // 不要な細い帯を廃止し、全体をクリーンに統一
     }
 
     // フィルタリングとソートを実行してカードを描画
@@ -3209,191 +3110,172 @@
 
       noResults.classList.add('hidden');
 
-      // HTMLカードの生成（洗練されたモダンマガジン調・モバイル快適UI）
+      // HTMLカードの生成（視線誘導と余白が整ったモダンクリーンデザイン）
       const cardsHtml = filtered.map(item => {
         const isFav = favorites.includes(item.id);
         const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' 福岡')}`;
         const zoneBadge = getZoneBadgeHtml(item.zone);
         const holidayBadge = getHolidayBadgeHtml(item.holidayStatus);
-        const topStrip = getZoneTopBorderClass(item.zone);
         const { provider, url: safeGourmetUrl } = getSafeGourmetInfo(item);
         const gourmetStyle = getGourmetBtnStyle(provider);
 
-        // 要注意カードと通常カードのスタイリング分岐
-        const cardStyleClass = item.isCaution 
-          ? 'border-rose-200 bg-rose-50/40 shadow-xs' 
-          : 'border-slate-200/90 bg-white hover:border-amber-400/80 hover:shadow-md';
-
-        // 祝日営業表示
-        let holidayHourDisplay = '';
-        if (item.holidayStatus === 'closed') {
-          holidayHourDisplay = `
-            <div class="flex items-center justify-between bg-rose-50 px-2.5 py-1 rounded-lg border border-rose-200/80 text-rose-800 text-[11px] font-bold">
-              <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-xmark text-rose-500"></i>祝日営業:</span>
-              <span class="font-extrabold text-rose-700">❌ 祝日は休み（営業なし）</span>
-            </div>
-          `;
-        } else {
-          holidayHourDisplay = `
-            <div class="flex items-center justify-between bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-100 text-[11px]">
-              <span class="text-slate-500 font-bold flex items-center gap-1.5">
-                <i class="fa-solid fa-clock text-amber-500"></i>祝日営業:
-              </span>
-              <span class="font-extrabold text-slate-800 ${item.openTime <= 16.5 ? 'text-coral-600 font-black' : ''}">
-                ${item.holidayHours}
-              </span>
-            </div>
-          `;
-        }
+        // 要注意カードと通常カードのカード外枠
+        const cardClass = item.isCaution 
+          ? 'border-rose-200 bg-rose-50/30' 
+          : 'border-slate-200/90 bg-white hover:border-slate-300 hover:shadow-md';
 
         return `
           <div 
             onclick="openDetail(${item.id})"
-            class="relative flex flex-col rounded-2xl border ${cardStyleClass} transition-all duration-200 overflow-hidden group cursor-pointer"
+            class="relative flex flex-col justify-between rounded-2xl border ${cardClass} p-4 sm:p-5 transition-all duration-200 group cursor-pointer shadow-xs hover:-translate-y-0.5"
           >
-            <!-- Top color accent stripe -->
-            <div class="h-1.5 w-full ${topStrip}"></div>
-            
-            <!-- Card Body -->
-            <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
-              
-              <!-- Upper section: Badges, Title, Meta -->
-              <div>
-                <!-- Top Badges & Fav -->
-                <div class="flex items-center justify-between gap-1.5 mb-2">
-                  <div class="flex items-center gap-1.5 flex-wrap">
-                    ${holidayBadge}
-                    ${zoneBadge}
-                    <span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-slate-200">
-                      <i class="fa-solid fa-person-walking text-amber-600 mr-0.5"></i>${item.distWalk}
-                    </span>
-                  </div>
-                  
-                  <!-- Favorite Bookmark -->
-                  <button 
-                    type="button"
-                    onclick="toggleFav(${item.id}, event)" 
-                    class="w-8 h-8 rounded-full flex items-center justify-center transition-all shrink-0 ${isFav ? 'bg-rose-50 text-rose-500 heart-bounce shadow-2xs' : 'bg-slate-100/80 text-slate-400 hover:text-rose-500 hover:bg-slate-200'}"
-                    title="${isFav ? 'お気に入りから解除' : 'お気に入りに追加'}"
-                  >
-                    <i class="fa-${isFav ? 'solid' : 'regular'} fa-heart text-sm"></i>
-                  </button>
+            <!-- 1. ヘッダー：バッジ・距離 ＆ お気に入りボタン -->
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  ${holidayBadge}
+                  ${zoneBadge}
+                  <span class="text-slate-500 text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded-full border border-slate-200/70">
+                    <i class="fa-solid fa-person-walking text-slate-500 mr-0.5"></i>${item.distWalk}
+                  </span>
                 </div>
+                
+                <!-- お気に入りボタン -->
+                <button 
+                  type="button"
+                  onclick="toggleFav(${item.id}, event)" 
+                  class="w-8 h-8 rounded-full flex items-center justify-center transition-all shrink-0 ${isFav ? 'bg-rose-50 text-rose-500 heart-bounce shadow-2xs' : 'bg-slate-50 text-slate-300 hover:text-rose-500 hover:bg-slate-100'}"
+                  title="${isFav ? 'お気に入りから解除' : 'お気に入りに追加'}"
+                >
+                  <i class="fa-${isFav ? 'solid' : 'regular'} fa-heart text-sm"></i>
+                </button>
+              </div>
 
-                <!-- Title & Kana -->
+              <!-- 2. 店名 & 読みがな -->
+              <div class="mb-2">
                 <h3 class="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-amber-600 transition leading-snug">
                   ${item.name}
                 </h3>
-                <p class="text-[11px] text-slate-400 mb-2">${item.kana}</p>
+                <p class="text-[11px] text-slate-400 mt-0.5">${item.kana}</p>
+              </div>
 
-                <!-- Tags & Badges -->
-                <div class="flex flex-wrap gap-1 mb-2.5">
-                  ${item.hasKidsMenu ? '<span class="bg-emerald-50 text-emerald-800 text-[10px] px-2 py-0.5 rounded-md border border-emerald-200 font-extrabold flex items-center gap-1"><i class="fa-solid fa-child-reaching text-emerald-600"></i>キッズメニュー有</span>' : ''}
-                  ${item.tags.map(t => `<span class="bg-slate-50 text-slate-600 text-[10px] px-1.5 py-0.5 rounded-md border border-slate-200/80 font-medium">${t}</span>`).join('')}
+              <!-- 3. タグ一覧（すっきりとしたピル型） -->
+              <div class="flex flex-wrap gap-1 mb-2.5">
+                ${item.tags.map(t => `<span class="bg-slate-100 text-slate-600 text-[10px] px-2 py-0.5 rounded-md font-medium">${t}</span>`).join('')}
+              </div>
+
+              <!-- 4. 店舗ハイライト（1〜2行でスッと読める紹介文） -->
+              <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                ${item.highlight}
+              </p>
+
+              <!-- 5. 基本スペック一覧（枠線小箱を廃止し、すっきり整ったインフォリスト） -->
+              <div class="bg-slate-50/90 rounded-xl p-3 text-xs space-y-2 text-slate-700 mb-3 border border-slate-100">
+                <!-- 祝日営業時間 -->
+                <div class="flex items-start justify-between gap-2">
+                  <span class="text-slate-400 text-[11px] font-bold flex items-center gap-1.5 shrink-0 mt-0.5">
+                    <i class="fa-solid fa-clock text-amber-500 w-3.5"></i>営業時間
+                  </span>
+                  <span class="font-extrabold text-slate-800 text-right text-[11px]">
+                    ${item.holidayStatus === 'closed' ? '<span class="text-rose-600 font-extrabold">❌ 祝日は休み（営業なし）</span>' : item.holidayHours}
+                  </span>
                 </div>
 
-                <!-- Hours & Specs -->
-                <div class="space-y-1.5 mb-2.5">
-                  ${holidayHourDisplay}
-                  
-                  <div class="grid grid-cols-2 gap-1.5 text-[11px]">
-                    <div class="bg-slate-50/80 px-2 py-1.5 rounded-lg border border-slate-100 flex items-center justify-between">
-                      <span class="text-slate-400 text-[10px] font-bold">予算目安</span>
-                      <span class="font-extrabold text-slate-800">${item.budget}</span>
-                    </div>
-                    <div class="bg-slate-50/80 px-2 py-1.5 rounded-lg border border-slate-100 flex items-center justify-between truncate">
-                      <span class="text-slate-400 text-[10px] font-bold">お席</span>
-                      <span class="font-bold text-slate-800 truncate" title="${item.seatType}">${item.seatType}</span>
-                    </div>
-                  </div>
-
-                  <!-- 料理目安 & お酒目安 -->
-                  <div class="grid grid-cols-2 gap-1.5 text-[11px]">
-                    <div class="bg-amber-50/50 px-2 py-1.5 rounded-lg border border-amber-100/80">
-                      <span class="text-amber-800/80 block text-[9px] font-bold mb-0.5">
-                        <i class="fa-solid fa-utensils text-amber-600 mr-0.5"></i>料理目安
-                      </span>
-                      <span class="font-bold text-slate-800 truncate block text-[11px]" title="${item.dishPrice}">${item.dishPrice}</span>
-                    </div>
-                    <div class="bg-purple-50/50 px-2 py-1.5 rounded-lg border border-purple-100/80">
-                      <span class="text-purple-800/80 block text-[9px] font-bold mb-0.5">
-                        <i class="fa-solid fa-wine-glass text-purple-600 mr-0.5"></i>ドリンク
-                      </span>
-                      <span class="font-bold text-slate-800 truncate block text-[11px]" title="${item.drinkPrice}">${item.drinkPrice}</span>
-                    </div>
-                  </div>
-
-                  ${item.hasMorning ? `
-                  <!-- 朝食・モーニング情報 -->
-                  <div class="bg-amber-50/90 rounded-lg p-2 border border-amber-200 text-[11px] leading-relaxed text-amber-950 flex items-start gap-1.5 shadow-2xs">
-                    <i class="fa-solid fa-sun text-amber-500 mt-0.5 text-xs"></i>
-                    <div class="flex-1 min-w-0">
-                      <div class="flex items-center justify-between gap-1">
-                        <span class="font-extrabold text-amber-950">☀️ 朝食・モーニング</span>
-                        <span class="bg-amber-200 text-amber-900 text-[10px] font-bold px-1.5 py-0.2 rounded">${item.morningHours || '朝営業あり'}</span>
-                      </div>
-                      <span class="text-amber-900 block truncate text-[11px] font-medium mt-0.5" title="${item.morningMenu || ''}">${item.morningMenu || '朝食メニュー提供あり'}</span>
-                    </div>
-                  </div>
-                  ` : ''}
+                <!-- 親子予算 & 席タイプ -->
+                <div class="flex items-start justify-between gap-2 pt-1.5 border-t border-slate-200/60">
+                  <span class="text-slate-400 text-[11px] font-bold flex items-center gap-1.5 shrink-0 mt-0.5">
+                    <i class="fa-solid fa-coins text-amber-600 w-3.5"></i>予算・席
+                  </span>
+                  <span class="font-bold text-slate-800 text-right text-[11px]">
+                    目安 ${item.budget} ｜ ${item.seatType}（${item.smoke}）
+                  </span>
                 </div>
 
-                <!-- Highlight comment -->
-                <p class="text-xs text-slate-600 leading-relaxed mb-2 line-clamp-2">
-                  ${item.highlight}
+                <!-- 料理価格目安（途切れず自然に読める） -->
+                <div class="flex items-start justify-between gap-2 pt-1.5 border-t border-slate-200/60">
+                  <span class="text-slate-400 text-[11px] font-bold flex items-center gap-1.5 shrink-0 mt-0.5">
+                    <i class="fa-solid fa-utensils text-orange-500 w-3.5"></i>料理目安
+                  </span>
+                  <span class="text-slate-800 font-bold text-right text-[11px]">
+                    ${item.dishPrice}
+                  </span>
+                </div>
+
+                <!-- ドリンク価格目安 -->
+                <div class="flex items-start justify-between gap-2 pt-1.5 border-t border-slate-200/60">
+                  <span class="text-slate-400 text-[11px] font-bold flex items-center gap-1.5 shrink-0 mt-0.5">
+                    <i class="fa-solid fa-wine-glass text-purple-500 w-3.5"></i>ドリンク
+                  </span>
+                  <span class="text-slate-700 font-medium text-right text-[11px]">
+                    ${item.drinkPrice}
+                  </span>
+                </div>
+
+                ${item.hasMorning ? `
+                <!-- モーニング情報（該当店のみ） -->
+                <div class="flex items-start justify-between gap-2 pt-1.5 border-t border-amber-200/70 bg-amber-50/70 -mx-1.5 px-2 py-1.5 rounded-lg text-amber-950">
+                  <span class="text-amber-900 text-[11px] font-extrabold flex items-center gap-1.5 shrink-0 mt-0.5">
+                    <i class="fa-solid fa-sun text-amber-500 w-3.5"></i>朝食営業
+                  </span>
+                  <span class="text-amber-950 font-bold text-right text-[11px]">
+                    <span class="text-[10px] bg-amber-200 text-amber-900 px-1.5 py-0.2 rounded font-black mr-1">${item.morningHours || '朝営業'}</span>
+                    ${item.morningMenu || ''}
+                  </span>
+                </div>
+                ` : ''}
+              </div>
+
+              <!-- 6. 子連れ・5歳児安心ポイント（まとまった1つの専用ブロックで最重要情報がスッと頭に入る） -->
+              <div class="bg-amber-50/70 border border-amber-200/80 rounded-xl p-3 text-xs mb-3 space-y-1.5">
+                <div class="flex items-center justify-between gap-1">
+                  <span class="font-extrabold text-amber-950 flex items-center gap-1.5 text-xs">
+                    <i class="fa-solid fa-child-reaching text-amber-600"></i> 子連れ安心ポイント
+                  </span>
+                  <span class="${item.hasKidsMenu ? 'bg-emerald-600 text-white' : 'bg-amber-200 text-amber-900'} text-[10px] font-black px-2 py-0.5 rounded-full shadow-2xs">
+                    ${item.hasKidsMenu ? 'キッズメニュー有' : '取り分け対応'}
+                  </span>
+                </div>
+                <p class="text-xs font-bold text-amber-950 leading-snug">
+                  ${item.kidsMenu}
                 </p>
-
-                <!-- お子様安心ポイント -->
-                <div class="bg-amber-50/80 border border-amber-200/70 rounded-xl p-2.5 text-[11px] leading-relaxed text-amber-950">
-                  <div class="flex items-center justify-between gap-1 mb-1 pb-1 border-b border-amber-200/50">
-                    <span class="font-bold flex items-center gap-1 text-amber-950 text-[10px]">
-                      <i class="fa-solid fa-bowl-food text-amber-600"></i> お子様メニュー:
-                    </span>
-                    <span class="${item.hasKidsMenu ? 'bg-emerald-600 text-white' : 'bg-amber-200 text-amber-900'} text-[9px] font-black px-1.5 py-0.2 rounded-full shrink-0">
-                      ${item.hasKidsMenu ? '専用メニュー有' : '取り分け対応'}
-                    </span>
-                  </div>
-                  <p class="text-[11px] font-bold text-amber-950 truncate mb-0.5">
-                    ${item.kidsMenu}
-                  </p>
-                  <p class="text-[10px] text-amber-800 line-clamp-2">
-                    <i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i>${item.kidsPoint}
-                  </p>
-                </div>
-
+                <p class="text-[11px] text-amber-900 leading-relaxed flex items-start gap-1 pt-0.5">
+                  <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5 shrink-0"></i>
+                  <span>${item.kidsPoint}</span>
+                </p>
               </div>
 
-              <!-- Action Link Buttons (Detail + Gourmet + Google Map) -->
-              <div class="pt-1 flex items-center gap-1.5" onclick="event.stopPropagation()">
-                <button 
-                  onclick="openDetail(${item.id})"
-                  class="bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold py-2 px-2.5 rounded-xl transition text-center text-xs border border-slate-200 shrink-0 cursor-pointer shadow-2xs"
-                  title="詳細を見る"
-                >
-                  <i class="fa-solid fa-circle-info text-slate-400 mr-0.5"></i>詳細
-                </button>
-                <a 
-                  href="${safeGourmetUrl}" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  class="flex-1 ${gourmetStyle.btnClass} font-bold py-2 px-1.5 rounded-xl transition flex items-center justify-center gap-1 text-xs shadow-2xs"
-                  title="${provider}でメニュー・口コミを見る"
-                >
-                  ${gourmetStyle.iconHtml}
-                  <span>${provider}</span>
-                </a>
-                <a 
-                  href="${mapUrl}" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  class="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-bold py-2 px-1.5 rounded-xl transition flex items-center justify-center gap-1 text-xs shadow-2xs"
-                  title="Googleマップで場所を見る"
-                >
-                  <i class="fa-solid fa-location-arrow text-amber-300"></i>
-                  <span>マップ</span>
-                </a>
-              </div>
+            </div>
 
+            <!-- 7. アクションボタン（均整の取れた3つの押しやすいボタン） -->
+            <div class="flex items-center gap-2 pt-1 mt-auto" onclick="event.stopPropagation()">
+              <button 
+                onclick="openDetail(${item.id})"
+                class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-3 rounded-xl transition text-center text-xs border border-slate-200/80 shrink-0 cursor-pointer shadow-2xs flex items-center gap-1"
+                title="詳細を見る"
+              >
+                <i class="fa-solid fa-circle-info text-slate-400"></i>
+                <span>詳細</span>
+              </button>
+              <a 
+                href="${safeGourmetUrl}" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="flex-1 ${gourmetStyle.btnClass} font-bold py-2.5 px-2 rounded-xl transition flex items-center justify-center gap-1.5 text-xs shadow-2xs"
+                title="${provider}でメニュー・口コミを見る"
+              >
+                ${gourmetStyle.iconHtml}
+                <span>${provider}</span>
+              </a>
+              <a 
+                href="${mapUrl}" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-2 rounded-xl transition flex items-center justify-center gap-1.5 text-xs shadow-2xs"
+                title="Googleマップで場所を見る"
+              >
+                <i class="fa-solid fa-location-arrow text-amber-400"></i>
+                <span>マップ</span>
+              </a>
             </div>
 
           </div>
