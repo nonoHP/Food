@@ -385,7 +385,7 @@
           </button>
         </div>
 
-        <!-- Holiday Check Toggle & Sort Select -->
+        <!-- Holiday Check Toggle, Kids Menu Toggle & Sort Select -->
         <div class="flex flex-wrap items-center gap-2 shrink-0">
           <!-- 祝日営業チェックボックストグル -->
           <label class="flex items-center gap-2 cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-2 rounded-xl text-xs font-bold transition select-none shadow-2xs">
@@ -395,6 +395,16 @@
               <span>祝日営業店のみ表示</span>
             </span>
             <span id="holidayOpenCountBadge" class="bg-emerald-600 text-white text-[10px] px-1.5 py-0.2 rounded-full font-black">54</span>
+          </label>
+
+          <!-- お子様メニューありトグル -->
+          <label class="flex items-center gap-2 cursor-pointer bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-900 px-3 py-2 rounded-xl text-xs font-bold transition select-none shadow-2xs">
+            <input type="checkbox" id="kidsMenuOnlyToggle" class="w-4 h-4 text-amber-600 rounded focus:ring-amber-500 accent-amber-600 cursor-pointer">
+            <span class="flex items-center gap-1.5">
+              <i class="fa-solid fa-child-reaching text-amber-600"></i>
+              <span>お子様メニューあり</span>
+            </span>
+            <span id="kidsMenuCountBadge" class="bg-amber-600 text-white text-[10px] px-1.5 py-0.2 rounded-full font-black">16</span>
           </label>
 
           <!-- Sort Select -->
@@ -518,6 +528,33 @@
             <span class="text-slate-400 block text-[10px]">席タイプ・禁煙</span>
             <span id="modalSeat" class="font-bold text-slate-800 text-sm"></span>
           </div>
+        </div>
+
+        <!-- 料理・お酒価格目安 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 bg-slate-50/80 p-3 rounded-xl border border-slate-200">
+          <div>
+            <span class="text-slate-500 block text-[11px] font-bold mb-0.5 flex items-center gap-1">
+              <i class="fa-solid fa-utensils text-brand-600"></i> 代表料理の価格目安
+            </span>
+            <span id="modalDishPrice" class="font-bold text-slate-900 text-xs block"></span>
+          </div>
+          <div>
+            <span class="text-slate-500 block text-[11px] font-bold mb-0.5 flex items-center gap-1">
+              <i class="fa-solid fa-wine-glass text-purple-600"></i> お酒・ドリンク価格目安
+            </span>
+            <span id="modalDrinkPrice" class="font-bold text-slate-900 text-xs block"></span>
+          </div>
+        </div>
+
+        <!-- お子様メニュー・取り分け詳細 -->
+        <div class="bg-amber-50/80 p-3 rounded-xl border border-amber-200/90">
+          <div class="flex items-center justify-between gap-1 mb-1.5">
+            <span class="text-amber-950 font-extrabold text-xs flex items-center gap-1.5">
+              <i class="fa-solid fa-bowl-food text-amber-600"></i> お子様メニューの有無・内容
+            </span>
+            <span id="modalKidsBadge" class="text-[10px] font-black px-2 py-0.5 rounded-full"></span>
+          </div>
+          <p id="modalKidsMenu" class="text-xs text-amber-950 font-bold leading-relaxed mb-1"></p>
         </div>
 
         <!-- Highlight -->
@@ -649,7 +686,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40018886/"
-    }
+    },
+    "dishPrice": "魚定食 980円〜1,680円 / 刺身盛 1,280円 / 豚汁 380円",
+    "drinkPrice": "生ビール 550円 / ハイボール 480円 / お茶無料",
+    "kidsMenu": "なし（魚定食・ご飯・豚汁を取り分け推奨・小椀あり）",
+    "hasKidsMenu": false
   },
   {
     "id": 2,
@@ -683,7 +724,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40006634/"
-    }
+    },
+    "dishPrice": "ごぼ天うどん 600円 / 丸天うどん 580円 / かしわ飯 240円",
+    "drinkPrice": "瓶ビール 600円 / 日本酒 450円 / お茶無料",
+    "kidsMenu": "なし（やわらか博多うどん・フォーク小皿あり・取り分け抜群）",
+    "hasKidsMenu": false
   },
   {
     "id": 3,
@@ -718,7 +763,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40020178/"
-    }
+    },
+    "dishPrice": "ごぼう天うどん 480円 / かき揚げ丼セット 790円 / もつ鍋 390円",
+    "drinkPrice": "生ビール 450円 / ハイボール 350円 / ジュース 180円",
+    "kidsMenu": "あり（お子様うどんセット 420円・おもちゃ付）",
+    "hasKidsMenu": true
   },
   {
     "id": 4,
@@ -751,7 +800,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40000661/"
-    }
+    },
+    "dishPrice": "博多やりうどん 850円 / 白丸うどん 680円 / かしわ飯 220円",
+    "drinkPrice": "生ビール 550円 / レモンサワー 450円 / ジュース 250円",
+    "kidsMenu": "あり（お子様うどんプレート 550円・ゼリー付）",
+    "hasKidsMenu": true
   },
   {
     "id": 5,
@@ -786,7 +839,11 @@
     "gourmet": {
       "provider": "ホットペッパー",
       "url": "https://www.hotpepper.jp/strJ001251724/"
-    }
+    },
+    "dishPrice": "焼鳥 160円〜280円 / 出汁巻き卵 650円 / 唐揚げ 680円 / おにぎり 220円",
+    "drinkPrice": "生ビール 580円 / ハイボール 480円 / ジュース 300円",
+    "kidsMenu": "なし（卵焼き・つくね・おにぎり等でお子様取り分け◎）",
+    "hasKidsMenu": false
   },
   {
     "id": 6,
@@ -821,7 +878,11 @@
     "gourmet": {
       "provider": "ホットペッパー",
       "url": "https://www.hotpepper.jp/strJ000603460/"
-    }
+    },
+    "dishPrice": "名物炊き餃子 900円 / おでん各種 150円〜250円 / 鶏白湯ラーメン 750円",
+    "drinkPrice": "生ビール 550円 / ハイボール 450円 / オレンジジュース 280円",
+    "kidsMenu": "なし（おでんの大根・玉子や炊き餃子〆うどんの取り分けが人気）",
+    "hasKidsMenu": false
   },
   {
     "id": 7,
@@ -855,7 +916,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400104/40055532/"
-    }
+    },
+    "dishPrice": "博多皿うどん 850円 / ちゃんぽん 850円 / 炒飯 750円 / 一口餃子 450円",
+    "drinkPrice": "生ビール 550円 / 瓶ビール 600円 / ウーロン茶 220円",
+    "kidsMenu": "なし（皿うどんや炒飯の大盛りを取り分け推奨）",
+    "hasKidsMenu": false
   },
   {
     "id": 8,
@@ -889,7 +954,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400105/40034142/"
-    }
+    },
+    "dishPrice": "一口鉄鍋餃子(10個) 600円 / 地鶏炭火焼 780円 / おにぎり 200円",
+    "drinkPrice": "生ビール 550円 / サワー各種 450円 / ソフトドリンク 250円",
+    "kidsMenu": "なし（パリパリ一口餃子や白ご飯・スープを取り分け）",
+    "hasKidsMenu": false
   },
   {
     "id": 9,
@@ -922,7 +991,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400104/40000194/"
-    }
+    },
+    "dishPrice": "名物焼き餃子(8個特大) 660円 / 水餃子 660円 / 五目炒飯 780円",
+    "drinkPrice": "青島ビール 550円 / 生ビール 550円 / ジュース 250円",
+    "kidsMenu": "なし（肉汁たっぷりの巨大餃子やチャーハンを親子でシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 10,
@@ -956,7 +1029,11 @@
     "gourmet": {
       "provider": "ホットペッパー",
       "url": "https://www.hotpepper.jp/strJ003410916/"
-    }
+    },
+    "dishPrice": "焼餃子(7個) 250円(ハッピーアワー125円) / ルーロー飯 580円",
+    "drinkPrice": "生ビール 480円(ハッピーアワー半額) / ハイボール 380円",
+    "kidsMenu": "なし（安価な小皿料理・焼餃子・炒飯を取り分け）",
+    "hasKidsMenu": false
   },
   {
     "id": 11,
@@ -991,7 +1068,11 @@
     "gourmet": {
       "provider": "ホットペッパー",
       "url": "https://www.hotpepper.jp/strJ000027958/"
-    }
+    },
+    "dishPrice": "水炊きコース 4,800円〜 / 鶏唐揚げ 850円 / 〆卵雑炊 コース内",
+    "drinkPrice": "生ビール 680円 / 地酒 750円〜 / ソフトドリンク 350円",
+    "kidsMenu": "なし（黄金鶏スープ・鶏肉・卵雑炊を子供と安心シェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 12,
@@ -1026,7 +1107,11 @@
     "gourmet": {
       "provider": "ホットペッパー",
       "url": "https://www.hotpepper.jp/strJ004510106/"
-    }
+    },
+    "dishPrice": "極み白味噌もつ鍋 1,680円(辛味抜可) / 馬刺し 1,480円 / 〆麺 300円",
+    "drinkPrice": "生ビール 600円 / ハイボール 500円 / ソフトドリンク 300円",
+    "kidsMenu": "なし（辛味抜きの甘口白味噌スープ＋〆麺をシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 13,
@@ -1060,7 +1145,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40003504/"
-    }
+    },
+    "dishPrice": "やましょう鍋(豚と白菜) 1,500円 / もつ鍋 1,500円 / 酢もつ 600円",
+    "drinkPrice": "生ビール 600円 / 焼酎 450円〜 / ソフトドリンク 300円",
+    "kidsMenu": "なし（辛くない豚肉と白菜のミルフィーユ鍋はお子さまに最適）",
+    "hasKidsMenu": false
   },
   {
     "id": 14,
@@ -1094,7 +1183,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400104/40000336/"
-    }
+    },
+    "dishPrice": "名物とりかわ 1本160円 / 豚バラ 160円 / つくね 180円 / おにぎり 200円",
+    "drinkPrice": "生ビール 550円 / ハイボール 450円 / ウーロン茶 250円",
+    "kidsMenu": "なし（タレが甘辛いとりかわ串やつくねを1本ずつシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 15,
@@ -1126,7 +1219,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400104/40004128/"
-    }
+    },
+    "dishPrice": "名物とり皮 1本150円 / ささみしぎ焼き 380円 / 焼きおにぎり 220円",
+    "drinkPrice": "生ビール 550円 / 焼酎 400円 / ジュース 250円",
+    "kidsMenu": "なし（カリッと香ばしい皮焼きや焼きおにぎりを取り分け）",
+    "hasKidsMenu": false
   },
   {
     "id": 16,
@@ -1160,7 +1257,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400104/40005126/"
-    }
+    },
+    "dishPrice": "もつ鍋 1,400円 / 牛サガリ焼き 1,200円 / 雑炊セット 400円",
+    "drinkPrice": "生ビール 580円 / レモンサワー 450円 / ソフトドリンク 250円",
+    "kidsMenu": "なし（醤油ベースのあっさり出汁を唐辛子別皿でシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 17,
@@ -1194,7 +1295,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400104/40001617/"
-    }
+    },
+    "dishPrice": "串焼き 180円〜450円 / えんどう豆串揚げ 350円 / 親子丼 850円",
+    "drinkPrice": "生ビール 650円 / グラスワイン 600円〜 / ジュース 350円",
+    "kidsMenu": "なし（絶品親子丼や甘だれつくね串をお子さまとシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 18,
@@ -1229,7 +1334,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40005545/"
-    }
+    },
+    "dishPrice": "串焼きおまかせ5本 900円 / つくねチーズ 250円 / 鶏そぼろご飯 450円",
+    "drinkPrice": "生ビール 550円 / ハイボール 450円 / ソフトドリンク 250円",
+    "kidsMenu": "なし（子供に人気の鶏そぼろご飯やつくね串あり）",
+    "hasKidsMenu": false
   },
   {
     "id": 19,
@@ -1263,7 +1372,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400104/40031860/"
-    }
+    },
+    "dishPrice": "水炊きコース 5,500円〜 / とり田たまご 400円 / 〆雑炊 コース内",
+    "drinkPrice": "生ビール 700円 / 日本酒 800円〜 / 自家製ジュース 450円",
+    "kidsMenu": "なし（無添加・丸鶏を煮込んだ極上スープと具材をシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 20,
@@ -1297,7 +1410,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400104/40027052/"
-    }
+    },
+    "dishPrice": "名物黒かしわ串 220円〜 / ポテサラ 480円 / 鶏スープ茶漬け 500円",
+    "drinkPrice": "生ビール 580円 / ハイボール 480円 / ソフトドリンク 300円",
+    "kidsMenu": "なし（優しい鶏スープやポテサラ、串焼きをシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 21,
@@ -1333,7 +1450,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400104/40058733/"
-    }
+    },
+    "dishPrice": "牛すじ煮込み 450円 / 焼き鳥 120円〜 / ハムカツ 380円 / おにぎり 180円",
+    "drinkPrice": "生ビール 450円 / レモンサワー 380円 / ソフトドリンク 200円",
+    "kidsMenu": "なし（ポテトフライや唐揚げ、おにぎり等安価な単品充実）",
+    "hasKidsMenu": false
   },
   {
     "id": 22,
@@ -1369,7 +1490,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/rst/rstsearch?sk=%E6%B8%85%E5%B7%9D+%E4%B8%AD%E8%8F%AF"
-    }
+    },
+    "dishPrice": "ラーメン炒飯セット 850円 / 小籠包(4個) 480円 / 鶏唐揚げ 650円",
+    "drinkPrice": "生ビール 480円 / ハイボール 380円 / ジュース 200円",
+    "kidsMenu": "なし（大盛りチャーハンやラーメン・餃子を取り分け）",
+    "hasKidsMenu": false
   },
   {
     "id": 23,
@@ -1405,7 +1530,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/rst/rstsearch?sk=%E6%B8%85%E5%B7%9D+%E5%AE%9A%E9%A3%9F"
-    }
+    },
+    "dishPrice": "日替わり定食 750円 / から揚げ定食 800円 / 生姜焼き定食 850円",
+    "drinkPrice": "瓶ビール 550円 / 缶チューハイ 350円 / お茶無料",
+    "kidsMenu": "なし（定食のご飯・小鉢・おかずをそのまま取り分け）",
+    "hasKidsMenu": false
   },
   {
     "id": 24,
@@ -1440,7 +1569,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400105/40005809/"
-    }
+    },
+    "dishPrice": "志成うどん 780円 / 天ぷら盛合せ 650円 / かしわご飯 200円",
+    "drinkPrice": "生ビール 550円 / 日本酒 500円〜 / ソフトドリンク 250円",
+    "kidsMenu": "なし（出汁うどん・揚げたてちくわ天を取り分け）",
+    "hasKidsMenu": false
   },
   {
     "id": 25,
@@ -1475,7 +1608,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/rst/rstsearch?sk=%E6%B8%85%E5%B7%9D+%E7%84%BC%E9%87%A5"
-    }
+    },
+    "dishPrice": "焼鳥各種 120円〜200円 / 豚バラ串 140円 / フライドポテト 350円",
+    "drinkPrice": "生ビール 500円 / 酎ハイ 400円 / ウーロン茶 200円",
+    "kidsMenu": "なし（小上がり席でポテトやつくね串を取り分け）",
+    "hasKidsMenu": false
   },
   {
     "id": 26,
@@ -1509,7 +1646,11 @@
     "gourmet": {
       "provider": "ぐるなび",
       "url": "https://r.gnavi.co.jp/f714200/"
-    }
+    },
+    "dishPrice": "焼肉食べ放題 3,980円〜（未就学児無料・シニア割引あり）",
+    "drinkPrice": "飲み放題 1,500円 / 単品生ビール 550円 / キッズドリンクバー 200円",
+    "kidsMenu": "あり（食べ放題内にキッズうどん・ウインナー・ポテト等多数）",
+    "hasKidsMenu": true
   },
   {
     "id": 27,
@@ -1543,7 +1684,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40030495/"
-    }
+    },
+    "dishPrice": "特選カルビ 1,280円 / 上ホルモン 750円 / 玉子クッパ 650円 / ライス 300円",
+    "drinkPrice": "生ビール 550円 / ハイボール 450円 / ソフトドリンク 250円",
+    "kidsMenu": "なし（辛くない玉子クッパや甘だれカルビを取り分け）",
+    "hasKidsMenu": false
   },
   {
     "id": 28,
@@ -1576,7 +1721,11 @@
     "gourmet": {
       "provider": "ホットペッパー",
       "url": "https://www.hotpepper.jp/strJ001127248/"
-    }
+    },
+    "dishPrice": "しゃぶしゃぶ食べ放題 3,280円〜（未就学児無料・小学生半額）",
+    "drinkPrice": "生ビール 550円 / 飲み放題 1,500円 / キッズドリンク無料〜150円",
+    "kidsMenu": "あり（未就学児無料・専用キッズメニュー＆つみれ作り体験あり）",
+    "hasKidsMenu": true
   },
   {
     "id": 29,
@@ -1609,7 +1758,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400202/40030588/"
-    }
+    },
+    "dishPrice": "きんぐコース食べ放題 3,180円（未就学児無料・小学生半額）",
+    "drinkPrice": "幼児ドリンク無料 / ソフトドリンク放題 390円 / アルコール放題 1,390円",
+    "kidsMenu": "あり（お子様そぼろごはん・お子様うどん・ポテト等食べ放題内多数）",
+    "hasKidsMenu": true
   },
   {
     "id": 30,
@@ -1641,7 +1794,11 @@
     "gourmet": {
       "provider": "ホットペッパー",
       "url": "https://www.hotpepper.jp/strJ001161509/"
-    }
+    },
+    "dishPrice": "牛角コース食べ放題 3,480円（小学生未満無料・小学生半額）",
+    "drinkPrice": "生ビール 550円 / ハイボール 450円 / キッズドリンク飲み放題 120円",
+    "kidsMenu": "あり（キッズカレープレート 450円・キッズ焼肉プレートあり）",
+    "hasKidsMenu": true
   },
   {
     "id": 31,
@@ -1675,7 +1832,11 @@
     "gourmet": {
       "provider": "一休.com",
       "url": "https://restaurant.ikyu.com/106836"
-    }
+    },
+    "dishPrice": "特製オムライス 1,800円 / ハンバーグ 2,400円 / ケーキセット 1,500円",
+    "drinkPrice": "生ビール 900円 / グラスワイン 1,000円〜 / アップルジュース 500円",
+    "kidsMenu": "あり（ホテル特製キッズプレート 1,500円・スープデザート付）",
+    "hasKidsMenu": true
   },
   {
     "id": 32,
@@ -1709,7 +1870,11 @@
     "gourmet": {
       "provider": "ぐるなび",
       "url": "https://r.gnavi.co.jp/f061601/"
-    }
+    },
+    "dishPrice": "会席コース 8,000円〜 / 天婦羅御膳 4,500円 / 鯛茶漬け 2,200円",
+    "drinkPrice": "生ビール 1,000円 / 日本酒 1,200円〜 / 烏龍茶 600円",
+    "kidsMenu": "あり（お祝い・お子様和風御膳 3,000円〜 要事前確認）",
+    "hasKidsMenu": true
   },
   {
     "id": 33,
@@ -1743,7 +1908,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400101/40055525/"
-    }
+    },
+    "dishPrice": "旬の割烹コース 7,000円〜 / アラカルト一品 1,000円〜 / 雑炊 800円",
+    "drinkPrice": "生ビール 750円 / 地酒 900円〜 / ソフトドリンク 400円",
+    "kidsMenu": "なし（事前予約時に子供用味付けや焼き魚等の相談可能）",
+    "hasKidsMenu": false
   },
   {
     "id": 34,
@@ -1776,7 +1945,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400104/40003923/"
-    }
+    },
+    "dishPrice": "ビストロディナーコース 4,800円 / パスタ 1,400円 / 肉料理 2,200円",
+    "drinkPrice": "グラスワイン 700円〜 / ビール 650円 / ぶどうジュース 450円",
+    "kidsMenu": "なし（辛くないトマトパスタやパン・スープをシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 35,
@@ -1809,7 +1982,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40003009/"
-    }
+    },
+    "dishPrice": "五目あんかけ焼きそば 1,800円 / フカヒレスープ 2,000円 / 炒飯 1,600円",
+    "drinkPrice": "生ビール 950円 / 紹興酒 900円 / 中国茶 600円",
+    "kidsMenu": "あり（お子様中華プレート 1,800円）",
+    "hasKidsMenu": true
   },
   {
     "id": 36,
@@ -1843,7 +2020,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40000494/"
-    }
+    },
+    "dishPrice": "名物カレー 650円 / チキンカツ定食 700円 / ラーメン 550円",
+    "drinkPrice": "缶ビール 350円 / お茶無料",
+    "kidsMenu": "なし（甘口対応や定食の大盛りライスをシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 37,
@@ -1878,7 +2059,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40020958/"
-    }
+    },
+    "dishPrice": "長浜ラーメン 550円 / 替玉 120円 / チャーハン 550円 / 餃子 350円",
+    "drinkPrice": "瓶ビール 550円 / ジュース 150円 / お水無料",
+    "kidsMenu": "なし（子供用小椀・スプーンあり、ラーメン・炒飯をシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 38,
@@ -1913,7 +2098,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40051877/"
-    }
+    },
+    "dishPrice": "ラーメン 550円 / 皿うどん 700円 / 焼きめし 650円 / 酢豚 850円",
+    "drinkPrice": "瓶ビール 550円 / 日本酒 400円 / ウーロン茶 200円",
+    "kidsMenu": "なし（家庭的な町中華、甘みのある焼きめしを取り分け）",
+    "hasKidsMenu": false
   },
   {
     "id": 39,
@@ -1946,7 +2135,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400105/40005809/"
-    }
+    },
+    "dishPrice": "かけうどん 450円 / 志成ぶっかけ 780円 / 鶏天 200円 / おにぎり 180円",
+    "drinkPrice": "瓶ビール 500円 / お茶無料",
+    "kidsMenu": "なし（モチモチうどんとサクサク天ぷらをハサミで切ってシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 40,
@@ -1980,7 +2173,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400104/40000359/"
-    }
+    },
+    "dishPrice": "わっぱ定食 980円 / とんかつ定食 1,050円 / 肉吸い定食 880円",
+    "drinkPrice": "生ビール 500円 / ハイボール 400円 / ウーロン茶 200円",
+    "kidsMenu": "なし（ご飯おかわり自由、子供用小椀でおかずシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 41,
@@ -2014,7 +2211,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400101/40035031/"
-    }
+    },
+    "dishPrice": "鮮魚刺身盛 980円 / 魚串各種 180円〜 / 出汁茶漬け 450円",
+    "drinkPrice": "生ビール 500円 / レモンサワー 420円 / ソフトドリンク 250円",
+    "kidsMenu": "なし（焼き魚やおにぎり、出汁巻き玉子をシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 42,
@@ -2048,7 +2249,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/rst/rstsearch?sk=%E9%AB%98%E7%A0%82+%E5%B1%85%E9%85%92%E5%A0%B4"
-    }
+    },
+    "dishPrice": "焼き鳥1本 100円〜 / 名物ハムカツ 300円 / ポテトサラダ 280円",
+    "drinkPrice": "生ビール 400円 / ハイボール 350円 / ジュース 200円",
+    "kidsMenu": "なし（小上がり席でポテサラやウインナー串を取り分け）",
+    "hasKidsMenu": false
   },
   {
     "id": 43,
@@ -2082,7 +2287,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/rst/rstsearch?sk=%E6%B8%85%E5%B7%9D+%E9%89%84%E6%9D%BF%E7%84%BC"
-    }
+    },
+    "dishPrice": "鉄板焼肉 850円(辛味噌別添可) / ご飯味噌汁セット 250円",
+    "drinkPrice": "生ビール 500円 / ハイボール 400円 / ウーロン茶 200円",
+    "kidsMenu": "なし（辛味噌を混ぜずにキャベツとお肉をご飯に取り分け）",
+    "hasKidsMenu": false
   },
   {
     "id": 44,
@@ -2116,7 +2325,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/rst/rstsearch?sk=%E6%B8%85%E5%B7%9D+%E7%84%BC%E8%82%89"
-    }
+    },
+    "dishPrice": "カルビ 680円 / ロース 680円 / ホルモン 480円 / たまごスープ 350円",
+    "drinkPrice": "生ビール 500円 / 酎ハイ 400円 / ソフトドリンク 200円",
+    "kidsMenu": "なし（座敷席で甘口タレカルビやたまごスープをシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 45,
@@ -2149,7 +2362,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400101/40000305/"
-    }
+    },
+    "dishPrice": "博多皿うどん 850円 / ちゃんぽん 850円 / 餃子 450円",
+    "drinkPrice": "生ビール 550円 / 瓶ビール 600円 / ジュース 200円",
+    "kidsMenu": "なし（具だくさんの香ばしい皿うどんを子供とシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 46,
@@ -2183,7 +2400,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40020178/"
-    }
+    },
+    "dishPrice": "肉うどん 600円 / ごぼう天うどん 480円 / いなり寿司(2個) 160円",
+    "drinkPrice": "瓶ビール 550円 / お茶無料",
+    "kidsMenu": "なし（甘口出汁のやわらか博多うどんを取り分け）",
+    "hasKidsMenu": false
   },
   {
     "id": 47,
@@ -2216,7 +2437,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400104/40035581/"
-    }
+    },
+    "dishPrice": "モスバーガー 440円 / ポテトS 250円 / オニポテ 300円",
+    "drinkPrice": "セットドリンク 240円 / くだものと野菜ジュース 140円",
+    "kidsMenu": "あり（モスワイワイセット 540円〜 おもちゃ・ドリンク付）",
+    "hasKidsMenu": true
   },
   {
     "id": 48,
@@ -2249,7 +2474,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/rst/rstsearch?sk=%E3%81%B3%E3%81%A3%E3%81%8F%E3%82%8A%E3%83%89%E3%83%B3%E3%82%AD%E3%83%BC+%E7%A6%8F%E5%B2%A1"
-    }
+    },
+    "dishPrice": "レギュラーバーグディッシュ 790円 / チーズバーグ 970円 / ポテト 440円",
+    "drinkPrice": "生ビール 600円 / カフェオンザロック 310円 / 太陽のオレンジ 310円",
+    "kidsMenu": "あり（ぶ〜ぶ〜バーグディッシュ 600円・おこさまうどん 380円・おもちゃ付）",
+    "hasKidsMenu": true
   },
   {
     "id": 49,
@@ -2282,7 +2511,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400202/40025736/"
-    }
+    },
+    "dishPrice": "ボロネーゼ 790円 / マルゲリータピザ 790円 / カルボナーラ 890円",
+    "drinkPrice": "グラスワイン 290円 / 生ビール 550円 / ドリンクバー 290円(未就学児無料)",
+    "kidsMenu": "あり（キッズパスタ 490円・キッズピッツァ 490円・ゼリーおもちゃ付）",
+    "hasKidsMenu": true
   },
   {
     "id": 50,
@@ -2316,7 +2549,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40027614/"
-    }
+    },
+    "dishPrice": "しょうが焼定食 730円 / から揚げ定食 790円 / サバ塩焼定食 860円",
+    "drinkPrice": "生ビール 450円 / ハイボール 350円 / お茶・だし無料",
+    "kidsMenu": "あり（お子様ランチ 500円・お子様カレー 500円・ゼリーおもちゃ付）",
+    "hasKidsMenu": true
   },
   {
     "id": 51,
@@ -2350,7 +2587,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/rst/rstsearch?sk=%E3%81%BB%E3%81%A3%E3%81%A8%E3%82%82%E3%81%A3%E3%81%A8+%E6%B8%85%E5%B7%9D+%E7%A6%8F%E5%B2%A1"
-    }
+    },
+    "dishPrice": "から揚弁当 490円 / のり弁当 390円 / 特製豚汁 140円",
+    "drinkPrice": "お茶・缶ジュース 120円〜",
+    "kidsMenu": "あり（ドラえもんランチ / ドラミちゃんランチ 490円・シール付）",
+    "hasKidsMenu": true
   },
   {
     "id": 52,
@@ -2384,7 +2625,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/rst/rstsearch?sk=%E9%AB%98%E7%A0%82+%E5%B1%85%E9%85%92%E5%A0%B4"
-    }
+    },
+    "dishPrice": "刺身 680円 / だし巻き玉子 500円 / 若鶏唐揚げ 550円 / お茶漬け 400円",
+    "drinkPrice": "生ビール 500円 / ハイボール 420円 / ソフトドリンク 250円",
+    "kidsMenu": "なし（掘りごたつ座敷で玉子焼きや唐揚げを取り分け）",
+    "hasKidsMenu": false
   },
   {
     "id": 53,
@@ -2418,7 +2663,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/rst/rstsearch?sk=%E6%B8%85%E5%B7%9D+%E7%84%BC%E9%87%A5"
-    }
+    },
+    "dishPrice": "炭火串焼き 130円〜 / チーズつくね 220円 / ポテトフライ 380円",
+    "drinkPrice": "生ビール 520円 / 酎ハイ 420円 / ソフトドリンク 250円",
+    "kidsMenu": "なし（甘ダレつくねやウインナー串、ポテトをお子さまとシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 54,
@@ -2451,7 +2700,11 @@
     "gourmet": {
       "provider": "一休.com",
       "url": "https://restaurant.ikyu.com/112678/"
-    }
+    },
+    "dishPrice": "窯焼きマルゲリータ 1,300円 / 生パスタ 1,200円 / 前菜盛 980円",
+    "drinkPrice": "グラスワイン 600円〜 / 生ビール 600円 / オレンジジュース 450円",
+    "kidsMenu": "なし（ピザをハサミで小さくカットして取り分け・パスタシェア）",
+    "hasKidsMenu": false
   },
   {
     "id": 55,
@@ -2483,7 +2736,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40010167/"
-    }
+    },
+    "dishPrice": "【祝日定休】うどん 450円 / 肉うどん 650円",
+    "drinkPrice": "瓶ビール 550円",
+    "kidsMenu": "なし（祝日休業のため代替店推奨）",
+    "hasKidsMenu": false
   },
   {
     "id": 56,
@@ -2517,7 +2774,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400104/40033480/"
-    }
+    },
+    "dishPrice": "すだちうどん 800円 / 鶏天 550円 / 一品料理 400円〜800円",
+    "drinkPrice": "生ビール 600円 / レモンサワー 500円 / ソフトドリンク 300円",
+    "kidsMenu": "なし（大人の酒場空間・代替店やりうどん推奨）",
+    "hasKidsMenu": false
   },
   {
     "id": 57,
@@ -2548,7 +2809,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400101/40000216/"
-    }
+    },
+    "dishPrice": "【祝日休業】ラーメン 500円 / チャーハン 550円",
+    "drinkPrice": "瓶ビール 500円",
+    "kidsMenu": "なし（祝日休業のため代替店推奨）",
+    "hasKidsMenu": false
   },
   {
     "id": 58,
@@ -2580,7 +2845,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40005545/"
-    }
+    },
+    "dishPrice": "焼鳥1本 100円〜 / 酢もつ 300円 / 煮込み 380円",
+    "drinkPrice": "生ビール 450円 / 焼酎 350円",
+    "kidsMenu": "なし（喫煙店舗多いため禁煙店推奨）",
+    "hasKidsMenu": false
   },
   {
     "id": 59,
@@ -2614,7 +2883,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40000002/"
-    }
+    },
+    "dishPrice": "焼きラーメン 850円 / おでん 200円〜 / ラーメン 700円",
+    "drinkPrice": "缶ビール 500円 / 焼酎 500円",
+    "kidsMenu": "なし（席超狭小・5歳児には屋内店舗推奨）",
+    "hasKidsMenu": false
   },
   {
     "id": 60,
@@ -2646,7 +2919,11 @@
     "gourmet": {
       "provider": "食べログ",
       "url": "https://tabelog.com/fukuoka/A4001/A400103/40023603/"
-    }
+    },
+    "dishPrice": "天然とんこつラーメン 980円 / 替玉 210円 / ゆでたまご 140円",
+    "drinkPrice": "生ビール 580円 / 脂解美茶 250円",
+    "kidsMenu": "あり（一蘭公式アプリでお子様ラーメン無料サービスあり・仕切り席注意）",
+    "hasKidsMenu": true
   }
 ];
 
@@ -2660,6 +2937,7 @@
     let currentSort = 'recommended';
     let showOnlyFavs = false;
     let holidayOpenOnly = false; // 祝日営業店のみフィルター
+    let kidsMenuOnly = false; // お子様メニューあり店のみフィルター
 
     // DOM要素の取得
     const restaurantGrid = document.getElementById('restaurantGrid');
@@ -2678,6 +2956,8 @@
     const filterTagContainer = document.getElementById('filterTagContainer');
     const holidayOpenOnlyToggle = document.getElementById('holidayOpenOnlyToggle');
     const holidayOpenCountBadge = document.getElementById('holidayOpenCountBadge');
+    const kidsMenuOnlyToggle = document.getElementById('kidsMenuOnlyToggle');
+    const kidsMenuCountBadge = document.getElementById('kidsMenuCountBadge');
 
     // モーダル要素
     const detailModal = document.getElementById('detailModal');
@@ -2688,6 +2968,10 @@
     const modalHours = document.getElementById('modalHours');
     const modalBudget = document.getElementById('modalBudget');
     const modalSeat = document.getElementById('modalSeat');
+    const modalDishPrice = document.getElementById('modalDishPrice');
+    const modalDrinkPrice = document.getElementById('modalDrinkPrice');
+    const modalKidsBadge = document.getElementById('modalKidsBadge');
+    const modalKidsMenu = document.getElementById('modalKidsMenu');
     const modalHighlight = document.getElementById('modalHighlight');
     const modalKidsPoint = document.getElementById('modalKidsPoint');
     const modalTags = document.getElementById('modalTags');
@@ -2700,7 +2984,7 @@
     // 初期化
     async function init() {
       updateFavBadge();
-      updateHolidayOpenCount();
+      updateFilterCounts();
       setupEventListeners();
 
       // もしGoogleスプレッドシートの公開CSV URLが指定されている場合は非同期で読み込み
@@ -2720,7 +3004,7 @@
         const parsedData = parseCsvToRestaurants(csvText);
         if (parsedData && parsedData.length > 0) {
           RESTAURANTS = parsedData;
-          updateHolidayOpenCount();
+          updateFilterCounts();
           console.log('Successfully synced data from Google Sheets!');
         }
       } catch (err) {
@@ -2791,6 +3075,10 @@
             tags: existing.tags || [],
             highlight: highlight,
             kidsPoint: kidsPoint,
+            dishPrice: existing.dishPrice || '要問合せ',
+            drinkPrice: existing.drinkPrice || '要問合せ',
+            kidsMenu: existing.kidsMenu || '取り分け可能',
+            hasKidsMenu: !!existing.hasKidsMenu,
             gourmet: { provider: provider, url: url }
           });
         }
@@ -2836,11 +3124,15 @@
       }
     }
 
-    // 祝日営業店数のバッジカウント
-    function updateHolidayOpenCount() {
+    // 祝日営業店数およびキッズメニューあり店数のバッジカウント
+    function updateFilterCounts() {
       const openCount = RESTAURANTS.filter(r => r.holidayStatus === 'open').length;
       if (holidayOpenCountBadge) {
         holidayOpenCountBadge.textContent = openCount;
+      }
+      const kidsCount = RESTAURANTS.filter(r => r.hasKidsMenu).length;
+      if (kidsMenuCountBadge) {
+        kidsMenuCountBadge.textContent = kidsCount;
       }
     }
 
@@ -2851,6 +3143,14 @@
         holidayOpenOnly = e.target.checked;
         renderCards();
       });
+
+      // お子様メニューありトグル
+      if (kidsMenuOnlyToggle) {
+        kidsMenuOnlyToggle.addEventListener('change', (e) => {
+          kidsMenuOnly = e.target.checked;
+          renderCards();
+        });
+      }
 
       // 検索バー
       searchInput.addEventListener('input', (e) => {
@@ -2928,6 +3228,8 @@
         currentZone = null;
         holidayOpenOnly = false;
         holidayOpenOnlyToggle.checked = false;
+        kidsMenuOnly = false;
+        if (kidsMenuOnlyToggle) kidsMenuOnlyToggle.checked = false;
         searchQuery = '';
         searchInput.value = '';
         clearSearchBtn.classList.add('hidden');
@@ -3036,6 +3338,20 @@
       modalSeat.textContent = `${item.seatType} / ${item.smoke}`;
       modalHighlight.innerHTML = item.highlight;
       modalKidsPoint.innerHTML = item.kidsPoint;
+
+      // 料理・お酒価格およびお子様メニュー
+      if (modalDishPrice) modalDishPrice.textContent = item.dishPrice || '要問合せ';
+      if (modalDrinkPrice) modalDrinkPrice.textContent = item.drinkPrice || '要問合せ';
+      if (modalKidsMenu) modalKidsMenu.textContent = item.kidsMenu || '取り分け対応可能';
+      if (modalKidsBadge) {
+        if (item.hasKidsMenu) {
+          modalKidsBadge.className = 'text-[10px] font-black px-2.5 py-0.5 rounded-full bg-emerald-600 text-white shadow-2xs';
+          modalKidsBadge.textContent = '専用メニューあり';
+        } else {
+          modalKidsBadge.className = 'text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-amber-200 text-amber-900 shadow-2xs';
+          modalKidsBadge.textContent = '通常メニュー取り分け';
+        }
+      }
       
       // ゾーンバッジと祝日バッジ
       modalZoneBadgeContainer.innerHTML = `
@@ -3120,6 +3436,9 @@
         // 祝日営業店のみフィルター
         if (holidayOpenOnly && item.holidayStatus !== 'open') return false;
 
+        // お子様メニューあり店のみフィルター
+        if (kidsMenuOnly && !item.hasKidsMenu) return false;
+
         // エリア（ゾーン）フィルター
         if (currentZone && item.zone !== currentZone) return false;
 
@@ -3130,7 +3449,7 @@
 
         // 検索クエリフィルター
         if (searchQuery) {
-          const matchTarget = `${item.name} ${item.kana} ${item.area} ${item.highlight} ${item.kidsPoint} ${item.tags.join(' ')} ${item.seatType}`.toLowerCase();
+          const matchTarget = `${item.name} ${item.kana} ${item.area} ${item.highlight} ${item.kidsPoint} ${item.dishPrice} ${item.drinkPrice} ${item.kidsMenu} ${item.tags.join(' ')} ${item.seatType}`.toLowerCase();
           if (!matchTarget.includes(searchQuery)) return false;
         }
 
@@ -3244,6 +3563,7 @@
 
               <!-- Tags -->
               <div class="flex flex-wrap gap-1 mb-2">
+                ${item.hasKidsMenu ? '<span class="bg-emerald-50 text-emerald-800 text-[10px] px-2 py-0.5 rounded-md border border-emerald-200 font-extrabold flex items-center gap-1"><i class="fa-solid fa-child-reaching text-emerald-600"></i>キッズメニュー有</span>' : ''}
                 ${item.tags.map(t => `<span class="bg-slate-50 text-slate-600 text-[10px] px-2 py-0.5 rounded-md border border-slate-200 font-medium">${t}</span>`).join('')}
               </div>
             </div>
@@ -3263,6 +3583,22 @@
                 <span class="text-slate-500 font-medium whitespace-nowrap mr-2"><i class="fa-solid fa-ban-smoking text-emerald-600 w-3.5"></i>禁煙環境:</span>
                 <span class="text-emerald-700 font-bold">${item.smoke}</span>
               </div>
+
+              <!-- 料理・お酒価格目安 -->
+              <div class="pt-1.5 mt-1 border-t border-slate-200/70 grid grid-cols-2 gap-1.5 text-[11px]">
+                <div class="bg-white/90 rounded-lg p-1.5 border border-slate-200/80">
+                  <span class="text-slate-400 block text-[9px] font-bold mb-0.5 flex items-center gap-1">
+                    <i class="fa-solid fa-utensils text-brand-600"></i>料理目安
+                  </span>
+                  <span class="font-bold text-slate-800 truncate block text-[11px]" title="${item.dishPrice}">${item.dishPrice}</span>
+                </div>
+                <div class="bg-white/90 rounded-lg p-1.5 border border-slate-200/80">
+                  <span class="text-slate-400 block text-[9px] font-bold mb-0.5 flex items-center gap-1">
+                    <i class="fa-solid fa-wine-glass text-purple-600"></i>お酒・飲物
+                  </span>
+                  <span class="font-bold text-slate-800 truncate block text-[11px]" title="${item.drinkPrice}">${item.drinkPrice}</span>
+                </div>
+              </div>
             </div>
 
             <!-- Highlights & Kids Details -->
@@ -3272,11 +3608,21 @@
                   ${item.highlight}
                 </p>
                 
-                <div class="bg-amber-50/90 border border-amber-200/80 rounded-xl p-3 text-[11px] leading-relaxed text-amber-950">
-                  <span class="font-bold flex items-center gap-1.5 mb-1 text-amber-950">
-                    <i class="fa-solid fa-child-reaching text-coral-500 text-xs"></i> 子連れ・取り分けポイント
-                  </span>
-                  ${item.kidsPoint}
+                <div class="bg-amber-50/90 border border-amber-200/90 rounded-xl p-3 text-[11px] leading-relaxed text-amber-950">
+                  <div class="flex items-center justify-between gap-1 mb-1.5 pb-1 border-b border-amber-200/60">
+                    <span class="font-extrabold flex items-center gap-1 text-amber-950">
+                      <i class="fa-solid fa-bowl-food text-amber-600 text-xs"></i> お子様メニュー:
+                    </span>
+                    <span class="${item.hasKidsMenu ? 'bg-emerald-600 text-white' : 'bg-amber-200 text-amber-900'} text-[10px] font-black px-2 py-0.5 rounded-full shrink-0 shadow-2xs">
+                      ${item.hasKidsMenu ? '専用メニューあり' : '取り分け対応'}
+                    </span>
+                  </div>
+                  <p class="text-[11px] font-bold text-amber-900 mb-1">
+                    ${item.kidsMenu}
+                  </p>
+                  <p class="text-[10px] text-amber-800">
+                    <i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i>${item.kidsPoint}
+                  </p>
                 </div>
               </div>
 
@@ -3328,6 +3674,17 @@
           <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-1 rounded-full text-xs font-bold">
             <i class="fa-solid fa-calendar-check text-emerald-600"></i> 祝日営業店のみ
             <button onclick="holidayOpenOnly=false; holidayOpenOnlyToggle.checked=false; renderCards();" class="hover:text-emerald-950 ml-1">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </span>
+        `);
+      }
+
+      if (kidsMenuOnly) {
+        tags.push(`
+          <span class="inline-flex items-center gap-1 bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-1 rounded-full text-xs font-bold">
+            <i class="fa-solid fa-child-reaching text-amber-600"></i> お子様メニューあり店のみ
+            <button onclick="kidsMenuOnly=false; kidsMenuOnlyToggle.checked=false; renderCards();" class="hover:text-amber-950 ml-1">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </span>
