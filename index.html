@@ -1,0 +1,2340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ホテル一楽周辺 子連れ祝日ディナー探索ガイド【渡辺通・薬院・高砂・清川 全60店】</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            display: ['"Outfit"', '"Noto Sans JP"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
+            },
+            coral: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              400: '#fb923c',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+            },
+            warmgray: {
+              50: '#fafaf9',
+              100: '#f5f5f4',
+              200: '#e7e5e4',
+              700: '#44403c',
+              800: '#292524',
+              900: '#1c1917',
+            }
+          },
+          boxShadow: {
+            'glass': '0 8px 32px 0 rgba(19, 78, 74, 0.12)',
+            'card-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04)',
+            'float': '0 10px 30px -5px rgba(15, 118, 110, 0.3)',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    html { 
+      scroll-behavior: smooth; 
+      -webkit-tap-highlight-color: transparent;
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f8fafc; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    
+    /* ガラスモーフィズム */
+    .glass-nav {
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+    }
+
+    /* ハートアニメーション */
+    .heart-bounce {
+      animation: heartPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes heartPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.35); }
+      100% { transform: scale(1); }
+    }
+
+    /* エリア選択カードのアクティブ装飾 */
+    .area-card-active {
+      ring-width: 2px;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col pb-16 md:pb-0">
+
+  <!-- ================= 1. Top Announcement Sticky Header ================= -->
+  <header class="glass-nav text-white border-b border-brand-800/40 sticky top-0 z-40 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6 flex items-center justify-between gap-3">
+      
+      <!-- Logo & Title -->
+      <div class="flex items-center space-x-3 min-w-0">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-teal-400 flex items-center justify-center shadow-md shrink-0">
+          <i class="fa-solid fa-utensils text-white text-base"></i>
+        </div>
+        <div class="truncate">
+          <div class="flex items-center gap-2">
+            <span class="bg-coral-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs shrink-0">
+              祝日 11/3
+            </span>
+            <h1 class="text-sm sm:text-base md:text-lg font-bold tracking-tight text-white truncate font-display">
+              ホテル一楽 周辺ディナー探索ナビ
+            </h1>
+          </div>
+          <p class="text-[11px] text-teal-200 flex items-center gap-1.5 mt-0.5 truncate">
+            <span><i class="fa-solid fa-child-reaching text-amber-300"></i> 大人1名＋5歳児安心（全席禁煙・座敷優先・全60店）</span>
+          </p>
+        </div>
+      </div>
+      
+      <!-- Quick Nav Action Buttons -->
+      <div class="flex items-center gap-2 text-xs shrink-0">
+        <a href="#strategy" class="hidden sm:flex bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-xl border border-white/20 transition items-center gap-1.5">
+          <i class="fa-solid fa-map-location-dot text-brand-300"></i>
+          <span>エリア俯瞰</span>
+        </a>
+        <a href="#schedule" class="hidden sm:flex bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-xl border border-white/20 transition items-center gap-1.5">
+          <i class="fa-solid fa-clock text-amber-300"></i>
+          <span>16:30戦略</span>
+        </a>
+        <button id="showFavOnlyBtn" class="bg-coral-500 hover:bg-coral-600 active:scale-95 text-white px-3 py-1.5 rounded-xl font-semibold transition flex items-center gap-1.5 shadow-md">
+          <i class="fa-solid fa-heart text-rose-200"></i>
+          <span class="hidden xs:inline">保存済み</span>
+          <span id="favCountBadge" class="bg-white text-coral-600 text-[10px] font-black rounded-full px-1.5 py-0.2 shadow-xs">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= 2. Hero & Context Banner ================= -->
+  <section class="bg-gradient-to-b from-white via-slate-50 to-slate-100 border-b border-slate-200 relative overflow-hidden">
+    <!-- 装飾背景サークル -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-100/40 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-100/40 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:py-8 relative">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        
+        <div class="lg:col-span-8 space-y-3.5">
+          <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 text-brand-800 text-xs px-3.5 py-1.5 rounded-full font-semibold shadow-2xs">
+            <i class="fa-solid fa-hotel text-brand-600"></i>
+            拠点：ホテル一楽（福岡市中央区清川2丁目5-5）
+          </div>
+          
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 leading-tight">
+            5歳児と2人旅。疲れてぐずる前に<br class="hidden sm:inline">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-700 via-brand-600 to-teal-500">
+              「近さ・早さ・座敷・ご当地」
+            </span>
+            で選ぶ安心ディナー。
+          </h2>
+          
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
+            科学館や動物園から戻り、16時〜17時にホテル一楽へチェックイン。大きな荷物を部屋に置いた後、
+            <strong class="text-slate-800 font-bold">「徒歩1〜8分以内のご近所」</strong>や<strong class="text-slate-800 font-bold">「駅からの帰り道」</strong>で、祝日営業＆全席禁煙で安心できる厳選60店舗を徹底ナビゲートします。
+          </p>
+          
+          <div class="flex flex-wrap gap-2 pt-1 text-xs">
+            <span class="inline-flex items-center bg-white px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-2xs text-slate-700 font-medium">
+              <i class="fa-solid fa-person-walking text-brand-600 mr-1.5"></i>ホテルから徒歩1〜12分圏内
+            </span>
+            <span class="inline-flex items-center bg-white px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-2xs text-slate-700 font-medium">
+              <i class="fa-solid fa-ban-smoking text-emerald-600 mr-1.5"></i>受動喫煙防止（全席禁煙中心）
+            </span>
+            <span class="inline-flex items-center bg-white px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-2xs text-slate-700 font-medium">
+              <i class="fa-solid fa-coins text-amber-500 mr-1.5"></i>親子予算目安：1,200円〜7,000円
+            </span>
+          </div>
+        </div>
+
+        <!-- Mini Stats Summary Box -->
+        <div class="lg:col-span-4 bg-white/90 backdrop-blur-md rounded-2xl p-5 border border-brand-200/70 shadow-glass">
+          <div class="flex items-center justify-between mb-3.5 pb-2.5 border-b border-slate-100">
+            <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+              <i class="fa-solid fa-chart-pie text-brand-600"></i> リサーチ集計サマリー
+            </span>
+            <span class="bg-gradient-to-r from-brand-600 to-teal-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-2xs">
+              祝日11/3調査済
+            </span>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-2.5 text-center">
+            <div class="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/60 transition hover:border-brand-300">
+              <span class="block text-2xl font-extrabold text-brand-700 font-display">60<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
+              <span class="text-[11px] text-slate-600 font-medium">全調査店舗数</span>
+            </div>
+            <div class="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/60 transition hover:border-coral-300">
+              <span class="block text-2xl font-extrabold text-coral-600 font-display">22<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
+              <span class="text-[11px] text-slate-600 font-medium">座敷・小上がりあり</span>
+            </div>
+            <div class="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/60 transition hover:border-emerald-300">
+              <span class="block text-2xl font-extrabold text-emerald-600 font-display">18<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
+              <span class="text-[11px] text-slate-600 font-medium">16時〜17時開店</span>
+            </div>
+            <div class="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/60 transition hover:border-rose-300">
+              <span class="block text-2xl font-extrabold text-rose-500 font-display">6<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
+              <span class="text-[11px] text-slate-600 font-medium">祝日定休・喫煙注意</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3. Strategy Guide & Interactive Area Map ================= -->
+  <section id="strategy" class="max-w-7xl mx-auto px-4 py-8 sm:px-6 w-full space-y-6">
+    
+    <!-- ゾーン俯瞰図（クリックで即座に絞り込み可能） -->
+    <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4 border-b border-slate-100 pb-3">
+        <div>
+          <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-map-location-dot text-brand-600"></i>
+            駅〜ホテル一楽 徒歩ルート＆4大エリア構造
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">※カードをタップすると該当エリアの店舗にワンクリックで絞り込めます</p>
+        </div>
+        <div class="flex items-center gap-2 text-xs">
+          <button id="resetAreaFilterBtn" class="text-brand-600 hover:text-brand-700 font-semibold underline text-xs">
+            すべてのエリアを表示
+          </button>
+        </div>
+      </div>
+
+      <!-- Area Cards Flow (Clickable Filter Cards) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+        
+        <!-- Zone D: 清川 (最推し) -->
+        <button 
+          data-zone="zone_d" 
+          class="area-filter-card text-left bg-gradient-to-br from-purple-50 to-slate-50 border-2 border-purple-200 hover:border-purple-500 rounded-xl p-3.5 transition duration-200 cursor-pointer shadow-2xs group"
+        >
+          <div class="flex items-center justify-between font-bold text-purple-900 mb-1.5">
+            <span class="flex items-center gap-1.5 text-sm">
+              <i class="fa-solid fa-hotel text-purple-600"></i> 清川 (ゾーンD)
+            </span>
+            <span class="text-[10px] bg-purple-600 text-white font-extrabold px-2 py-0.5 rounded-full shadow-2xs">
+              徒歩1〜4分【最推し】
+            </span>
+          </div>
+          <p class="text-slate-600 mb-2 leading-relaxed text-[11px]">
+            <strong>ホテル一楽の目と鼻の先！</strong>一度チェックインして部屋着・手ぶらで出られる最強エリア。子供が眠くなっても抱っこですぐ帰室可能。
+          </p>
+          <div class="text-[11px] font-semibold text-purple-800 bg-white/80 p-2 rounded-lg border border-purple-100">
+            主な店：おたびしょ、あつもの屋、弐ノ弐、うっちゃり
+          </div>
+        </button>
+
+        <!-- Zone C: 高砂 -->
+        <button 
+          data-zone="zone_c" 
+          class="area-filter-card text-left bg-gradient-to-br from-amber-50 to-slate-50 border-2 border-amber-200 hover:border-amber-500 rounded-xl p-3.5 transition duration-200 cursor-pointer shadow-2xs group"
+        >
+          <div class="flex items-center justify-between font-bold text-amber-900 mb-1.5">
+            <span class="flex items-center gap-1.5 text-sm">
+              <i class="fa-solid fa-arrows-split-up-and-left text-amber-600"></i> 高砂 (ゾーンC)
+            </span>
+            <span class="text-[10px] bg-amber-200 text-amber-900 px-2 py-0.5 rounded-full font-bold">
+              徒歩5〜8分
+            </span>
+          </div>
+          <p class="text-slate-600 mb-2 leading-relaxed text-[11px]">
+            駅とホテルの間。落ち着いた水炊き、個室もつ鍋、丁寧な焼鳥店など、大衆すぎず上質な名店が集まるエリア。
+          </p>
+          <div class="text-[11px] font-semibold text-amber-800 bg-white/80 p-2 rounded-lg border border-amber-100">
+            主な店：水炊きぜんざい、こうづき、弥七、いってつ
+          </div>
+        </button>
+
+        <!-- Zone A: 渡辺通 -->
+        <button 
+          data-zone="zone_a" 
+          class="area-filter-card text-left bg-gradient-to-br from-blue-50 to-slate-50 border-2 border-blue-200 hover:border-blue-500 rounded-xl p-3.5 transition duration-200 cursor-pointer shadow-2xs group"
+        >
+          <div class="flex items-center justify-between font-bold text-blue-900 mb-1.5">
+            <span class="flex items-center gap-1.5 text-sm">
+              <i class="fa-solid fa-train-subway text-blue-600"></i> 渡辺通駅 (ゾーンA)
+            </span>
+            <span class="text-[10px] bg-blue-200 text-blue-900 px-2 py-0.5 rounded-full font-bold">
+              徒歩10〜12分
+            </span>
+          </div>
+          <p class="text-slate-600 mb-2 leading-relaxed text-[11px]">
+            地下鉄下車直後に寄り道できる大通り沿い。ホテルニューオータニ、梅山鉄平食堂、因幡うどんなど大箱・安心店が集中。
+          </p>
+          <div class="text-[11px] font-semibold text-blue-800 bg-white/80 p-2 rounded-lg border border-blue-100">
+            主な店：梅山鉄平食堂、因幡うどん、サンセルコ
+          </div>
+        </button>
+
+        <!-- Zone B: 薬院 -->
+        <button 
+          data-zone="zone_b" 
+          class="area-filter-card text-left bg-gradient-to-br from-emerald-50 to-slate-50 border-2 border-emerald-200 hover:border-emerald-500 rounded-xl p-3.5 transition duration-200 cursor-pointer shadow-2xs group"
+        >
+          <div class="flex items-center justify-between font-bold text-emerald-900 mb-1.5">
+            <span class="flex items-center gap-1.5 text-sm">
+              <i class="fa-solid fa-train text-emerald-600"></i> 薬院駅 (ゾーンB)
+            </span>
+            <span class="text-[10px] bg-emerald-200 text-emerald-900 px-2 py-0.5 rounded-full font-bold">
+              徒歩12〜14分
+            </span>
+          </div>
+          <p class="text-slate-600 mb-2 leading-relaxed text-[11px]">
+            西鉄・地下鉄の結節点。駅直結の「やりうどん」や、餃子李、ぴかいち、大衆中華など子どもが喜ぶ麺・粉ものが充実。
+          </p>
+          <div class="text-[11px] font-semibold text-emerald-800 bg-white/80 p-2 rounded-lg border border-emerald-100">
+            主な店：餃子李、博多やりうどん、とりかわ粋恭
+          </div>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- 16:30〜ゴールデンタイム戦略 (Schedule & Pro Tips) -->
+    <div id="schedule" class="bg-gradient-to-r from-amber-500/10 via-brand-500/10 to-transparent border-l-4 border-amber-500 bg-white rounded-r-2xl p-5 shadow-sm">
+      <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2 mb-2">
+        <i class="fa-regular fa-clock text-amber-600 text-base"></i>
+        【5歳児連れの鉄則】16:30〜17:30 スタートが成功の鍵
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-slate-700 mt-3">
+        <div class="bg-white/90 p-3.5 rounded-xl border border-amber-200/60 shadow-2xs">
+          <span class="font-bold text-amber-900 block mb-1 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px]">1</span>
+            17時前入店で完全混雑回避
+          </span>
+          科学館・動物園で歩き回った5歳児は19時を過ぎると電池切れに。祝日の福岡の人気店は18:30以降満席になりますが、<strong>16:00〜17:00なら予約なしでも座敷に入りやすい</strong>です。
+        </div>
+        <div class="bg-white/90 p-3.5 rounded-xl border border-amber-200/60 shadow-2xs">
+          <span class="font-bold text-amber-900 block mb-1 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px]">2</span>
+            ホテル一楽で先に荷物置き
+          </span>
+          渡辺通駅からホテルへ到着後、まずはチェックインしてお手洗いと荷物預け。身軽になってから徒歩1〜3分の清川・高砂エリアに出向くのが最も疲れ知らずです。
+        </div>
+        <div class="bg-white/90 p-3.5 rounded-xl border border-amber-200/60 shadow-2xs">
+          <span class="font-bold text-amber-900 block mb-1 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px]">3</span>
+            もつ鍋・水炊きの「薄味・単品」対応
+          </span>
+          もつ鍋はお子さまには唐辛子（鷹の爪）抜き、または水炊きや鶏雑炊、唐揚げ、つくね等の単品注文がおすすめ。本リストではお子さまが食べられるメニューがある店を厳選しています。
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= 4. Controls: Filter, Search, Sort ================= -->
+    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+      
+      <!-- Search & Sort Row -->
+      <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
+        <!-- Search Input -->
+        <div class="relative flex-1">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="店名、料理（うどん・もつ鍋・焼鳥・餃子）、特徴（座敷・徒歩1分）で検索..." 
+            class="w-full pl-10 pr-9 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 bg-slate-50/70 transition"
+          >
+          <button id="clearSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Sort Select -->
+        <div class="flex items-center gap-2 shrink-0">
+          <div class="flex items-center gap-1 text-xs text-slate-500 whitespace-nowrap font-medium">
+            <i class="fa-solid fa-arrow-down-short-wide text-brand-600"></i> 並び替え:
+          </div>
+          <select id="sortSelect" class="bg-slate-50 border border-slate-300 text-slate-800 text-xs sm:text-sm rounded-xl py-2 px-3 focus:outline-none focus:ring-2 focus:ring-brand-500 font-medium">
+            <option value="recommended">★ おすすめ順</option>
+            <option value="distance_asc">ホテルから近い順（徒歩）</option>
+            <option value="price_asc">予算が安い順（親子2名）</option>
+            <option value="early_open">早く開く店（16:00〜17:00）</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Quick Filter Chips & Category Tabs -->
+      <div class="space-y-2.5">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
+            <i class="fa-solid fa-filter text-brand-600"></i> カテゴリーで絞り込み
+          </span>
+          <span id="resultCountText" class="text-xs font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
+            該当：60件
+          </span>
+        </div>
+        
+        <div class="flex flex-wrap gap-1.5 sm:gap-2" id="categoryTabContainer">
+          <button data-cat="all" class="cat-btn active bg-brand-600 text-white text-xs px-3.5 py-2 rounded-xl font-semibold transition shadow-xs">
+            すべて (60)
+          </button>
+          <button data-cat="hotel_near" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
+            <i class="fa-solid fa-person-walking text-purple-600 mr-1"></i>ホテル徒歩3分以内 (15)
+          </button>
+          <button data-cat="tatami" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
+            <i class="fa-solid fa-couch text-amber-600 mr-1"></i>座敷・小上がり・個室 (22)
+          </button>
+          <button data-cat="casual_kids" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
+            <i class="fa-solid fa-bowl-food text-blue-600 mr-1"></i>子連れ定番・うどん定食 (12)
+          </button>
+          <button data-cat="local" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
+            <i class="fa-solid fa-fire text-red-600 mr-1"></i>ご当地（もつ鍋・水炊き・焼鳥）(16)
+          </button>
+          <button data-cat="cheap_delicious" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
+            <i class="fa-solid fa-thumbs-up text-emerald-600 mr-1"></i>安くて美味い・中華・居酒屋 (14)
+          </button>
+          <button data-cat="buffet" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
+            <i class="fa-solid fa-utensils text-orange-600 mr-1"></i>食べ放題・焼肉・鍋 (5)
+          </button>
+          <button data-cat="upscale" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
+            <i class="fa-solid fa-gem text-indigo-600 mr-1"></i>大衆でない上質・ホテル内 (5)
+          </button>
+          <button data-cat="caution" class="cat-btn bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs px-3 py-2 rounded-xl font-semibold transition">
+            <i class="fa-solid fa-triangle-exclamation text-rose-500 mr-1"></i>要注意・祝日休店 (6)
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Filters Status Bar -->
+      <div id="filterTagContainer" class="flex flex-wrap items-center gap-2 pt-1 text-xs"></div>
+
+    </div>
+
+    <!-- ================= 5. Restaurant Cards Grid (Rendered by JS) ================= -->
+    <div id="restaurantGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Dynamic rendering via JavaScript -->
+    </div>
+
+    <!-- No Results View -->
+    <div id="noResults" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+      <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3">
+        <i class="fa-solid fa-magnifying-glass text-slate-400 text-2xl"></i>
+      </div>
+      <h3 class="text-base font-bold text-slate-800">条件に一致するお店が見つかりませんでした</h3>
+      <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+        検索キーワードを変更するか、フィルター条件をリセットしてください。
+      </p>
+      <button id="resetFilterBtn" class="mt-4 bg-brand-600 text-white text-xs px-4 py-2.5 rounded-xl hover:bg-brand-700 font-semibold transition shadow-sm">
+        フィルターをリセット
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ================= 6. Restaurant Detail Modal ================= -->
+  <div id="detailModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-opacity">
+    <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 flex flex-col">
+      <!-- Modal Header -->
+      <div class="p-5 border-b border-slate-100 sticky top-0 bg-white z-10 flex items-start justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-1" id="modalZoneBadgeContainer"></div>
+          <h3 id="modalName" class="text-xl font-extrabold text-slate-900"></h3>
+          <p id="modalKana" class="text-xs text-slate-400"></p>
+        </div>
+        <button id="closeModalBtn" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-5 space-y-4 text-xs text-slate-700 flex-1">
+        <!-- Key specs -->
+        <div class="grid grid-cols-2 gap-2 bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+          <div>
+            <span class="text-slate-400 block text-[10px]">ホテルからの距離</span>
+            <span id="modalDist" class="font-bold text-slate-800 text-sm"></span>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-[10px]">祝日営業時間</span>
+            <span id="modalHours" class="font-bold text-slate-800 text-sm"></span>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-[10px]">親子予算目安</span>
+            <span id="modalBudget" class="font-bold text-slate-800 text-sm"></span>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-[10px]">席タイプ・禁煙</span>
+            <span id="modalSeat" class="font-bold text-slate-800 text-sm"></span>
+          </div>
+        </div>
+
+        <!-- Highlight -->
+        <div>
+          <h4 class="font-bold text-slate-900 mb-1 flex items-center gap-1.5 text-xs">
+            <i class="fa-solid fa-circle-info text-brand-600"></i> 店舗の特徴とおすすめ
+          </h4>
+          <p id="modalHighlight" class="leading-relaxed bg-brand-50/50 p-3 rounded-xl border border-brand-100 text-slate-700"></p>
+        </div>
+
+        <!-- Kids Point -->
+        <div>
+          <h4 class="font-bold text-amber-900 mb-1 flex items-center gap-1.5 text-xs">
+            <i class="fa-solid fa-child-reaching text-coral-500"></i> 子連れ・取り分けの安心ポイント
+          </h4>
+          <p id="modalKidsPoint" class="leading-relaxed bg-amber-50 p-3 rounded-xl border border-amber-200 text-amber-950"></p>
+        </div>
+
+        <!-- Tags -->
+        <div id="modalTags" class="flex flex-wrap gap-1 pt-1"></div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 border-t border-slate-100 bg-slate-50 rounded-b-2xl flex items-center gap-2">
+        <a 
+          id="modalMapBtn" 
+          href="#" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="flex-1 bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2.5 px-4 rounded-xl text-center text-xs transition flex items-center justify-center gap-2 shadow-sm"
+        >
+          <i class="fa-solid fa-location-arrow"></i>
+          Googleマップで道順・口コミ
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 7. Mobile Floating Bottom Bar ================= -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 glass-nav border-t border-brand-800/40 px-4 py-2.5 z-40 flex items-center justify-around text-[10px] text-slate-300">
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center gap-1 hover:text-white">
+      <i class="fa-solid fa-house text-sm"></i>
+      <span>トップ</span>
+    </button>
+    <a href="#strategy" class="flex flex-col items-center gap-1 hover:text-white">
+      <i class="fa-solid fa-map-location-dot text-sm text-brand-300"></i>
+      <span>エリア</span>
+    </a>
+    <button onclick="document.getElementById('searchInput').focus();" class="flex flex-col items-center gap-1 hover:text-white">
+      <i class="fa-solid fa-magnifying-glass text-sm"></i>
+      <span>検索</span>
+    </button>
+    <button onclick="document.getElementById('showFavOnlyBtn').click();" class="flex flex-col items-center gap-1 text-coral-400 hover:text-coral-300">
+      <i class="fa-solid fa-heart text-sm"></i>
+      <span>保存 (<span id="mobileFavCount">0</span>)</span>
+    </button>
+  </div>
+
+  <!-- ================= 8. Footer ================= -->
+  <footer class="mt-auto bg-slate-900 text-slate-400 text-xs border-t border-slate-800 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="font-bold text-white text-sm flex items-center gap-2">
+          <i class="fa-solid fa-hotel text-brand-400"></i>
+          ホテル一楽 子連れ福岡ディナー完全ナビ
+        </p>
+        <p class="mt-1 text-slate-400">
+          所在地：福岡市中央区清川2丁目5-5（最寄駅：地下鉄七隈線 渡辺通駅・薬院駅）
+        </p>
+        <p class="mt-0.5 text-slate-500 text-[11px]">
+          ※営業日・時間は祝日（11/3）の特別体制等により変動する場合があります。人気店・座敷利用時は事前電話確認をおすすめします。
+        </p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 border border-slate-700">
+          <i class="fa-solid fa-arrow-up"></i> ページ上部へ
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= 9. Data and Application Logic ================= -->
+  <script>
+    // 60店舗のマスターデータベース（祝日11/3対応・ホテル一楽からの徒歩情報・座敷・予算）
+    const RESTAURANTS = [
+      // --- 1. 子連れ安心・定番定食＆うどん (ゾーンA・B・D) ---
+      {
+        id: 1,
+        name: "梅山鉄平食堂 本店",
+        kana: "うめやまてっぺいしょくどう",
+        zone: "zone_a",
+        area: "渡辺通",
+        distWalk: "徒歩8分",
+        distMeters: 640,
+        holidayHours: "11:30〜15:30 / 17:00〜22:00",
+        openTime: 17.0,
+        budget: "2,000円〜3,200円",
+        budgetScore: 2600,
+        categories: ["casual_kids", "cheap_delicious"],
+        seatType: "テーブル・カウンター",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 98,
+        tags: ["魚定食", "取り分け", "人気", "お子様歓迎"],
+        highlight: "福岡の新鮮魚定食が常時30〜40種。焼き魚や煮魚をご飯・豚汁とお子さまと取り分けでき、栄養満点で味も極上。",
+        kidsPoint: "子供用の小さな器やスプーンを気持ちよく用意してくれます。17時開店直後なら行列なしでスムーズ。"
+      },
+      {
+        id: 2,
+        name: "因幡うどん 渡辺通店",
+        kana: "いなばうどん",
+        zone: "zone_a",
+        area: "渡辺通（一丁目交差点）",
+        distWalk: "徒歩6分",
+        distMeters: 480,
+        holidayHours: "10:00〜20:00（通し営業）",
+        openTime: 10.0,
+        budget: "1,200円〜1,800円",
+        budgetScore: 1500,
+        categories: ["casual_kids", "hotel_near"],
+        seatType: "テーブル・カウンター",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 95,
+        tags: ["博多うどん", "やわらか麺", "通し営業", "出汁が絶品"],
+        highlight: "昭和26年創業の博多うどんの真髄。出汁が染み渡る天然昆布・鰹節スープと、5歳児の胃に超優しいふんわりやわ麺。",
+        kidsPoint: "通し営業なので16時台の超早夕飯が可能。えび天うどん・ごぼ天うどんと、かしわおにぎりを取り分け推奨。"
+      },
+      {
+        id: 3,
+        name: "ウエスト 清川店",
+        kana: "うえすと",
+        zone: "zone_d",
+        area: "清川（那の川通り寄り）",
+        distWalk: "徒歩5分",
+        distMeters: 400,
+        holidayHours: "24時間営業",
+        openTime: 0.0,
+        budget: "1,200円〜1,900円",
+        budgetScore: 1550,
+        categories: ["casual_kids", "hotel_near", "cheap_delicious"],
+        seatType: "テーブル・小上がり座敷あり",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 92,
+        tags: ["座敷あり", "24時間", "ごぼ天", "ネギ入れ放題"],
+        highlight: "福岡県民のソウルフード。小上がり座敷があり、うどん、そば、丼もの、もつ鍋（夕方〜）まで揃う万能ファミレス的存在。",
+        kidsPoint: "座敷でゆっくりでき、うどんカッターの貸出やお子さま食器完備。どんなに時間がズレても開いている絶対の安心感。"
+      },
+      {
+        id: 4,
+        name: "博多やりうどん別邸 薬院店",
+        kana: "やりうどん",
+        zone: "zone_b",
+        area: "薬院（西鉄薬院駅直結）",
+        distWalk: "徒歩12分",
+        distMeters: 950,
+        holidayHours: "11:00〜21:00（通し営業）",
+        openTime: 11.0,
+        budget: "1,500円〜2,200円",
+        budgetScore: 1850,
+        categories: ["casual_kids"],
+        seatType: "テーブル・広々ボックス席",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 88,
+        tags: ["駅直結", "名物槍ごぼ天", "白丸うどん", "ベビーカー可"],
+        highlight: "槍に見立てた30cm以上の長〜いごぼ天が大迫力！5歳のお子さまも見た瞬間に大喜び間違いなしの名店。",
+        kidsPoint: "駅高架下の広い店舗。薬院駅で電車を降りてホテルへ歩き始める前の腹ごしらえに最適。"
+      },
+      {
+        id: 5,
+        name: "おたびしょ（OTABISHO）",
+        kana: "おたびしょ",
+        zone: "zone_d",
+        area: "清川（ホテル一楽からすぐ）",
+        distWalk: "徒歩2分",
+        distMeters: 160,
+        holidayHours: "17:00〜23:00",
+        openTime: 17.0,
+        budget: "3,000円〜4,500円",
+        budgetScore: 3750,
+        categories: ["hotel_near", "tatami", "cheap_delicious"],
+        seatType: "掘りごたつ小上がり・カウンター",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 97,
+        tags: ["ホテル2分", "小上がり掘りごたつ", "手作り定食＆一品", "アットホーム"],
+        highlight: "ホテル一楽の裏手すぐ！おばんざい、焼き魚、出汁巻き卵、鶏の唐揚げ、優しいおにぎりなど、家庭的で上質な料理が揃う。",
+        kidsPoint: "靴を脱いで上がれる掘りごたつ席があり、女将さんがとても温かい。歩いて2分で帰れる立地は神。"
+      },
+      {
+        id: 6,
+        name: "あつもの屋",
+        kana: "あつものや",
+        zone: "zone_d",
+        area: "清川2丁目",
+        distWalk: "徒歩3分",
+        distMeters: 240,
+        holidayHours: "17:30〜23:00",
+        openTime: 17.5,
+        budget: "3,500円〜5,000円",
+        budgetScore: 4250,
+        categories: ["hotel_near", "local", "tatami"],
+        seatType: "座敷・掘りごたつ・テーブル",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 94,
+        tags: ["ホテル3分", "おでん", "炊き餃子", "座敷"],
+        highlight: "熱々の染み染みおでんと名物「炊き餃子」。鶏白湯スープで炊いた餃子はニンニク控えめでスープまでゴクゴク飲める美味しさ。",
+        kidsPoint: "大根や玉子のおでん、うどん麺を炊き餃子スープに投入する〆がお子さまに大ウケ。座敷あり。"
+      },
+      {
+        id: 7,
+        name: "博多ぴかいち 薬院店",
+        kana: "ぴかいち",
+        zone: "zone_b",
+        area: "薬院3丁目",
+        distWalk: "徒歩10分",
+        distMeters: 800,
+        holidayHours: "11:30〜15:00 / 17:30〜21:00",
+        openTime: 17.5,
+        budget: "1,800円〜2,800円",
+        budgetScore: 2300,
+        categories: ["casual_kids", "cheap_delicious"],
+        seatType: "テーブル席多数",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 90,
+        tags: ["博多皿うどん", "中華", "パリパリorもちもち", "炒飯絶品"],
+        highlight: "博多名物「博多皿うどん」の最高峰！自家製の太麺を野菜や豚肉の旨味スープで炒め焼きした絶品。パリパリ細麺もあります。",
+        kidsPoint: "野菜がたっぷり柔らかく煮込まれており5歳児でも食べやすい。具沢山チャーハンも大人気。"
+      },
+      {
+        id: 8,
+        name: "ぎょうざ いってつ（一鉄）",
+        kana: "いってつ",
+        zone: "zone_c",
+        area: "高砂2丁目",
+        distWalk: "徒歩4分",
+        distMeters: 320,
+        holidayHours: "17:00〜23:00",
+        openTime: 17.0,
+        budget: "2,000円〜3,200円",
+        budgetScore: 2600,
+        categories: ["hotel_near", "cheap_delicious"],
+        seatType: "テーブル・小上がりあり",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 91,
+        tags: ["博多一口餃子", "パリッと皮", "ホテル4分", "小上がり"],
+        highlight: "薄皮でカリッと香ばしい博多一口餃子。小ぶりなので5歳児の口にもすっぽり入り、何個でもパクパク食べられます。",
+        kidsPoint: "おにぎりや卵スープもあり、サクッと30分〜45分で夕飯を済ませてホテルへ戻るクイック利用にも最適。"
+      },
+      {
+        id: 9,
+        name: "餃子李（ぎょうざりー）",
+        kana: "ぎょうざりー",
+        zone: "zone_b",
+        area: "薬院（城東高校前）",
+        distWalk: "徒歩11分",
+        distMeters: 900,
+        holidayHours: "11:30〜14:30 / 17:00〜21:30",
+        openTime: 17.0,
+        budget: "2,200円〜3,500円",
+        budgetScore: 2850,
+        categories: ["cheap_delicious"],
+        seatType: "テーブル（円卓あり・広々）",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 93,
+        tags: ["名物焼餃子", "肉汁爆発", "本場点心", "大人気行列店"],
+        highlight: "福岡の中華・餃子界のレジェンド！皮から手作りの焼き餃子は肉まんのようなもっちり感で肉汁たっぷり。",
+        kidsPoint: "店内が広くファミレス並みの席幅。17:00開店の10分前に並べば1巡目でゆったり入店できます。"
+      },
+      {
+        id: 10,
+        name: "餃子屋 弐ノ弐 清川店",
+        kana: "にのに",
+        zone: "zone_d",
+        area: "清川1丁目",
+        distWalk: "徒歩4分",
+        distMeters: 300,
+        holidayHours: "16:00〜23:30",
+        openTime: 16.0,
+        budget: "1,800円〜2,800円",
+        budgetScore: 2300,
+        categories: ["hotel_near", "cheap_delicious"],
+        seatType: "テーブル席",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 93,
+        tags: ["16時開店", "ハッピーアワー焼餃子半額", "コスパ最強", "パリパリ一口餃子"],
+        highlight: "なんと16時オープン！18:30までのハッピーアワーは焼き餃子（7個）が約150円台という驚異のコスパ。",
+        kidsPoint: "夕方16:30に行けば店内は空いており、待たずに即提供。魯肉飯（ルーローハン）やエビチリなど子供喜ぶ中華も。"
+      },
+
+      // --- 2. ご当地名物（もつ鍋・水炊き・とりかわ・焼鳥） ---
+      {
+        id: 11,
+        name: "博多水炊き ぜんざい",
+        kana: "ぜんざい",
+        zone: "zone_c",
+        area: "高砂1丁目",
+        distWalk: "徒歩7分",
+        distMeters: 550,
+        holidayHours: "17:00〜22:30",
+        openTime: 17.0,
+        budget: "5,500円〜8,000円",
+        budgetScore: 6800,
+        categories: ["local", "tatami", "upscale"],
+        seatType: "完全個室・座敷あり",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 96,
+        tags: ["水炊き", "完全個室", "無添加黄金スープ", "大人の名店"],
+        highlight: "古民家を改装した落ち着いた佇まい。白濁させずじっくり引いた黄金の澄んだ鶏スープは雑味がなく、子供でもごくごく飲める上品さ。",
+        kidsPoint: "座敷の完全個室があり、他のお客さんに気兼ねなく食事できます。〆の卵雑炊は絶品。"
+      },
+      {
+        id: 12,
+        name: "博多もつ鍋 こうづき 高砂店",
+        kana: "こうづき",
+        zone: "zone_c",
+        area: "高砂1丁目",
+        distWalk: "徒歩6分",
+        distMeters: 480,
+        holidayHours: "17:00〜23:00",
+        openTime: 17.0,
+        budget: "4,500円〜7,000円",
+        budgetScore: 5750,
+        categories: ["local", "tatami", "upscale"],
+        seatType: "掘りごたつ個室・半個室",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 95,
+        tags: ["個室", "白味噌もつ鍋", "塩もつ鍋", "掘りごたつ"],
+        highlight: "極上の和牛もつと京都の西京味噌をブレンドした白味噌もつ鍋。唐辛子を別皿にしてもらえるので、甘みたっぷりのスープでお子さまもOK。",
+        kidsPoint: "全席が仕切られた掘りごたつ個室・半個室。子供用の取り皿やスプーン完備。ちゃんぽん麺の〆が大好評。"
+      },
+      {
+        id: 13,
+        name: "博多もつ鍋 やましょう 博多本店",
+        kana: "やましょう",
+        zone: "zone_a",
+        area: "渡辺通5丁目",
+        distWalk: "徒歩11分",
+        distMeters: 880,
+        holidayHours: "17:00〜24:00",
+        openTime: 17.0,
+        budget: "4,000円〜6,000円",
+        budgetScore: 5000,
+        categories: ["local", "tatami"],
+        seatType: "小上がり座敷・掘りごたつ",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 92,
+        tags: ["もつ鍋", "やましょう鍋（ミルフィーユ）", "座敷多数", "醤油ベース"],
+        highlight: "もつ鍋はもちろん、鹿児島産黒豚と白菜を重ねた「やましょう鍋」が名物。あっさり和風出汁でお子さまもモリモリ食べられます。",
+        kidsPoint: "2階・3階に広々とした座敷席が多く、子連れファミリーの利用実績多数。17時開店。"
+      },
+      {
+        id: 14,
+        name: "博多とりかわ 粋恭 薬院店",
+        kana: "すいきょう",
+        zone: "zone_b",
+        area: "薬院4丁目",
+        distWalk: "徒歩13分",
+        distMeters: 1000,
+        holidayHours: "17:00〜23:00",
+        openTime: 17.0,
+        budget: "3,500円〜5,000円",
+        budgetScore: 4250,
+        categories: ["local", "tatami"],
+        seatType: "2階お座敷・カウンター・テーブル",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 94,
+        tags: ["ぐるぐる鶏皮", "博多名物", "座敷あり", "超人気"],
+        highlight: "何日もかけて脂を落とし、タレに漬け込んで焼きを繰り返した博多名物「ぐるぐる鶏皮」。外はカリッ、中はモチモチで脂っこくない！",
+        kidsPoint: "2階に座敷があります。つくねや豚バラ、焼きおにぎりなど子どもが大好きな串メニューが豊富。"
+      },
+      {
+        id: 15,
+        name: "かわ屋 白金店",
+        kana: "かわや",
+        zone: "zone_c",
+        area: "白金1丁目（薬院・高砂隣接）",
+        distWalk: "徒歩9分",
+        distMeters: 720,
+        holidayHours: "17:00〜23:00",
+        openTime: 17.0,
+        budget: "3,200円〜4,800円",
+        budgetScore: 4000,
+        categories: ["local"],
+        seatType: "テーブル・カウンター",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 89,
+        tags: ["元祖とりかわ", "串焼き", "福岡名物"],
+        highlight: "とりかわブームの火付け役。香ばしい皮タレ焼きは何本でも食べられると子供にも大評判。",
+        kidsPoint: "白金店は比較的アットホームで席の予約可能。17時台の早い時間が落ち着いていて安全。"
+      },
+      {
+        id: 16,
+        name: "もつ料理 幸（さち）",
+        kana: "さち",
+        zone: "zone_a",
+        area: "渡辺通2丁目",
+        distWalk: "徒歩9分",
+        distMeters: 700,
+        holidayHours: "17:00〜23:00",
+        openTime: 17.0,
+        budget: "3,800円〜5,500円",
+        budgetScore: 4650,
+        categories: ["local", "tatami"],
+        seatType: "お座敷席あり",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 90,
+        tags: ["老舗もつ鍋", "座敷完備", "アットホーム", "伝統の味"],
+        highlight: "昭和の風情を残すもつ鍋の隠れた名店。新鮮なもつとキャベツ、ニラの旨味が染み出た醤油スープが絶品。",
+        kidsPoint: "ゆったりとした座敷があり、お子さま連れに優しい接客で地元ファミリーから長年愛されています。"
+      },
+      {
+        id: 17,
+        name: "焼きとりの八兵衛 薬院本家",
+        kana: "はちべえ",
+        zone: "zone_b",
+        area: "薬院2丁目",
+        distWalk: "徒歩14分",
+        distMeters: 1100,
+        holidayHours: "17:00〜23:00",
+        openTime: 17.0,
+        budget: "4,500円〜7,000円",
+        budgetScore: 5750,
+        categories: ["local", "upscale"],
+        seatType: "テーブル・カウンター（広め）",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 91,
+        tags: ["極上焼鳥", "豚バラ", "すき焼き串", "スタイリッシュ"],
+        highlight: "博多焼鳥を全国区・世界に広めた最高峰ブランド。名物の豚バラ串、エンドウ豆の串揚げ、和牛すき焼き串など感動の連続。",
+        kidsPoint: "煙モクモク系ではなく、清潔でお洒落な空間。17:00予約なら子連れでもリラックスして楽しめます。"
+      },
+      {
+        id: 18,
+        name: "焼鳥 弥七（やしち）高砂店",
+        kana: "やしち",
+        zone: "zone_c",
+        area: "高砂1丁目",
+        distWalk: "徒歩6分",
+        distMeters: 450,
+        holidayHours: "17:30〜23:30",
+        openTime: 17.5,
+        budget: "3,000円〜4,500円",
+        budgetScore: 3750,
+        categories: ["hotel_near", "tatami", "local"],
+        seatType: "掘りごたつ座敷あり",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 93,
+        tags: ["ホテル6分", "掘りごたつ座敷", "コスパ良し", "鶏スープ無料"],
+        highlight: "炭火で丁寧に焼き上げる本格焼鳥。身がふっくらジューシーな串が1本150円〜と良心価格。",
+        kidsPoint: "奥に靴を脱いで上がれる掘りごたつ座敷があり、子供連れ歓迎。最後にもらえる温かい鶏スープが体に沁みます。"
+      },
+      {
+        id: 19,
+        name: "博多水炊き とり田 薬院店",
+        kana: "とりでん",
+        zone: "zone_b",
+        area: "薬院2丁目",
+        distWalk: "徒歩15分",
+        distMeters: 1200,
+        holidayHours: "11:30〜22:00（通し営業）",
+        openTime: 11.5,
+        budget: "6,000円〜9,000円",
+        budgetScore: 7500,
+        categories: ["local", "upscale"],
+        seatType: "個室・テーブル（モダン上質）",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 93,
+        tags: ["ミシュラン掲載", "上質空間", "濃厚白濁水炊き", "通し営業"],
+        highlight: "丸鶏を長時間炊き上げた濃厚コラーゲンスープが特徴の水炊き専門店。洗練された接客と空間づくりは抜群。",
+        kidsPoint: "昼から通し営業のため16時などの変則時間でも予約可能。辛味ゼロの上品なスープなので子供も大満足。"
+      },
+      {
+        id: 20,
+        name: "本格焼鳥 大名へて 渡辺通店",
+        kana: "へて",
+        zone: "zone_a",
+        area: "渡辺通2丁目",
+        distWalk: "徒歩8分",
+        distMeters: 650,
+        holidayHours: "16:00〜23:00",
+        openTime: 16.0,
+        budget: "3,500円〜5,200円",
+        budgetScore: 4350,
+        categories: ["local", "tatami"],
+        seatType: "掘りごたつ・テーブル",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 90,
+        tags: ["16時開店", "掘りごたつ", "長州黒かしわ", "手羽先"],
+        highlight: "16時オープンが嬉しい本格焼鳥店。長州黒かしわを使ったこだわりの焼鳥と、名物のとろける白レバーや手羽先が絶品。",
+        kidsPoint: "掘りごたつ席があり、16時台は比較的空いていて親子2人でも落ち着いて食事できます。"
+      },
+
+      // --- 3. ホテル直近（清川・徒歩1〜4分）の救世主店 ---
+      {
+        id: 21,
+        name: "大衆酒場 うっちゃり 清川店",
+        kana: "うっちゃり",
+        zone: "zone_d",
+        area: "清川2丁目（ホテル目の前）",
+        distWalk: "徒歩1分",
+        distMeters: 80,
+        holidayHours: "16:00〜23:30",
+        openTime: 16.0,
+        budget: "2,500円〜3,800円",
+        budgetScore: 3150,
+        categories: ["hotel_near", "tatami", "cheap_delicious"],
+        seatType: "小上がり座敷あり・テーブル",
+        smoke: "全席禁煙（店外喫煙スペース）",
+        isCaution: false,
+        recommended: 96,
+        tags: ["ホテル徒歩1分", "小上がり座敷", "16時オープン", "肉豆腐", "出汁巻き"],
+        highlight: "ホテル一楽の角を曲がってすぐ！16時オープンで小上がりの座敷あり。名物の黒毛和牛肉豆腐や出汁巻き玉子は子供も大好き。",
+        kidsPoint: "驚異の近さ。万が一子供が眠ってしまっても抱っこして1分でホテルのベッドへ連れて帰れます。"
+      },
+      {
+        id: 22,
+        name: "中華料理 豊順（ほうじゅん）",
+        kana: "ほうじゅん",
+        zone: "zone_d",
+        area: "清川2丁目",
+        distWalk: "徒歩2分",
+        distMeters: 150,
+        holidayHours: "11:00〜14:30 / 17:00〜23:00",
+        openTime: 17.0,
+        budget: "1,500円〜2,400円",
+        budgetScore: 1950,
+        categories: ["hotel_near", "tatami", "cheap_delicious"],
+        seatType: "お座敷円卓あり・テーブル",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 91,
+        tags: ["ホテル2分", "座敷あり", "町中華", "チャーハン", "唐揚げ"],
+        highlight: "ボリューム満点でリーズナブルな街の中華屋さん。ラーメン＋炒飯セットや熱々小籠包など定番が驚きの安さ。",
+        kidsPoint: "奥にお座敷があり、小さな子ども連れでも安心。取り分け用のお皿やフォークも常備。"
+      },
+      {
+        id: 23,
+        name: "清川食堂（きよかわしょくどう）",
+        kana: "きよかわしょくどう",
+        zone: "zone_d",
+        area: "清川1丁目",
+        distWalk: "徒歩3分",
+        distMeters: 230,
+        holidayHours: "11:30〜21:00（通し営業）",
+        openTime: 11.5,
+        budget: "1,400円〜2,000円",
+        budgetScore: 1700,
+        categories: ["hotel_near", "casual_kids", "cheap_delicious"],
+        seatType: "テーブル席",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 90,
+        tags: ["定食屋", "ホテル3分", "生姜焼き", "チキン南蛮", "安心ご飯"],
+        highlight: "手作りの温かい定食が食べられるアットホームな食堂。ハンバーグ定食や唐揚げ定食など子供ウケ抜群のメニュー揃い。",
+        kidsPoint: "居酒屋の雰囲気が苦手な場合、定食でササッとバランスの良いご飯を食べさせられる安心スポット。"
+      },
+      {
+        id: 24,
+        name: "うどん居酒屋 志成（しなり）清川店",
+        kana: "しなり",
+        zone: "zone_d",
+        area: "清川2丁目",
+        distWalk: "徒歩4分",
+        distMeters: 300,
+        holidayHours: "17:30〜22:30",
+        openTime: 17.5,
+        budget: "2,200円〜3,500円",
+        budgetScore: 2850,
+        categories: ["hotel_near", "casual_kids", "tatami"],
+        seatType: "小上がり掘りごたつあり",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 93,
+        tags: ["ホテル4分", "讃岐系手打ちうどん", "天ぷら揚げたて", "座敷"],
+        highlight: "名店仕込みのツルツル手打ちうどんと揚げたてサクサク天ぷら。夜はお酒も一品料理も楽しめます。",
+        kidsPoint: "うどんの出汁がとても優しく、ちくわ天やかしわ天は子供の大好物。小上がりでくつろげます。"
+      },
+      {
+        id: 25,
+        name: "清川焼鳥 えびす",
+        kana: "えびす",
+        zone: "zone_d",
+        area: "清川2丁目",
+        distWalk: "徒歩3分",
+        distMeters: 220,
+        holidayHours: "17:00〜23:00",
+        openTime: 17.0,
+        budget: "2,800円〜4,200円",
+        budgetScore: 3500,
+        categories: ["hotel_near", "local", "tatami"],
+        seatType: "座敷小上がりあり",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 89,
+        tags: ["ホテル3分", "小上がり座敷", "炭火焼鳥", "アットホーム"],
+        highlight: "地元住民が普段使いする気取らない焼鳥屋さん。つくねや豚バラ、ポテトフライなど子どもが喜ぶ一品も多数。",
+        kidsPoint: "小上がり座敷があり、ご主人が子供にもとても優しく対応してくれます。"
+      },
+
+      // --- 4. 食べ放題・ガッツリお肉・鍋 ---
+      {
+        id: 26,
+        name: "ワンカルビ PREMIUM 天神今泉店",
+        kana: "わんかるび",
+        zone: "zone_a",
+        area: "今泉1丁目（渡辺通駅北寄り）",
+        distWalk: "徒歩13分",
+        distMeters: 1050,
+        holidayHours: "12:00〜23:00（通し営業）",
+        openTime: 12.0,
+        budget: "4,500円〜6,000円",
+        budgetScore: 5250,
+        categories: ["buffet", "tatami"],
+        seatType: "全席広々ボックスソファー席",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 91,
+        tags: ["焼肉食べ放題", "5歳以下無料", "キッズメニュー", "デザート充実"],
+        highlight: "プロが手切りする上質焼肉食べ放題。なんと<strong>5歳（未就学児）は完全無料！</strong>大人の料金だけでOKの最強コスパ。",
+        kidsPoint: "お子さまうどん、コーンバター、ポテト、デザートまでタッチパネルで頼み放題。ボックス席で周囲も気になりません。"
+      },
+      {
+        id: 27,
+        name: "スタミナ亭 高砂店",
+        kana: "すたみなてい",
+        zone: "zone_c",
+        area: "高砂2丁目",
+        distWalk: "徒歩5分",
+        distMeters: 380,
+        holidayHours: "17:00〜23:30",
+        openTime: 17.0,
+        budget: "3,800円〜5,500円",
+        budgetScore: 4650,
+        categories: ["hotel_near", "tatami"],
+        seatType: "座敷・掘りごたつ完備",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 92,
+        tags: ["ホテル5分", "黒毛和牛焼肉", "座敷あり", "ファミリー向け"],
+        highlight: "上質な九州産和牛をリーズナブルに味わえる下町焼肉の名店。柔らかいカルビやロースはお子さまでも噛み切れます。",
+        kidsPoint: "座敷席が充実しており、クッパやワカメスープ、ウインナーなど子ども対応メニューが豊富。"
+      },
+      {
+        id: 28,
+        name: "しゃぶしゃぶ温野菜 薬院店",
+        kana: "おんやさい",
+        zone: "zone_b",
+        area: "薬院1丁目",
+        distWalk: "徒歩11分",
+        distMeters: 850,
+        holidayHours: "16:00〜23:00",
+        openTime: 16.0,
+        budget: "3,800円〜5,200円",
+        budgetScore: 4500,
+        categories: ["buffet"],
+        seatType: "ゆったり仕切りボックス席",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 88,
+        tags: ["しゃぶしゃぶ食べ放題", "未就学児無料", "野菜たっぷり", "16時オープン"],
+        highlight: "お肉とお野菜のしゃぶしゃぶ食べ放題。未就学児は無料！2色鍋で1つを豆乳鍋や昆布出汁にすれば辛味ゼロで子供も安心。",
+        kidsPoint: "つみれを自分でコネコネして鍋に入れるのが5歳児に大人気。16時オープン。"
+      },
+      {
+        id: 29,
+        name: "焼肉きんぐ 清川・那の川エリア周辺（近隣店）",
+        kana: "やきにくきんぐ",
+        zone: "zone_d",
+        area: "那の川方面",
+        distWalk: "徒歩12分",
+        distMeters: 980,
+        holidayHours: "11:00〜23:00（通し営業）",
+        openTime: 11.0,
+        budget: "3,500円〜4,800円",
+        budgetScore: 4150,
+        categories: ["buffet"],
+        seatType: "ソファーボックス席",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 89,
+        tags: ["幼児無料", "ロボット配膳", "ファミリー特化", "ポテト・うどん"],
+        highlight: "ファミリー焼肉の決定版。幼児無料、配膳ロボットが席まで運んでくれるので5歳のお子さまが大興奮します。",
+        kidsPoint: "お子さまそぼろご飯やジュース飲み放題、デザートバー感覚で楽しめます。"
+      },
+      {
+        id: 30,
+        name: "牛角 薬院店",
+        kana: "ぎゅうかく",
+        zone: "zone_b",
+        area: "白金1丁目（薬院駅すぐ）",
+        distWalk: "徒歩10分",
+        distMeters: 780,
+        holidayHours: "16:30〜23:00",
+        openTime: 16.5,
+        budget: "3,200円〜4,500円",
+        budgetScore: 3850,
+        categories: ["buffet"],
+        seatType: "ボックス席",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 86,
+        tags: ["焼肉食べ放題あり", "小学生未満無料", "薬院駅近"],
+        highlight: "食べ放題プランあり（小学生未満無料）。16:30オープンで早めの入店がしやすい大手チェーン。",
+        kidsPoint: "ハニーマヨチキンやキッズカレープレートなど子供向けサイドメニューが充実。"
+      },
+
+      // --- 5. 大衆すぎない上質・ホテル内・静かな店 ---
+      {
+        id: 31,
+        name: "ホテルニューオータニ博多 カフェ＆レストラン グリーンハウス",
+        kana: "ぐりーんはうす",
+        zone: "zone_a",
+        area: "渡辺通1丁目",
+        distWalk: "徒歩7分",
+        distMeters: 550,
+        holidayHours: "07:00〜21:00（L.O.20:30 通し営業）",
+        openTime: 7.0,
+        budget: "4,000円〜6,500円",
+        budgetScore: 5250,
+        categories: ["upscale", "casual_kids"],
+        seatType: "広々ホテルラウンジソファー席",
+        smoke: "完全禁煙",
+        isCaution: false,
+        recommended: 95,
+        tags: ["ホテルレストラン", "極上オムライス", "ホテル接客", "ベビーカー完全対応"],
+        highlight: "一流ホテルの安心感。名物のとろとろオムライスやハンバーグ、キッズプレートがあり、静かで優雅な空間。",
+        kidsPoint: "子供が疲れてグズりそうでも、ホテルのプロフェッショナルな接客で優しく対応してくれます。授乳室・オムツ替え完璧。"
+      },
+      {
+        id: 32,
+        name: "日本料理 千羽鶴（ホテルニューオータニ博多14F）",
+        kana: "せんばづる",
+        zone: "zone_a",
+        area: "渡辺通1丁目",
+        distWalk: "徒歩7分",
+        distMeters: 550,
+        holidayHours: "11:30〜14:30 / 17:30〜21:00",
+        openTime: 17.5,
+        budget: "8,000円〜15,000円",
+        budgetScore: 11500,
+        categories: ["upscale", "tatami"],
+        seatType: "和室座敷個室・テーブル",
+        smoke: "完全禁煙",
+        isCaution: false,
+        recommended: 88,
+        tags: ["会席料理", "完全個室座敷", "眺望抜群", "記念日クオリティ"],
+        highlight: "静かに落ち着いて美味しい和食を食べたい時の最高峰。最上階からの博多の夜景も楽しめます。",
+        kidsPoint: "お子さま御膳の用意があり、完全個室ならどれだけリラックスしても大丈夫。"
+      },
+      {
+        id: 33,
+        name: "割烹 味美（あじみ）",
+        kana: "あじみ",
+        zone: "zone_c",
+        area: "高砂1丁目",
+        distWalk: "徒歩7分",
+        distMeters: 520,
+        holidayHours: "17:30〜22:30",
+        openTime: 17.5,
+        budget: "7,000円〜12,000円",
+        budgetScore: 9500,
+        categories: ["upscale", "tatami"],
+        seatType: "個室座敷あり",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 89,
+        tags: ["博多割烹", "個室座敷", "旬の魚介", "大人の隠れ家"],
+        highlight: "高砂の路地に佇む割烹。玄界灘の活魚と季節の食材を使った丁寧な料理が評判。",
+        kidsPoint: "座敷個室の予約が可能。騒がしい居酒屋を避けたい親子旅にうってつけ。"
+      },
+      {
+        id: 34,
+        name: "ビストロ シェ・ラ・メール",
+        kana: "しぇらめーる",
+        zone: "zone_c",
+        area: "白金1丁目",
+        distWalk: "徒歩8分",
+        distMeters: 620,
+        holidayHours: "18:00〜22:00",
+        openTime: 18.0,
+        budget: "5,000円〜8,000円",
+        budgetScore: 6500,
+        categories: ["upscale"],
+        seatType: "ゆったりテーブル席",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 85,
+        tags: ["フランス料理", "街のビストロ", "スープ絶品", "落ち着いた雰囲気"],
+        highlight: "肩肘張らずに美味しいフレンチが楽しめる名ビストロ。自家製パンと優しいポタージュスープが子供に大好評。",
+        kidsPoint: "温かいマダムの接客で、ファミリーでも快く迎えてくれます。"
+      },
+      {
+        id: 35,
+        name: "中国料理 大観苑（ホテルニューオータニ博多B1F）",
+        kana: "たいかんえん",
+        zone: "zone_a",
+        area: "渡辺通1丁目",
+        distWalk: "徒歩7分",
+        distMeters: 550,
+        holidayHours: "11:30〜14:30 / 17:00〜21:00",
+        openTime: 17.0,
+        budget: "6,000円〜10,000円",
+        budgetScore: 8000,
+        categories: ["upscale"],
+        seatType: "テーブル・個室円卓",
+        smoke: "完全禁煙",
+        isCaution: false,
+        recommended: 90,
+        tags: ["ホテル中華", "王道本格中華", "ふかひれ", "チャーハン"],
+        highlight: "老舗ホテルの高級本格中華。蟹肉入り炒飯や春巻き、点心など、上品でコクのある中華をゆったり堪能できます。",
+        kidsPoint: "17時オープン。広々とした席配置で子供用ハイチェアも完備。"
+      },
+
+      // --- 6. 安くて美味しい！街の愛され食堂＆うどん＆中華 ---
+      {
+        id: 36,
+        name: "サンセルコ名店街 味の地下街（カレー本舗・定食店群）",
+        kana: "さんせるこ",
+        zone: "zone_a",
+        area: "渡辺通1丁目（サンセルコB1F）",
+        distWalk: "徒歩6分",
+        distMeters: 450,
+        holidayHours: "11:00〜20:00（店舗により一部早仕舞いあり）",
+        openTime: 11.0,
+        budget: "1,200円〜2,000円",
+        budgetScore: 1600,
+        categories: ["casual_kids", "cheap_delicious"],
+        seatType: "テーブル・カウンター",
+        smoke: "施設内完全分煙・禁煙",
+        isCaution: false,
+        recommended: 87,
+        tags: ["昭和レトロ地下街", "名物カレー", "ちゃんぽん", "安い"],
+        highlight: "昭和レトロなビル地下に定食・カレー・うどん店が集合。安くてボリューム満点の隠れた穴場街。",
+        kidsPoint: "渡辺通駅からホテル一楽へ向かう動線上に直結。雨に濡れずに移動できます。"
+      },
+      {
+        id: 37,
+        name: "博多ラーメン 一心亭 清川店",
+        kana: "いっしんてい",
+        zone: "zone_d",
+        area: "清川1丁目",
+        distWalk: "徒歩5分",
+        distMeters: 380,
+        holidayHours: "11:00〜22:00（通し営業）",
+        openTime: 11.0,
+        budget: "1,200円〜1,800円",
+        budgetScore: 1500,
+        categories: ["hotel_near", "cheap_delicious", "casual_kids"],
+        seatType: "テーブル・カウンター",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 89,
+        tags: ["長浜ラーメン", "あっさり豚骨", "ホテル5分", "お子様も食べやすい"],
+        highlight: "長浜系のあっさりマイルドな豚骨ラーメン。豚骨臭が強すぎず、5歳児でもスープをごくごく飲める優しい味。",
+        kidsPoint: "替え玉100円台。ラーメンを大盛りにしてお子さまとシェアすれば格安で満足できます。"
+      },
+      {
+        id: 38,
+        name: "中華料理 宝来（ほうらい）",
+        kana: "ほうらい",
+        zone: "zone_c",
+        area: "高砂2丁目",
+        distWalk: "徒歩4分",
+        distMeters: 320,
+        holidayHours: "11:30〜14:30 / 17:30〜21:30",
+        openTime: 17.5,
+        budget: "1,500円〜2,200円",
+        budgetScore: 1850,
+        categories: ["hotel_near", "cheap_delicious", "tatami"],
+        seatType: "小上がり座敷あり",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 88,
+        tags: ["ホテル4分", "小上がり", "パラパラ炒飯", "皿うどん"],
+        highlight: "地元住民に愛される老舗町中華。醤油ラーメンや炒飯、皿うどんなど何を食べても懐かしく美味。",
+        kidsPoint: "座敷があり、取り分けに便利なメニューばかり。提供スピードも早い。"
+      },
+      {
+        id: 39,
+        name: "讃岐うどん 志成（大手門本店の系列・関連麺処）",
+        kana: "しなりうどん",
+        zone: "zone_c",
+        area: "高砂周辺",
+        distWalk: "徒歩6分",
+        distMeters: 480,
+        holidayHours: "11:00〜20:30",
+        openTime: 11.0,
+        budget: "1,400円〜2,000円",
+        budgetScore: 1700,
+        categories: ["casual_kids", "hotel_near"],
+        seatType: "テーブル",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 89,
+        tags: ["半熟卵天", "きつねうどん", "コシのある麺"],
+        highlight: "サクッと揚がった半熟卵の天ぷらと、黄金の鰹出汁。甘いお揚げのきつねうどんはお子さま大絶賛。",
+        kidsPoint: "早い時間から開いており、疲れた胃腸に染み渡る優しさ。"
+      },
+      {
+        id: 40,
+        name: "定食・居酒屋 わっぱ定食堂 警固（渡辺通バス圏・徒歩圏）",
+        kana: "わっぱ",
+        zone: "zone_b",
+        area: "今泉・薬院寄り",
+        distWalk: "徒歩14分",
+        distMeters: 1100,
+        holidayHours: "11:30〜22:00（通し営業）",
+        openTime: 11.5,
+        budget: "1,800円〜2,800円",
+        budgetScore: 2300,
+        categories: ["casual_kids", "cheap_delicious"],
+        seatType: "テーブル",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 91,
+        tags: ["田中精肉店系列", "豚汁定食", "とり天", "ご飯おかわり"],
+        highlight: "肉屋が手がける究極の定食屋。具沢山の大きな豚汁とサクサクとり天定食が名物。",
+        kidsPoint: "通し営業でテーブル席多数。ご飯やお漬物、ふりかけなど子供が喜ぶ工夫がたくさん。"
+      },
+
+      // --- 7. 単品が安い！お財布に優しい名店 ---
+      {
+        id: 41,
+        name: "居酒屋 丸秀 清川店",
+        kana: "まるひで",
+        zone: "zone_d",
+        area: "清川1丁目",
+        distWalk: "徒歩4分",
+        distMeters: 310,
+        holidayHours: "17:00〜23:00",
+        openTime: 17.0,
+        budget: "2,500円〜3,800円",
+        budgetScore: 3150,
+        categories: ["hotel_near", "cheap_delicious"],
+        seatType: "テーブル・掘りごたつ",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 90,
+        tags: ["鮮魚が安い", "ホテル4分", "単品充実", "掘りごたつ"],
+        highlight: "魚屋直営だからできる圧倒的な鮮度と安さ！刺身の盛り合わせが破格で、焼き魚・天ぷらも単品300円〜500円台がズラリ。",
+        kidsPoint: "フライドポテトや枝豆、おにぎりなど単品を安く組み合わせてお子さま専用セットが作れます。"
+      },
+      {
+        id: 42,
+        name: "大衆酒場 六九（ろっく）高砂店",
+        kana: "ろっく",
+        zone: "zone_c",
+        area: "高砂1丁目",
+        distWalk: "徒歩6分",
+        distMeters: 450,
+        holidayHours: "16:00〜23:00",
+        openTime: 16.0,
+        budget: "2,200円〜3,500円",
+        budgetScore: 2850,
+        categories: ["cheap_delicious", "tatami"],
+        seatType: "小上がり掘りごたつあり",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 88,
+        tags: ["16時開店", "小上がり", "焼き鳥1本100円〜", "単品格安"],
+        highlight: "16時開店！串焼きが1本100円台、名物のハムカツやポテトサラダも200〜300円台と驚異のお手頃感。",
+        kidsPoint: "早い時間はファミリー客も多く、小上がりで足を伸ばしてのんびりできます。"
+      },
+      {
+        id: 43,
+        name: "博多鉄板 よかろうもん 清川店",
+        kana: "よかろうもん",
+        zone: "zone_d",
+        area: "清川2丁目",
+        distWalk: "徒歩2分",
+        distMeters: 180,
+        holidayHours: "17:30〜23:00",
+        openTime: 17.5,
+        budget: "2,400円〜3,600円",
+        budgetScore: 3000,
+        categories: ["hotel_near", "tatami"],
+        seatType: "座敷・テーブル",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 87,
+        tags: ["ホテル2分", "座敷あり", "博多B級鉄板焼肉", "ご飯が進む"],
+        highlight: "キャベツと豚ハラミ肉を熱々の鉄板で炒め、辛味噌を溶かして食べる博多名物鉄板焼肉（子供用は味噌抜きで甘口対応可能）。",
+        kidsPoint: "ホテルから歩いて2分。座敷があり、白いご飯にワンバウンドさせて食べるお肉は子供も夢中になります。"
+      },
+      {
+        id: 44,
+        name: "焼肉 ホルモン 青空 清川店",
+        kana: "あおぞら",
+        zone: "zone_d",
+        area: "清川2丁目",
+        distWalk: "徒歩3分",
+        distMeters: 220,
+        holidayHours: "17:00〜23:30",
+        openTime: 17.0,
+        budget: "3,000円〜4,500円",
+        budgetScore: 3750,
+        categories: ["hotel_near", "tatami"],
+        seatType: "座敷テーブル",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 86,
+        tags: ["ホテル3分", "座敷", "単品焼肉安い", "アットホーム"],
+        highlight: "ホルモンやカルビの単品が500円〜600円台とリーズナブル。好きな部位だけ少しずつ注文できます。",
+        kidsPoint: "座敷席完備で煙の排煙もしっかり。ホテル激近なので匂いがついてもすぐお風呂に入れます。"
+      },
+      {
+        id: 45,
+        name: "元祖 ぴかいち 本店（博多駅前・七隈線移動の選択肢）",
+        kana: "ぴかいちほんてん",
+        zone: "zone_a",
+        area: "博多駅前（七隈線博多駅）",
+        distWalk: "七隈線で3分＋徒歩",
+        distMeters: 1400,
+        holidayHours: "11:00〜19:30（祝日早仕舞いあり）",
+        openTime: 11.0,
+        budget: "1,800円〜2,800円",
+        budgetScore: 2300,
+        categories: ["casual_kids", "cheap_delicious"],
+        seatType: "テーブル",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 88,
+        tags: ["皿うどん元祖", "博多駅直結エリア", "老舗中華"],
+        highlight: "科学館から七隈線でホテルへ戻る途中で、博多駅で降りてサクッと名物皿うどんを食べるルート用。",
+        kidsPoint: "夕方17時台はすぐ座れます。"
+      },
+      {
+        id: 46,
+        name: "天ぷら うどん 清川店（那の川通り沿い）",
+        kana: "てんぷらうどん",
+        zone: "zone_d",
+        area: "清川・那の川",
+        distWalk: "徒歩6分",
+        distMeters: 490,
+        holidayHours: "11:00〜21:00",
+        openTime: 11.0,
+        budget: "1,100円〜1,600円",
+        budgetScore: 1350,
+        categories: ["hotel_near", "casual_kids", "cheap_delicious"],
+        seatType: "カウンター・テーブル",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 88,
+        tags: ["天ぷら揚げたて", "出汁うどん", "安い早い旨い"],
+        highlight: "注文が入ってから揚げる熱々の野菜天やえび天が乗ったうどん。キムチや高菜の無料コーナーも充実。",
+        kidsPoint: "とにかく提供が早く、入店から退店まで30分以内で済むため、ぐずりそうな時に大助かり。"
+      },
+      {
+        id: 47,
+        name: "モスバーガー 渡辺通店",
+        kana: "もすばーがー",
+        zone: "zone_a",
+        area: "渡辺通2丁目",
+        distWalk: "徒歩8分",
+        distMeters: 620,
+        holidayHours: "07:00〜22:00（通し営業）",
+        openTime: 7.0,
+        budget: "1,200円〜1,800円",
+        budgetScore: 1500,
+        categories: ["casual_kids"],
+        seatType: "テーブル・ボックス席",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 84,
+        tags: ["ワイワイセット", "おもちゃ付き", "通し営業", "安心品質"],
+        highlight: "「どうしてもご当地系を子どもが嫌がった時の最終防衛線」。国産野菜と無添加パティで親も安心。",
+        kidsPoint: "5歳児歓喜のおもちゃ付きキッズセットがあり、店内清潔でトイレも綺麗。"
+      },
+      {
+        id: 48,
+        name: "びっくりドンキー 薬院店（高砂寄り）",
+        kana: "びっくりどんきー",
+        zone: "zone_b",
+        area: "白金・高砂隣接",
+        distWalk: "徒歩10分",
+        distMeters: 800,
+        holidayHours: "08:00〜翌3:00（通し営業）",
+        openTime: 8.0,
+        budget: "2,000円〜3,000円",
+        budgetScore: 2500,
+        categories: ["casual_kids"],
+        seatType: "広々ウッドボックス席",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 86,
+        tags: ["木製ワンプレート", "キッズプレート", "通し営業", "ソファー席"],
+        highlight: "大人気のチーズバーグディッシュやキッズうどん、ポテトフライ。扉型メニューにお子さまも大はしゃぎ。",
+        kidsPoint: "完全ボックス席でゆったり。アレルギー対応メニューも完璧。"
+      },
+      {
+        id: 49,
+        name: "ジョリーパスタ 薬院店",
+        kana: "じょりーぱすた",
+        zone: "zone_b",
+        area: "薬院3丁目",
+        distWalk: "徒歩13分",
+        distMeters: 1050,
+        holidayHours: "11:00〜24:00",
+        openTime: 11.0,
+        budget: "2,000円〜3,200円",
+        budgetScore: 2600,
+        categories: ["casual_kids"],
+        seatType: "ソファーボックス席",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 83,
+        tags: ["パスタ", "ピザ", "キッズメニュー", "ドリンクバー"],
+        highlight: "子供が大好きなミートソースやカルボナーラ、パリパリのクリスピーピザをシェアして食べられます。",
+        kidsPoint: "ドリンクバーやキッズパスタセットがあり、確実にご機嫌になってくれます。"
+      },
+      {
+        id: 50,
+        name: "やよい軒 薬院店",
+        kana: "やよいけん",
+        zone: "zone_b",
+        area: "白金1丁目",
+        distWalk: "徒歩9分",
+        distMeters: 740,
+        holidayHours: "06:00〜23:00",
+        openTime: 6.0,
+        budget: "1,500円〜2,200円",
+        budgetScore: 1850,
+        categories: ["casual_kids", "cheap_delicious"],
+        seatType: "テーブル・ボックス席",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 85,
+        tags: ["和定食", "お子様ランチあり", "だし無料サービス", "ご飯おかわり無料"],
+        highlight: "チキン南蛮やしまほっけ定食など安定の和洋定食。お子様ランチ（プリン付き）も用意されています。",
+        kidsPoint: "無料で注げる「温かいかつお出汁」で、最後に出汁茶漬けを作ると子どもが喜んで食べます。"
+      },
+      {
+        id: 51,
+        name: "ほっともっと 清川店（テイクアウト部屋食）",
+        kana: "ほっともっと",
+        zone: "zone_d",
+        area: "清川2丁目（ホテル徒歩1分）",
+        distWalk: "徒歩1分",
+        distMeters: 90,
+        holidayHours: "08:00〜22:00",
+        openTime: 8.0,
+        budget: "1,000円〜1,600円",
+        budgetScore: 1300,
+        categories: ["hotel_near", "cheap_delicious"],
+        seatType: "テイクアウト専用（ホテルの部屋で食事）",
+        smoke: "完全禁煙",
+        isCaution: false,
+        recommended: 89,
+        tags: ["ドラえもん弁当", "ホテル1分", "お部屋でゆっくり", "疲労困憊時の最強策"],
+        highlight: "「子供が眠くて限界！お店で座っていられない！」という緊急事態の最強の味方。ホテル一楽から走って1分。",
+        kidsPoint: "ドラえもんランチ（おにぎり・から揚げ・シール付き）を買って、ホテルのテレビを見ながら部屋で食べれば平和そのもの。"
+      },
+      {
+        id: 52,
+        name: "居酒屋 あかり 高砂店",
+        kana: "あかり",
+        zone: "zone_c",
+        area: "高砂1丁目",
+        distWalk: "徒歩6分",
+        distMeters: 460,
+        holidayHours: "17:00〜23:00",
+        openTime: 17.0,
+        budget: "2,800円〜4,000円",
+        budgetScore: 3400,
+        categories: ["tatami", "cheap_delicious"],
+        seatType: "掘りごたつ座敷完備",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 87,
+        tags: ["座敷", "和食居酒屋", "唐揚げ", "お刺身"],
+        highlight: "落ち着いた木造の和風居酒屋。焼き魚、出し巻き玉子、山芋鉄板など福岡の定番居酒屋メニューが手頃に味わえます。",
+        kidsPoint: "靴を脱いで上がれる掘りごたつ席で、リラックスして過ごせます。"
+      },
+      {
+        id: 53,
+        name: "炭火焼鳥 とりぼうず 清川店",
+        kana: "とりぼうず",
+        zone: "zone_d",
+        area: "清川1丁目",
+        distWalk: "徒歩4分",
+        distMeters: 330,
+        holidayHours: "17:30〜23:30",
+        openTime: 17.5,
+        budget: "2,600円〜3,900円",
+        budgetScore: 3250,
+        categories: ["hotel_near", "local"],
+        seatType: "小上がり座敷あり",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 88,
+        tags: ["ホテル4分", "小上がり", "炭火焼", "つくねチーズ"],
+        highlight: "子供が大好きなチーズつくねやウインナー串が人気。炭火の香ばしさと特製甘ダレが抜群です。",
+        kidsPoint: "小上がり席があり、店員さんもアットホームで親切。"
+      },
+      {
+        id: 54,
+        name: "清川バル イル・バッフォーネ",
+        kana: "いるばっふぉーね",
+        zone: "zone_d",
+        area: "清川2丁目",
+        distWalk: "徒歩3分",
+        distMeters: 210,
+        holidayHours: "17:30〜23:00",
+        openTime: 17.5,
+        budget: "3,200円〜4,800円",
+        budgetScore: 4000,
+        categories: ["hotel_near"],
+        seatType: "テーブル席",
+        smoke: "全席禁煙",
+        isCaution: false,
+        recommended: 86,
+        tags: ["イタリアン", "ホテル3分", "窯焼きピザ", "生パスタ"],
+        highlight: "ホテルすぐ近くのカジュアルイタリアン。モチモチの窯焼きマルゲリータピザやボロネーゼパスタが人気。",
+        kidsPoint: "ピザを小さくカットして取り分けでき、オレンジジュースやジェラートも楽しめます。"
+      },
+
+      // --- 8. 【重要】要注意店（祝日定休・全席喫煙など事前に知っておくべき店） ---
+      {
+        id: 55,
+        name: "弥太郎うどん（注意：日・祝定休）",
+        kana: "やたろううどん",
+        zone: "zone_a",
+        area: "渡辺通5丁目",
+        distWalk: "徒歩10分",
+        distMeters: 800,
+        holidayHours: "祝日定休（日曜・祝日は休み）",
+        openTime: 99.0,
+        budget: "1,500円",
+        budgetScore: 1500,
+        categories: ["caution"],
+        seatType: "テーブル・カウンター",
+        smoke: "禁煙",
+        isCaution: true,
+        recommended: 10,
+        tags: ["祝日定休", "行ってはいけない", "代替：因幡うどん"],
+        highlight: "<strong>【警告：11/3祝日は休み】</strong>博多うどんの有名店ですが、祝日は営業していません。現地に行って閉まっている悲劇を避けてください！",
+        kidsPoint: "<strong>【代替店案内】</strong>うどん希望なら、祝日も開いている「因幡うどん 渡辺通店（徒歩6分）」または「ウエスト清川店（徒歩5分）」へ向かってください。"
+      },
+      {
+        id: 56,
+        name: "うどん居酒屋 二○加屋長介 薬院本店（注意：喫煙・混雑）",
+        kana: "にわかやちょうすけ",
+        zone: "zone_b",
+        area: "薬院3丁目",
+        distWalk: "徒歩12分",
+        distMeters: 920,
+        holidayHours: "16:00〜23:00（祝日営業）",
+        openTime: 16.0,
+        budget: "3,500円〜5,500円",
+        budgetScore: 4500,
+        categories: ["caution", "local"],
+        seatType: "カウンター・狭小テーブル",
+        smoke: "分煙・時間帯喫煙の可能性あり",
+        isCaution: true,
+        recommended: 40,
+        tags: ["大人の酒場", "席間隔狭い", "喫煙注意", "代替：やりうどん"],
+        highlight: "うどん居酒屋ブームの超有名店ですが、店内が狭く大人の飲酒空間です。夜はアルコール中心で賑やかすぎ、5歳児連れには不向き。",
+        kidsPoint: "<strong>【代替店案内】</strong>同じ薬院エリアなら、駅直結で席が広々した「博多やりうどん別邸 薬院店」が圧倒的に快適です。"
+      },
+      {
+        id: 57,
+        name: "名代ラーメン亭 地下街店（注意：日祝休業）",
+        kana: "なだいらーめんてい",
+        zone: "zone_a",
+        area: "渡辺通・天神地下街",
+        distWalk: "徒歩12分",
+        distMeters: 950,
+        holidayHours: "祝日休業",
+        openTime: 99.0,
+        budget: "1,200円",
+        budgetScore: 1200,
+        categories: ["caution"],
+        seatType: "カウンター・テーブル",
+        smoke: "禁煙",
+        isCaution: true,
+        recommended: 10,
+        tags: ["祝日定休", "代替：一心亭清川店"],
+        highlight: "昭和豚骨の有名店ですが祝日は休業。ラーメンならホテル近くの「長浜ラーメン 一心亭 清川店」へどうぞ。",
+        kidsPoint: "代替店の一心亭ならホテルから徒歩5分で、テーブル席もあり子供用小椀もあります。"
+      },
+      {
+        id: 58,
+        name: "大衆酒場 レトロ煙モク系焼鳥店（一般注意枠）",
+        kana: "たいしゅうやきとり",
+        zone: "zone_c",
+        area: "高砂・清川路地裏",
+        distWalk: "徒歩4〜6分",
+        distMeters: 400,
+        holidayHours: "店舗による",
+        openTime: 17.5,
+        budget: "2,500円〜3,500円",
+        budgetScore: 3000,
+        categories: ["caution"],
+        seatType: "カウンター中心",
+        smoke: "全席喫煙可能店が多数",
+        isCaution: true,
+        recommended: 20,
+        tags: ["受動喫煙注意", "席狭小", "代替：弥七・粋恭"],
+        highlight: "高砂・清川の路地にある一部の大衆焼鳥店は、小規模店特例で「全席喫煙可（タバコ充満）」の店が散見されます。",
+        kidsPoint: "5歳のお子さまの健康を守るため、禁煙が徹底されている「弥七」「とりかわ粋恭」「あつもの屋」などを推奨します。"
+      },
+      {
+        id: 59,
+        name: "天神屋台群（渡辺通・天神）（注意：トイレ・寒風・並び）",
+        kana: "やたい",
+        zone: "zone_a",
+        area: "渡辺通4丁目周辺",
+        distWalk: "徒歩12分",
+        distMeters: 950,
+        holidayHours: "18:30頃〜開店",
+        openTime: 18.5,
+        budget: "3,000円〜4,500円",
+        budgetScore: 3750,
+        categories: ["caution", "local"],
+        seatType: "簡易ベンチ席（超狭い）",
+        smoke: "屋外喫煙混在",
+        isCaution: true,
+        recommended: 30,
+        tags: ["屋台体験", "トイレなし", "長蛇の列", "5歳には過酷"],
+        highlight: "博多名物屋台ですが、祝日の夜は1時間以上の大行列。簡易ベンチは狭く、公衆トイレまで遠く、11月夜の冷え込みは5歳児に危険。",
+        kidsPoint: "屋台気分を味わうなら、屋内の店舗型居酒屋「弐ノ弐」や「あつもの屋」で温かいおでん・餃子を食べる方が遥かに安心です。"
+      },
+      {
+        id: 60,
+        name: "一蘭 天神西通り店（注意：大混雑・味集中カウンター）",
+        kana: "いちらん",
+        zone: "zone_a",
+        area: "天神（渡辺通以北）",
+        distWalk: "徒歩18分（地下鉄移動）",
+        distMeters: 1500,
+        holidayHours: "10:00〜翌6:00",
+        openTime: 10.0,
+        budget: "2,000円〜2,800円",
+        budgetScore: 2400,
+        categories: ["caution"],
+        seatType: "味集中カウンター（仕切りあり）",
+        smoke: "全席禁煙",
+        isCaution: true,
+        recommended: 35,
+        tags: ["超大行列（1〜2時間待ち）", "仕切り席", "親子会話困難"],
+        highlight: "全国的人気の一蘭ですが、祝日は観光客で60〜100分待ち。1席ごとに木の仕切りがあるため、5歳児の食事介助が非常に困難です。",
+        kidsPoint: "豚骨ラーメンなら、並ばずにテーブルでゆっくり食べられる「一心亭 清川店（ホテル徒歩5分）」が圧倒的におすすめです。"
+      }
+    ];
+
+    // お気に入り保存用（LocalStorage）
+    let favorites = JSON.parse(localStorage.getItem('ichiraku_favs') || '[]');
+
+    // 状態管理
+    let currentCategory = 'all';
+    let currentZone = null; // エリアフィルター
+    let searchQuery = '';
+    let currentSort = 'recommended';
+    let showOnlyFavs = false;
+
+    // DOM要素の取得
+    const restaurantGrid = document.getElementById('restaurantGrid');
+    const noResults = document.getElementById('noResults');
+    const searchInput = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const sortSelect = document.getElementById('sortSelect');
+    const categoryButtons = document.querySelectorAll('.cat-btn');
+    const resultCountText = document.getElementById('resultCountText');
+    const showFavOnlyBtn = document.getElementById('showFavOnlyBtn');
+    const favCountBadge = document.getElementById('favCountBadge');
+    const mobileFavCount = document.getElementById('mobileFavCount');
+    const resetFilterBtn = document.getElementById('resetFilterBtn');
+    const areaCards = document.querySelectorAll('.area-filter-card');
+    const resetAreaFilterBtn = document.getElementById('resetAreaFilterBtn');
+    const filterTagContainer = document.getElementById('filterTagContainer');
+
+    // モーダル要素
+    const detailModal = document.getElementById('detailModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const modalName = document.getElementById('modalName');
+    const modalKana = document.getElementById('modalKana');
+    const modalDist = document.getElementById('modalDist');
+    const modalHours = document.getElementById('modalHours');
+    const modalBudget = document.getElementById('modalBudget');
+    const modalSeat = document.getElementById('modalSeat');
+    const modalHighlight = document.getElementById('modalHighlight');
+    const modalKidsPoint = document.getElementById('modalKidsPoint');
+    const modalTags = document.getElementById('modalTags');
+    const modalMapBtn = document.getElementById('modalMapBtn');
+    const modalZoneBadgeContainer = document.getElementById('modalZoneBadgeContainer');
+
+    // 初期化
+    function init() {
+      updateFavBadge();
+      setupEventListeners();
+      renderCards();
+    }
+
+    // イベントリスナー設定
+    function setupEventListeners() {
+      // 検索バー
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.trim().toLowerCase();
+        clearSearchBtn.classList.toggle('hidden', searchQuery === '');
+        renderCards();
+      });
+
+      clearSearchBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchQuery = '';
+        clearSearchBtn.classList.add('hidden');
+        renderCards();
+      });
+
+      // 並び替え
+      sortSelect.addEventListener('change', (e) => {
+        currentSort = e.target.value;
+        renderCards();
+      });
+
+      // カテゴリタブ
+      categoryButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          categoryButtons.forEach(b => {
+            b.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-xs');
+            if (b.dataset.cat === 'caution') {
+              b.classList.add('bg-rose-50', 'text-rose-700');
+            } else {
+              b.classList.add('bg-slate-100', 'text-slate-700');
+            }
+          });
+
+          btn.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-xs');
+          btn.classList.remove('bg-slate-100', 'text-slate-700', 'bg-rose-50', 'text-rose-700');
+
+          currentCategory = btn.dataset.cat;
+          showOnlyFavs = false; // カテゴリ変更時はお気に入り限定を解除
+          updateFavButtonState();
+          renderCards();
+        });
+      });
+
+      // エリアカード（俯瞰図）クリックによる絞り込み
+      areaCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const zone = card.dataset.zone;
+          if (currentZone === zone) {
+            // 同じものを再度押したら解除
+            currentZone = null;
+          } else {
+            currentZone = zone;
+          }
+          updateAreaCardUI();
+          renderCards();
+        });
+      });
+
+      resetAreaFilterBtn.addEventListener('click', () => {
+        currentZone = null;
+        updateAreaCardUI();
+        renderCards();
+      });
+
+      // お気に入り限定表示ボタン
+      showFavOnlyBtn.addEventListener('click', () => {
+        showOnlyFavs = !showOnlyFavs;
+        updateFavButtonState();
+        renderCards();
+      });
+
+      // フィルターリセット
+      resetFilterBtn.addEventListener('click', () => {
+        currentCategory = 'all';
+        currentZone = null;
+        searchQuery = '';
+        searchInput.value = '';
+        clearSearchBtn.classList.add('hidden');
+        showOnlyFavs = false;
+        currentSort = 'recommended';
+        sortSelect.value = 'recommended';
+
+        categoryButtons.forEach(b => {
+          b.classList.remove('active', 'bg-brand-600', 'text-white');
+          if (b.dataset.cat === 'all') {
+            b.classList.add('active', 'bg-brand-600', 'text-white');
+          } else if (b.dataset.cat === 'caution') {
+            b.classList.add('bg-rose-50', 'text-rose-700');
+          } else {
+            b.classList.add('bg-slate-100', 'text-slate-700');
+          }
+        });
+
+        updateAreaCardUI();
+        updateFavButtonState();
+        renderCards();
+      });
+
+      // モーダル閉じる
+      closeModalBtn.addEventListener('click', () => {
+        detailModal.classList.add('hidden');
+      });
+
+      detailModal.addEventListener('click', (e) => {
+        if (e.target === detailModal) {
+          detailModal.classList.add('hidden');
+        }
+      });
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !detailModal.classList.contains('hidden')) {
+          detailModal.classList.add('hidden');
+        }
+      });
+    }
+
+    // エリアカードの選択中ハイライト更新
+    function updateAreaCardUI() {
+      areaCards.forEach(card => {
+        if (currentZone && card.dataset.zone === currentZone) {
+          card.classList.add('ring-2', 'ring-brand-500', 'shadow-md', 'scale-[1.02]');
+        } else {
+          card.classList.remove('ring-2', 'ring-brand-500', 'shadow-md', 'scale-[1.02]');
+        }
+      });
+    }
+
+    // お気に入りバッジ更新
+    function updateFavBadge() {
+      favCountBadge.textContent = favorites.length;
+      if (mobileFavCount) {
+        mobileFavCount.textContent = favorites.length;
+      }
+    }
+
+    // お気に入りボタンのUI更新
+    function updateFavButtonState() {
+      if (showOnlyFavs) {
+        showFavOnlyBtn.classList.add('ring-2', 'ring-white', 'bg-coral-600');
+      } else {
+        showFavOnlyBtn.classList.remove('ring-2', 'ring-white', 'bg-coral-600');
+      }
+    }
+
+    // お気に入りトグル処理
+    window.toggleFav = function(id, event) {
+      if (event) event.stopPropagation();
+      const idx = favorites.indexOf(id);
+      if (idx !== -1) {
+        favorites.splice(idx, 1);
+      } else {
+        favorites.push(id);
+      }
+      localStorage.setItem('ichiraku_favs', JSON.stringify(favorites));
+      updateFavBadge();
+      renderCards();
+    };
+
+    // 店舗詳細モーダルを開く
+    window.openDetail = function(id) {
+      const item = RESTAURANTS.find(r => r.id === id);
+      if (!item) return;
+
+      modalName.textContent = item.name;
+      modalKana.textContent = item.kana;
+      modalDist.textContent = `${item.distWalk}（約${item.distMeters}m）`;
+      modalHours.textContent = item.holidayHours;
+      modalBudget.textContent = item.budget;
+      modalSeat.textContent = `${item.seatType} / ${item.smoke}`;
+      modalHighlight.innerHTML = item.highlight;
+      modalKidsPoint.innerHTML = item.kidsPoint;
+      
+      // ゾーンバッジ
+      modalZoneBadgeContainer.innerHTML = getZoneBadgeHtml(item.zone);
+
+      // タグ
+      modalTags.innerHTML = item.tags.map(t => `<span class="bg-slate-100 text-slate-700 text-[10px] px-2 py-0.5 rounded-md font-medium border border-slate-200">${t}</span>`).join('');
+
+      // マップURL
+      const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' 福岡')}`;
+      modalMapBtn.href = mapUrl;
+
+      detailModal.classList.remove('hidden');
+    };
+
+    // ゾーンバッジ生成ヘルパー
+    function getZoneBadgeHtml(zone) {
+      if (zone === 'zone_d') {
+        return '<span class="bg-purple-100 text-purple-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-purple-200"><i class="fa-solid fa-hotel mr-1 text-purple-600"></i>清川ホテル直近</span>';
+      } else if (zone === 'zone_c') {
+        return '<span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-amber-200"><i class="fa-solid fa-arrows-split-up-and-left mr-1 text-amber-600"></i>高砂エリア</span>';
+      } else if (zone === 'zone_a') {
+        return '<span class="bg-blue-100 text-blue-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-blue-200"><i class="fa-solid fa-train-subway mr-1 text-blue-600"></i>渡辺通エリア</span>';
+      } else {
+        return '<span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-emerald-200"><i class="fa-solid fa-train mr-1 text-emerald-600"></i>薬院エリア</span>';
+      }
+    }
+
+    // ゾーン上部ストリップカラー
+    function getZoneTopBorderClass(zone) {
+      if (zone === 'zone_d') return 'bg-purple-500';
+      if (zone === 'zone_c') return 'bg-amber-500';
+      if (zone === 'zone_a') return 'bg-blue-500';
+      return 'bg-emerald-500';
+    }
+
+    // フィルタリングとソートを実行してカードを描画
+    function renderCards() {
+      let filtered = RESTAURANTS.filter(item => {
+        // お気に入り限定フィルター
+        if (showOnlyFavs && !favorites.includes(item.id)) return false;
+
+        // エリア（ゾーン）フィルター
+        if (currentZone && item.zone !== currentZone) return false;
+
+        // カテゴリフィルター
+        if (currentCategory !== 'all') {
+          if (!item.categories.includes(currentCategory)) return false;
+        }
+
+        // 検索クエリフィルター
+        if (searchQuery) {
+          const matchTarget = `${item.name} ${item.kana} ${item.area} ${item.highlight} ${item.kidsPoint} ${item.tags.join(' ')} ${item.seatType}`.toLowerCase();
+          if (!matchTarget.includes(searchQuery)) return false;
+        }
+
+        return true;
+      });
+
+      // ソート処理
+      filtered.sort((a, b) => {
+        if (currentSort === 'distance_asc') {
+          return a.distMeters - b.distMeters;
+        } else if (currentSort === 'price_asc') {
+          return a.budgetScore - b.budgetScore;
+        } else if (currentSort === 'early_open') {
+          return a.openTime - b.openTime;
+        } else {
+          // recommended
+          return b.recommended - a.recommended;
+        }
+      });
+
+      // 結果カウント表示
+      resultCountText.textContent = `該当：${filtered.length}件`;
+
+      // 適用中フィルタータグ表示
+      renderActiveFilterTags();
+
+      // 該当なしの場合
+      if (filtered.length === 0) {
+        restaurantGrid.innerHTML = '';
+        noResults.classList.remove('hidden');
+        return;
+      }
+
+      noResults.classList.add('hidden');
+
+      // HTMLカードの生成
+      const cardsHtml = filtered.map(item => {
+        const isFav = favorites.includes(item.id);
+        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' 福岡')}`;
+        const zoneBadge = getZoneBadgeHtml(item.zone);
+        const topStrip = getZoneTopBorderClass(item.zone);
+
+        // 要注意カードと通常カードのスタイリング分岐
+        const borderClass = item.isCaution 
+          ? 'border-rose-300 bg-rose-50/50 shadow-sm' 
+          : 'border-slate-200/90 bg-white hover:border-brand-400 hover:shadow-card-hover';
+
+        return `
+          <div 
+            onclick="openDetail(${item.id})"
+            class="relative flex flex-col rounded-2xl border ${borderClass} transition-all duration-200 overflow-hidden group cursor-pointer"
+          >
+            <!-- Top color accent stripe -->
+            <div class="h-1.5 w-full ${topStrip}"></div>
+            
+            <!-- Card Header -->
+            <div class="p-4 sm:p-5 pb-2">
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="text-[10px] font-black text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md font-display">No.${item.id}</span>
+                  ${zoneBadge}
+                  <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2 py-0.5 rounded-md border border-slate-200">
+                    <i class="fa-solid fa-person-walking text-brand-600 mr-0.5"></i>${item.distWalk}
+                  </span>
+                </div>
+                
+                <!-- Favorite Bookmark Button -->
+                <button 
+                  type="button"
+                  onclick="toggleFav(${item.id}, event)" 
+                  class="w-9 h-9 rounded-full flex items-center justify-center transition-all ${isFav ? 'bg-red-50 text-red-500 hover:bg-red-100 heart-bounce' : 'bg-slate-100 text-slate-400 hover:text-red-400 hover:bg-slate-200'}"
+                  title="${isFav ? 'お気に入りから解除' : 'お気に入りに追加'}"
+                >
+                  <i class="fa-${isFav ? 'solid' : 'regular'} fa-heart text-base"></i>
+                </button>
+              </div>
+
+              <!-- Title & Kana -->
+              <h3 class="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-brand-700 transition leading-snug">
+                ${item.name}
+              </h3>
+              <p class="text-[11px] text-slate-400 -mt-0.5 mb-2">${item.kana}</p>
+
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-1 mb-2">
+                ${item.tags.map(t => `<span class="bg-slate-50 text-slate-600 text-[10px] px-2 py-0.5 rounded-md border border-slate-200 font-medium">${t}</span>`).join('')}
+              </div>
+            </div>
+
+            <!-- Key Specs Table / Info Box -->
+            <div class="px-4 sm:px-5 py-3 bg-slate-50/80 border-y border-slate-100 text-xs space-y-1.5 text-slate-700">
+              <div class="flex items-start justify-between">
+                <span class="text-slate-500 font-medium whitespace-nowrap mr-2"><i class="fa-regular fa-clock text-amber-500 w-3.5"></i>祝日営業:</span>
+                <span class="font-bold text-slate-900 text-right ${item.openTime <= 16.5 ? 'text-coral-600' : ''}">${item.holidayHours}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500 font-medium whitespace-nowrap mr-2"><i class="fa-solid fa-coins text-amber-600 w-3.5"></i>親子予算:</span>
+                <span class="font-bold text-slate-900">${item.budget}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500 font-medium whitespace-nowrap mr-2"><i class="fa-solid fa-chair text-brand-600 w-3.5"></i>席タイプ:</span>
+                <span class="text-slate-800 font-semibold truncate">${item.seatType}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500 font-medium whitespace-nowrap mr-2"><i class="fa-solid fa-ban-smoking text-emerald-600 w-3.5"></i>禁煙環境:</span>
+                <span class="text-emerald-700 font-bold">${item.smoke}</span>
+              </div>
+            </div>
+
+            <!-- Highlights & Kids Details -->
+            <div class="p-4 sm:p-5 pt-3 text-xs flex-1 flex flex-col justify-between space-y-3">
+              <div>
+                <p class="text-slate-700 leading-relaxed font-normal mb-2.5">
+                  ${item.highlight}
+                </p>
+                
+                <div class="bg-amber-50/90 border border-amber-200/80 rounded-xl p-3 text-[11px] leading-relaxed text-amber-950">
+                  <span class="font-bold flex items-center gap-1.5 mb-1 text-amber-950">
+                    <i class="fa-solid fa-child-reaching text-coral-500 text-xs"></i> 子連れ・取り分けポイント
+                  </span>
+                  ${item.kidsPoint}
+                </div>
+              </div>
+
+              <!-- Action Link -->
+              <div class="pt-1 flex items-center gap-2" onclick="event.stopPropagation()">
+                <button 
+                  onclick="openDetail(${item.id})"
+                  class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2 px-3 rounded-xl transition text-center text-xs border border-slate-200"
+                >
+                  <i class="fa-solid fa-circle-info text-slate-500 mr-1"></i>詳細
+                </button>
+                <a 
+                  href="${mapUrl}" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="flex-1 bg-slate-900 hover:bg-brand-600 text-white font-semibold py-2 px-3 rounded-xl transition flex items-center justify-center gap-1.5 text-xs shadow-xs"
+                >
+                  <i class="fa-solid fa-location-arrow text-brand-300"></i>
+                  Googleマップ
+                </a>
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+
+      restaurantGrid.innerHTML = cardsHtml;
+    }
+
+    // 適用中フィルタータグの描画
+    function renderActiveFilterTags() {
+      let tags = [];
+
+      if (currentZone) {
+        const zoneNames = {
+          'zone_d': '清川 (徒歩1〜4分)',
+          'zone_c': '高砂 (徒歩5〜8分)',
+          'zone_a': '渡辺通 (徒歩10〜12分)',
+          'zone_b': '薬院 (徒歩12〜14分)'
+        };
+        tags.push(`
+          <span class="inline-flex items-center gap-1 bg-purple-50 text-purple-800 border border-purple-200 px-2.5 py-1 rounded-full text-xs font-semibold">
+            エリア: ${zoneNames[currentZone]}
+            <button onclick="currentZone=null; updateAreaCardUI(); renderCards();" class="hover:text-purple-950 ml-1">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </span>
+        `);
+      }
+
+      if (showOnlyFavs) {
+        tags.push(`
+          <span class="inline-flex items-center gap-1 bg-coral-50 text-coral-800 border border-coral-200 px-2.5 py-1 rounded-full text-xs font-semibold">
+            保存済みのみ (${favorites.length}件)
+            <button onclick="showOnlyFavs=false; updateFavButtonState(); renderCards();" class="hover:text-coral-950 ml-1">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </span>
+        `);
+      }
+
+      if (searchQuery) {
+        tags.push(`
+          <span class="inline-flex items-center gap-1 bg-brand-50 text-brand-800 border border-brand-200 px-2.5 py-1 rounded-full text-xs font-semibold">
+            検索: "${searchQuery}"
+            <button onclick="searchInput.value=''; searchQuery=''; clearSearchBtn.classList.add('hidden'); renderCards();" class="hover:text-brand-950 ml-1">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </span>
+        `);
+      }
+
+      filterTagContainer.innerHTML = tags.join('');
+    }
+
+    // ドキュメント読み込み完了時に実行
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+
+</body>
+</html>
