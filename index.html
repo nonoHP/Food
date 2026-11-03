@@ -101,7 +101,7 @@
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col pb-16 md:pb-0">
+<body class="bg-slate-100 text-slate-800 font-sans antialiased min-h-screen flex flex-col pb-16 md:pb-0">
 
   <!-- ================= 1. Modern Slim Header & Smart Filter Bar (Sticky Top) ================= -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
@@ -345,7 +345,7 @@
     </div>
 
     <!-- レストランカードグリッド（即座にここに到達！） -->
-<div id="restaurantGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+<div id="restaurantGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
       <!-- Dynamic rendering via JavaScript -->
     </div>
 
@@ -3671,7 +3671,7 @@
 
       noResults.classList.add('hidden');
 
-      // HTMLカードの生成（視線誘導と余白が整ったモダンクリーンデザイン）
+      // HTMLカードの生成（明確なカード境界・視覚的ハイライト強化UI）
       const cardsHtml = filtered.map(item => {
         const isFav = favorites.includes(item.id);
         const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' 福岡')}`;
@@ -3680,24 +3680,27 @@
         const { provider, url: safeGourmetUrl } = getSafeGourmetInfo(item);
         const gourmetStyle = getGourmetBtnStyle(provider);
 
-        // 要注意カードと通常カードのカード外枠
+        // カード外枠（くっきりとした境界線・立体的なシャドウでカード間の境目を明確化）
         const cardClass = item.isCaution 
-          ? 'border-rose-200 bg-rose-50/30' 
-          : 'border-slate-200/90 bg-white hover:border-slate-300 hover:shadow-md';
+          ? 'border-2 border-rose-300 bg-white shadow-md hover:shadow-xl hover:border-rose-400' 
+          : 'border-2 border-slate-200 bg-white shadow-md hover:shadow-xl hover:border-amber-400/90';
 
         return `
           <div 
             onclick="openDetail(${item.id})"
-            class="relative flex flex-col justify-between rounded-2xl border ${cardClass} p-4 sm:p-5 transition-all duration-200 group cursor-pointer shadow-xs hover:-translate-y-0.5"
+            class="relative flex flex-col justify-between rounded-2xl ${cardClass} p-4 sm:p-5 transition-all duration-200 group cursor-pointer hover:-translate-y-1"
           >
-            <!-- 1. ヘッダー：バッジ・距離 ＆ お気に入りボタン -->
+            <!-- 1. ヘッダー：店舗番号No・バッジ・距離 ＆ お気に入りボタン（境界を際立たせる区切り線付き） -->
             <div>
-              <div class="flex items-center justify-between gap-2 mb-2">
+              <div class="flex items-center justify-between gap-2 mb-3 pb-2.5 border-b border-slate-100">
                 <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="text-[10px] font-black text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md font-display border border-slate-200">
+                    No.${item.id}
+                  </span>
                   ${holidayBadge}
                   ${zoneBadge}
-                  <span class="text-slate-500 text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded-full border border-slate-200/70">
-                    <i class="fa-solid fa-person-walking text-slate-500 mr-0.5"></i>${item.distWalk}
+                  <span class="text-slate-600 text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded-full border border-slate-200">
+                    <i class="fa-solid fa-person-walking text-amber-600 mr-0.5"></i>${item.distWalk}
                   </span>
                 </div>
                 
@@ -3705,7 +3708,7 @@
                 <button 
                   type="button"
                   onclick="toggleFav(${item.id}, event)" 
-                  class="w-8 h-8 rounded-full flex items-center justify-center transition-all shrink-0 ${isFav ? 'bg-rose-50 text-rose-500 heart-bounce shadow-2xs' : 'bg-slate-50 text-slate-300 hover:text-rose-500 hover:bg-slate-100'}"
+                  class="w-8 h-8 rounded-full flex items-center justify-center transition-all shrink-0 ${isFav ? 'bg-rose-50 text-rose-500 heart-bounce shadow-2xs' : 'bg-slate-100 text-slate-400 hover:text-rose-500 hover:bg-slate-200'}"
                   title="${isFav ? 'お気に入りから解除' : 'お気に入りに追加'}"
                 >
                   <i class="fa-${isFav ? 'solid' : 'regular'} fa-heart text-sm"></i>
@@ -3721,20 +3724,28 @@
               </div>
 
               <!-- 3. タグ一覧（すっきりとしたピル型） -->
-              <div class="flex flex-wrap gap-1 mb-2.5">
-                ${item.tags.map(t => `<span class="bg-slate-100 text-slate-600 text-[10px] px-2 py-0.5 rounded-md font-medium">${t}</span>`).join('')}
+              <div class="flex flex-wrap gap-1 mb-3">
+                ${item.tags.map(t => `<span class="bg-slate-100 text-slate-600 text-[10px] px-2 py-0.5 rounded-md font-medium border border-slate-200/60">${t}</span>`).join('')}
               </div>
 
-              <!-- 4. 店舗ハイライト（1〜2行でスッと読める紹介文） -->
-              <p class="text-xs text-slate-600 leading-relaxed mb-3">
-                ${item.highlight}
-              </p>
+              <!-- 4. 店舗ハイライト（単純な文字を廃止し、上質なコールアウトボックスで魅力がパッと伝わる！） -->
+              <div class="bg-gradient-to-r from-amber-50/90 to-orange-50/50 rounded-xl p-3 mb-3 border border-amber-200/90 shadow-2xs">
+                <div class="flex items-center gap-1.5 text-[11px] font-extrabold text-amber-900 mb-1">
+                  <span class="w-4 h-4 rounded-full bg-amber-500 text-white flex items-center justify-center text-[9px] shadow-2xs">
+                    <i class="fa-solid fa-star"></i>
+                  </span>
+                  <span>お店の魅力・名物</span>
+                </div>
+                <p class="text-xs text-slate-700 leading-relaxed font-medium">
+                  ${item.highlight}
+                </p>
+              </div>
 
-              <!-- 5. 基本スペック一覧（枠線小箱を廃止し、すっきり整ったインフォリスト） -->
-              <div class="bg-slate-50/90 rounded-xl p-3 text-xs space-y-2 text-slate-700 mb-3 border border-slate-100">
+              <!-- 5. 基本スペック一覧（すっきり整ったインフォリスト） -->
+              <div class="bg-slate-50/90 rounded-xl p-3 text-xs space-y-2 text-slate-700 mb-3 border border-slate-200/70">
                 <!-- 祝日営業時間 -->
                 <div class="flex items-start justify-between gap-2">
-                  <span class="text-slate-400 text-[11px] font-bold flex items-center gap-1.5 shrink-0 mt-0.5">
+                  <span class="text-slate-500 text-[11px] font-bold flex items-center gap-1.5 shrink-0 mt-0.5">
                     <i class="fa-solid fa-clock text-amber-500 w-3.5"></i>営業時間
                   </span>
                   <span class="font-extrabold text-slate-800 text-right text-[11px]">
@@ -3744,7 +3755,7 @@
 
                 <!-- 親子予算 & 席タイプ -->
                 <div class="flex items-start justify-between gap-2 pt-1.5 border-t border-slate-200/60">
-                  <span class="text-slate-400 text-[11px] font-bold flex items-center gap-1.5 shrink-0 mt-0.5">
+                  <span class="text-slate-500 text-[11px] font-bold flex items-center gap-1.5 shrink-0 mt-0.5">
                     <i class="fa-solid fa-coins text-amber-600 w-3.5"></i>予算・席
                   </span>
                   <span class="font-bold text-slate-800 text-right text-[11px]">
@@ -3752,9 +3763,9 @@
                   </span>
                 </div>
 
-                <!-- 料理価格目安（途切れず自然に読める） -->
+                <!-- 料理価格目安 -->
                 <div class="flex items-start justify-between gap-2 pt-1.5 border-t border-slate-200/60">
-                  <span class="text-slate-400 text-[11px] font-bold flex items-center gap-1.5 shrink-0 mt-0.5">
+                  <span class="text-slate-500 text-[11px] font-bold flex items-center gap-1.5 shrink-0 mt-0.5">
                     <i class="fa-solid fa-utensils text-orange-500 w-3.5"></i>料理目安
                   </span>
                   <span class="text-slate-800 font-bold text-right text-[11px]">
@@ -3764,7 +3775,7 @@
 
                 <!-- ドリンク価格目安 -->
                 <div class="flex items-start justify-between gap-2 pt-1.5 border-t border-slate-200/60">
-                  <span class="text-slate-400 text-[11px] font-bold flex items-center gap-1.5 shrink-0 mt-0.5">
+                  <span class="text-slate-500 text-[11px] font-bold flex items-center gap-1.5 shrink-0 mt-0.5">
                     <i class="fa-solid fa-wine-glass text-purple-500 w-3.5"></i>ドリンク
                   </span>
                   <span class="text-slate-700 font-medium text-right text-[11px]">
@@ -3786,8 +3797,8 @@
                 ` : ''}
               </div>
 
-              <!-- 6. 子連れ・5歳児安心ポイント（まとまった1つの専用ブロックで最重要情報がスッと頭に入る） -->
-              <div class="bg-amber-50/70 border border-amber-200/80 rounded-xl p-3 text-xs mb-3 space-y-1.5">
+              <!-- 6. 子連れ・5歳児安心ポイント（1つの専用ブロックで最重要情報がスッと頭に入る） -->
+              <div class="bg-amber-50/80 border border-amber-200/90 rounded-xl p-3 text-xs mb-3 space-y-1.5">
                 <div class="flex items-center justify-between gap-1">
                   <span class="font-extrabold text-amber-950 flex items-center gap-1.5 text-xs">
                     <i class="fa-solid fa-child-reaching text-amber-600"></i> 子連れ安心ポイント
@@ -3808,7 +3819,7 @@
             </div>
 
             <!-- 7. アクションボタン（均整の取れた3つの押しやすいボタン） -->
-            <div class="flex items-center gap-2 pt-1 mt-auto" onclick="event.stopPropagation()">
+            <div class="flex items-center gap-2 pt-2 mt-auto border-t border-slate-100" onclick="event.stopPropagation()">
               <button 
                 onclick="openDetail(${item.id})"
                 class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-3 rounded-xl transition text-center text-xs border border-slate-200/80 shrink-0 cursor-pointer shadow-2xs flex items-center gap-1"
