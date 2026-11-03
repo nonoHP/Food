@@ -151,7 +151,8 @@
       <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 overflow-x-auto no-scrollbar py-0.5">
         <div class="flex items-center gap-1.5 shrink-0 text-xs font-bold text-teal-300 mr-1 select-none">
           <i class="fa-solid fa-filter text-amber-400"></i>
-          <span class="whitespace-nowrap">即時絞り込み:</span>
+          <span class="whitespace-nowrap">絞り込み:</span>
+          <span id="topResultCountBadge" class="bg-amber-400 text-slate-900 text-[10px] font-black px-2 py-0.5 rounded-full ml-0.5 shadow-xs">60件</span>
         </div>
         <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar" id="topQuickFilterButtons">
           <button data-quick="all" class="top-filter-btn active bg-white text-brand-900 font-extrabold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition shadow-xs flex items-center gap-1 cursor-pointer">
@@ -234,10 +235,15 @@
 
           <!-- ページの頭のクリック絞り込みボタン群 (Hero内) -->
           <div class="pt-3 border-t border-slate-200/70">
-            <span class="text-xs font-bold text-slate-700 block mb-2 flex items-center gap-1.5">
-              <i class="fa-solid fa-hand-pointer text-brand-600 animate-pulse"></i>
-              条件ボタンをクリックして一覧を即時絞り込み：
-            </span>
+            <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
+              <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                <i class="fa-solid fa-layer-group text-brand-600"></i>
+                条件をタップして徐々に絞り込み（複数選択可能）：
+              </span>
+              <span class="text-[11px] text-slate-500 font-medium bg-slate-100 px-2 py-0.5 rounded-md">
+                ※タップで追加・もう一度押して解除
+              </span>
+            </div>
             <div class="flex flex-wrap gap-2" id="heroQuickButtons">
               <button data-quick="open" class="hero-chip-btn bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
                 <i class="fa-solid fa-calendar-check text-emerald-200"></i>
@@ -520,8 +526,8 @@
       <!-- Quick Filter Chips & Category Tabs -->
       <div class="space-y-2.5">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
-            <i class="fa-solid fa-filter text-brand-600"></i> カテゴリーで絞り込み
+          <span class="text-xs font-bold text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
+            <i class="fa-solid fa-layer-group text-brand-600"></i> カテゴリーで絞り込み（複数選択で掛け合わせ可能）
           </span>
           <span id="resultCountText" class="text-xs font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
             該当：60件
@@ -3025,14 +3031,15 @@
     // お気に入り保存用（LocalStorage）
     let favorites = JSON.parse(localStorage.getItem('ichiraku_favs') || '[]');
 
-    // 状態管理
-    let currentCategory = 'all';
+    // 状態管理（複数条件の掛け合わせ・徐々に絞り込み対応）
+    let selectedCategories = new Set(); // 複数選択されたカテゴリー
     let currentZone = null; // エリアフィルター
     let searchQuery = '';
     let currentSort = 'recommended';
     let showOnlyFavs = false;
     let holidayOpenOnly = false; // 祝日営業店のみフィルター
     let kidsMenuOnly = false; // お子様メニューあり店のみフィルター
+    let earlyOpenOnly = false; // 16時〜17時開店フィルター
 
     // DOM要素の取得
     const restaurantGrid = document.getElementById('restaurantGrid');
@@ -3042,6 +3049,7 @@
     const sortSelect = document.getElementById('sortSelect');
     const categoryButtons = document.querySelectorAll('.cat-btn');
     const resultCountText = document.getElementById('resultCountText');
+    const topResultCountBadge = document.getElementById('topResultCountBadge');
     const showFavOnlyBtn = document.getElementById('showFavOnlyBtn');
     const favCountBadge = document.getElementById('favCountBadge');
     const mobileFavCount = document.getElementById('mobileFavCount');
@@ -3236,7 +3244,7 @@
       // 祝日営業のみトグル
       holidayOpenOnlyToggle.addEventListener('change', (e) => {
         holidayOpenOnly = e.target.checked;
-        updateQuickButtonsUI(holidayOpenOnly ? 'open' : 'all');
+        syncAllFilterUI();
         renderCards();
       });
 
@@ -3244,18 +3252,29 @@
       if (kidsMenuOnlyToggle) {
         kidsMenuOnlyToggle.addEventListener('change', (e) => {
           kidsMenuOnly = e.target.checked;
-          updateQuickButtonsUI(kidsMenuOnly ? 'kids' : 'all');
+          syncAllFilterUI();
           renderCards();
         });
       }
 
-      // ページの頭のクイック絞り込みボタン（上部バー・ヒーロー内・集計カード）
-      document.querySelectorAll('.top-filter-btn, .hero-chip-btn, .hero-stat-btn').forEach(btn => {
+      // 上部固定バーのクイック絞り込みボタン（その場で複数選択して徐々に絞り込めるようスクロールなし）
+      document.querySelectorAll('.top-filter-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
           const quickType = btn.dataset.quick;
           if (quickType) {
-            applyQuickFilter(quickType, true);
+            toggleQuickFilter(quickType, false);
+          }
+        });
+      });
+
+      // ヒーロー内のクイックボタン・集計カード（タップで絞り込み＋カード一覧へスクロール）
+      document.querySelectorAll('.hero-chip-btn, .hero-stat-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const quickType = btn.dataset.quick;
+          if (quickType) {
+            toggleQuickFilter(quickType, true);
           }
         });
       });
@@ -3280,26 +3299,11 @@
         renderCards();
       });
 
-      // カテゴリタブ
+      // カテゴリタブ（複数選択トグルで徐々に掛け合わせ絞り込み）
       categoryButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-          categoryButtons.forEach(b => {
-            b.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-xs');
-            if (b.dataset.cat === 'caution') {
-              b.classList.add('bg-rose-50', 'text-rose-700');
-            } else {
-              b.classList.add('bg-slate-100', 'text-slate-700');
-            }
-          });
-
-          btn.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-xs');
-          btn.classList.remove('bg-slate-100', 'text-slate-700', 'bg-rose-50', 'text-rose-700');
-
-          currentCategory = btn.dataset.cat;
-          showOnlyFavs = false; // カテゴリ変更時はお気に入り限定を解除
-          updateFavButtonState();
-          updateQuickButtonsUI(currentCategory);
-          renderCards();
+          const cat = btn.dataset.cat;
+          toggleQuickFilter(cat, false);
         });
       });
 
@@ -3333,34 +3337,7 @@
 
       // フィルターリセット
       resetFilterBtn.addEventListener('click', () => {
-        currentCategory = 'all';
-        currentZone = null;
-        holidayOpenOnly = false;
-        holidayOpenOnlyToggle.checked = false;
-        kidsMenuOnly = false;
-        if (kidsMenuOnlyToggle) kidsMenuOnlyToggle.checked = false;
-        searchQuery = '';
-        searchInput.value = '';
-        clearSearchBtn.classList.add('hidden');
-        showOnlyFavs = false;
-        currentSort = 'recommended';
-        sortSelect.value = 'recommended';
-
-        categoryButtons.forEach(b => {
-          b.classList.remove('active', 'bg-brand-600', 'text-white');
-          if (b.dataset.cat === 'all') {
-            b.classList.add('active', 'bg-brand-600', 'text-white');
-          } else if (b.dataset.cat === 'caution') {
-            b.classList.add('bg-rose-50', 'text-rose-700');
-          } else {
-            b.classList.add('bg-slate-100', 'text-slate-700');
-          }
-        });
-
-        updateAreaCardUI();
-        updateFavButtonState();
-        updateQuickButtonsUI('all');
-        renderCards();
+        toggleQuickFilter('all', false);
       });
 
       // モーダル閉じる
@@ -3410,87 +3387,55 @@
       }
     }
 
-    // ページの頭のクイック絞り込み実行ロジック
-    function applyQuickFilter(type, shouldScroll = true) {
+    // フィルターが現在アクティブ（適用中）かどうかの判定
+    function isFilterActive(key) {
+      if (key === 'all') {
+        return !holidayOpenOnly && !kidsMenuOnly && !earlyOpenOnly && selectedCategories.size === 0 && !currentZone && !showOnlyFavs && !searchQuery;
+      }
+      if (key === 'open') return holidayOpenOnly;
+      if (key === 'kids') return kidsMenuOnly;
+      if (key === 'early') return earlyOpenOnly;
+      if (key === 'fav') return showOnlyFavs;
+      return selectedCategories.has(key);
+    }
+
+    // クイック絞り込み実行ロジック（トグルで徐々に掛け合わせ絞り込み）
+    function toggleQuickFilter(type, shouldScroll = false) {
       if (type === 'all') {
-        currentCategory = 'all';
+        // 全リセット
+        selectedCategories.clear();
         currentZone = null;
         holidayOpenOnly = false;
         kidsMenuOnly = false;
+        earlyOpenOnly = false;
         showOnlyFavs = false;
-        currentSort = 'recommended';
-        sortSelect.value = 'recommended';
         searchQuery = '';
         searchInput.value = '';
         clearSearchBtn.classList.add('hidden');
+        currentSort = 'recommended';
+        sortSelect.value = 'recommended';
       } else if (type === 'open') {
-        holidayOpenOnly = true;
-        kidsMenuOnly = false;
-        currentCategory = 'all';
-        showOnlyFavs = false;
+        holidayOpenOnly = !holidayOpenOnly;
       } else if (type === 'kids') {
-        kidsMenuOnly = true;
-        holidayOpenOnly = false;
-        currentCategory = 'all';
-        showOnlyFavs = false;
-      } else if (type === 'hotel_near') {
-        currentCategory = 'hotel_near';
-        holidayOpenOnly = false;
-        kidsMenuOnly = false;
-        showOnlyFavs = false;
-      } else if (type === 'tatami') {
-        currentCategory = 'tatami';
-        holidayOpenOnly = false;
-        kidsMenuOnly = false;
-        showOnlyFavs = false;
+        kidsMenuOnly = !kidsMenuOnly;
       } else if (type === 'early') {
-        currentSort = 'early_open';
-        sortSelect.value = 'early_open';
-        holidayOpenOnly = true;
-        kidsMenuOnly = false;
-        currentCategory = 'all';
-        showOnlyFavs = false;
-      } else if (type === 'casual_kids') {
-        currentCategory = 'casual_kids';
-        holidayOpenOnly = false;
-        kidsMenuOnly = false;
-        showOnlyFavs = false;
-      } else if (type === 'local') {
-        currentCategory = 'local';
-        holidayOpenOnly = false;
-        kidsMenuOnly = false;
-        showOnlyFavs = false;
-      } else if (type === 'caution') {
-        currentCategory = 'caution';
-        holidayOpenOnly = false;
-        kidsMenuOnly = false;
-        showOnlyFavs = false;
+        earlyOpenOnly = !earlyOpenOnly;
+      } else if (type === 'fav') {
+        showOnlyFavs = !showOnlyFavs;
+      } else {
+        // カテゴリー（hotel_near, tatami, casual_kids, local, cheap_delicious, buffet, upscale, caution 等）
+        if (selectedCategories.has(type)) {
+          selectedCategories.delete(type);
+        } else {
+          selectedCategories.add(type);
+        }
       }
 
-      // トグルチェックボックスの同期
-      holidayOpenOnlyToggle.checked = holidayOpenOnly;
-      if (kidsMenuOnlyToggle) kidsMenuOnlyToggle.checked = kidsMenuOnly;
-
-      // 下部カテゴリタブの同期
-      categoryButtons.forEach(b => {
-        b.classList.remove('active', 'bg-brand-600', 'text-white');
-        if (b.dataset.cat === currentCategory) {
-          b.classList.add('active', 'bg-brand-600', 'text-white');
-        } else if (b.dataset.cat === 'caution') {
-          b.classList.add('bg-rose-50', 'text-rose-700');
-        } else {
-          b.classList.add('bg-slate-100', 'text-slate-700');
-        }
-      });
-
-      // クイックボタンUI同期
-      updateQuickButtonsUI(type);
-
-      updateAreaCardUI();
-      updateFavButtonState();
+      // UI同期とカード再描画
+      syncAllFilterUI();
       renderCards();
 
-      // カード一覧（レストランセクション）へスクロール
+      // スクロール
       if (shouldScroll) {
         const target = document.getElementById('restaurantSection');
         if (target) {
@@ -3498,40 +3443,104 @@
         }
       }
     }
+    window.toggleQuickFilter = toggleQuickFilter;
 
-    // ページの頭のクイックボタンのアクティブ表示更新
-    function updateQuickButtonsUI(activeType) {
+    // 全フィルターUIの双方向同期
+    function syncAllFilterUI() {
+      // チェックボックストグルの同期
+      holidayOpenOnlyToggle.checked = holidayOpenOnly;
+      if (kidsMenuOnlyToggle) kidsMenuOnlyToggle.checked = kidsMenuOnly;
+
+      // 上部固定バー（.top-filter-btn）の同期
       const topBtns = document.querySelectorAll('.top-filter-btn');
       topBtns.forEach(btn => {
         const q = btn.dataset.quick;
-        if (q === activeType) {
-          btn.classList.add('active', 'bg-white', 'text-brand-900', 'ring-2', 'ring-amber-400', 'font-black');
-          btn.classList.remove('text-white');
+        const active = isFilterActive(q);
+        if (q === 'all') {
+          if (active) {
+            btn.className = 'top-filter-btn active bg-white text-brand-900 font-extrabold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition shadow-xs flex items-center gap-1 cursor-pointer ring-2 ring-amber-400';
+          } else {
+            btn.className = 'top-filter-btn bg-white/10 hover:bg-white/20 text-white font-medium text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1 cursor-pointer';
+          }
         } else {
-          btn.classList.remove('active', 'bg-white', 'text-brand-900', 'ring-2', 'ring-amber-400', 'font-black');
-          btn.classList.add('text-white');
+          if (active) {
+            btn.className = 'top-filter-btn active bg-white text-brand-900 font-black text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition shadow-md flex items-center gap-1.5 cursor-pointer ring-2 ring-amber-400 scale-[1.03]';
+          } else {
+            btn.classList.remove('active', 'bg-white', 'text-brand-900', 'ring-2', 'ring-amber-400', 'font-black', 'scale-[1.03]');
+            if (q === 'open') btn.className = 'top-filter-btn bg-emerald-800/90 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-emerald-500/40 cursor-pointer';
+            else if (q === 'kids') btn.className = 'top-filter-btn bg-amber-700/90 hover:bg-amber-600 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-400/40 cursor-pointer';
+            else if (q === 'hotel_near') btn.className = 'top-filter-btn bg-purple-800/90 hover:bg-purple-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-purple-400/40 cursor-pointer';
+            else if (q === 'tatami') btn.className = 'top-filter-btn bg-amber-800/90 hover:bg-amber-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-400/40 cursor-pointer';
+            else if (q === 'early') btn.className = 'top-filter-btn bg-blue-800/90 hover:bg-blue-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-blue-400/40 cursor-pointer';
+            else if (q === 'casual_kids') btn.className = 'top-filter-btn bg-cyan-800/90 hover:bg-cyan-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-cyan-400/40 cursor-pointer';
+            else if (q === 'local') btn.className = 'top-filter-btn bg-red-800/90 hover:bg-red-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-red-400/40 cursor-pointer';
+            else btn.className = 'top-filter-btn bg-white/10 hover:bg-white/20 text-white font-medium text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1 cursor-pointer';
+          }
         }
       });
 
+      // ヒーロー内ボタン（.hero-chip-btn）の同期
       const heroChipBtns = document.querySelectorAll('.hero-chip-btn');
       heroChipBtns.forEach(btn => {
         const q = btn.dataset.quick;
-        if (q === activeType) {
-          btn.classList.add('ring-2', 'ring-brand-700', 'ring-offset-2', 'scale-105', 'font-black');
+        const active = isFilterActive(q);
+        if (q === 'all') {
+          if (active) {
+            btn.classList.add('ring-2', 'ring-brand-600', 'bg-brand-50', 'text-brand-900', 'font-black');
+          } else {
+            btn.classList.remove('ring-2', 'ring-brand-600', 'bg-brand-50', 'text-brand-900', 'font-black');
+          }
         } else {
-          btn.classList.remove('ring-2', 'ring-brand-700', 'ring-offset-2', 'scale-105', 'font-black');
+          if (active) {
+            btn.classList.add('ring-4', 'ring-offset-2', 'ring-brand-600', 'scale-105', 'font-black', 'shadow-md');
+          } else {
+            btn.classList.remove('ring-4', 'ring-offset-2', 'ring-brand-600', 'scale-105', 'font-black', 'shadow-md');
+          }
         }
       });
 
+      // ヒーロー集計カード（.hero-stat-btn）の同期
       const heroStatBtns = document.querySelectorAll('.hero-stat-btn');
       heroStatBtns.forEach(btn => {
         const q = btn.dataset.quick;
-        if (q === activeType) {
-          btn.classList.add('ring-2', 'ring-brand-600', 'ring-offset-1', 'scale-[1.02]');
+        const active = isFilterActive(q);
+        if (active) {
+          btn.classList.add('ring-3', 'ring-brand-600', 'ring-offset-1', 'scale-[1.03]', 'shadow-md');
         } else {
-          btn.classList.remove('ring-2', 'ring-brand-600', 'ring-offset-1', 'scale-[1.02]');
+          btn.classList.remove('ring-3', 'ring-brand-600', 'ring-offset-1', 'scale-[1.03]', 'shadow-md');
         }
       });
+
+      // 下部カテゴリーボタン（categoryButtons）の同期
+      categoryButtons.forEach(btn => {
+        const cat = btn.dataset.cat;
+        if (cat === 'all') {
+          const isAll = selectedCategories.size === 0;
+          if (isAll) {
+            btn.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-xs');
+            btn.classList.remove('bg-slate-100', 'text-slate-700');
+          } else {
+            btn.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-xs');
+            btn.classList.add('bg-slate-100', 'text-slate-700');
+          }
+        } else {
+          const isSelected = selectedCategories.has(cat);
+          if (isSelected) {
+            btn.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-xs', 'ring-2', 'ring-brand-400', 'font-bold');
+            btn.classList.remove('bg-slate-100', 'text-slate-700', 'bg-rose-50', 'text-rose-700');
+          } else {
+            btn.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-xs', 'ring-2', 'ring-brand-400', 'font-bold');
+            if (cat === 'caution') {
+              btn.classList.add('bg-rose-50', 'text-rose-700');
+            } else {
+              btn.classList.add('bg-slate-100', 'text-slate-700');
+            }
+          }
+        }
+      });
+
+      updateAreaCardUI();
+      updateFavButtonState();
     }
 
     // お気に入りトグル処理
@@ -3673,12 +3682,21 @@
         // お子様メニューあり店のみフィルター
         if (kidsMenuOnly && !item.hasKidsMenu) return false;
 
+        // 16時〜17時開店フィルター
+        if (earlyOpenOnly && item.openTime > 17.0) return false;
+
         // エリア（ゾーン）フィルター
         if (currentZone && item.zone !== currentZone) return false;
 
-        // カテゴリフィルター
-        if (currentCategory !== 'all') {
-          if (!item.categories.includes(currentCategory)) return false;
+        // カテゴリーフィルター（複数選択されたカテゴリーを全て満たす AND 条件で徐々に絞り込み）
+        if (selectedCategories.size > 0) {
+          for (const cat of selectedCategories) {
+            if (cat === 'caution') {
+              if (item.holidayStatus !== 'closed' && item.holidayStatus !== 'caution') return false;
+            } else if (!item.categories.includes(cat)) {
+              return false;
+            }
+          }
         }
 
         // 検索クエリフィルター
@@ -3706,6 +3724,14 @@
 
       // 結果カウント表示
       resultCountText.textContent = `該当：${filtered.length}件`;
+      if (topResultCountBadge) {
+        topResultCountBadge.textContent = `${filtered.length}件`;
+        if (filtered.length === 0) {
+          topResultCountBadge.className = 'bg-rose-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full ml-0.5 shadow-xs';
+        } else {
+          topResultCountBadge.className = 'bg-amber-400 text-slate-900 text-[10px] font-black px-2 py-0.5 rounded-full ml-0.5 shadow-xs';
+        }
+      }
 
       // 適用中フィルタータグ表示
       renderActiveFilterTags();
@@ -3905,9 +3931,9 @@
 
       if (holidayOpenOnly) {
         tags.push(`
-          <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-1 rounded-full text-xs font-bold">
-            <i class="fa-solid fa-calendar-check text-emerald-600"></i> 祝日営業店のみ
-            <button onclick="holidayOpenOnly=false; holidayOpenOnlyToggle.checked=false; renderCards();" class="hover:text-emerald-950 ml-1">
+          <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 border border-emerald-300 px-2.5 py-1 rounded-full text-xs font-bold shadow-2xs">
+            <i class="fa-solid fa-calendar-check text-emerald-600"></i> 祝日営業
+            <button onclick="toggleQuickFilter('open', false);" class="hover:text-emerald-950 ml-1 cursor-pointer">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </span>
@@ -3916,14 +3942,49 @@
 
       if (kidsMenuOnly) {
         tags.push(`
-          <span class="inline-flex items-center gap-1 bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-1 rounded-full text-xs font-bold">
-            <i class="fa-solid fa-child-reaching text-amber-600"></i> お子様メニューあり店のみ
-            <button onclick="kidsMenuOnly=false; kidsMenuOnlyToggle.checked=false; renderCards();" class="hover:text-amber-950 ml-1">
+          <span class="inline-flex items-center gap-1 bg-amber-50 text-amber-800 border border-amber-300 px-2.5 py-1 rounded-full text-xs font-bold shadow-2xs">
+            <i class="fa-solid fa-child-reaching text-amber-600"></i> キッズメニュー有
+            <button onclick="toggleQuickFilter('kids', false);" class="hover:text-amber-950 ml-1 cursor-pointer">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </span>
         `);
       }
+
+      if (earlyOpenOnly) {
+        tags.push(`
+          <span class="inline-flex items-center gap-1 bg-blue-50 text-blue-800 border border-blue-300 px-2.5 py-1 rounded-full text-xs font-bold shadow-2xs">
+            <i class="fa-solid fa-clock text-blue-600"></i> 16時〜17時開店
+            <button onclick="toggleQuickFilter('early', false);" class="hover:text-blue-950 ml-1 cursor-pointer">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </span>
+        `);
+      }
+
+      // 複数選択されたカテゴリータグ
+      const catNameMap = {
+        'hotel_near': '徒歩3分以内',
+        'tatami': '座敷・個室',
+        'casual_kids': 'うどん・定食',
+        'local': 'もつ鍋・水炊き',
+        'cheap_delicious': '安くて美味い',
+        'buffet': '食べ放題・鍋',
+        'upscale': '上質・ホテル内',
+        'caution': '要注意・祝日休店'
+      };
+
+      selectedCategories.forEach(cat => {
+        const label = catNameMap[cat] || cat;
+        tags.push(`
+          <span class="inline-flex items-center gap-1 bg-brand-50 text-brand-800 border border-brand-300 px-2.5 py-1 rounded-full text-xs font-bold shadow-2xs">
+            <i class="fa-solid fa-tag text-brand-600"></i> ${label}
+            <button onclick="toggleQuickFilter('${cat}', false);" class="hover:text-brand-950 ml-1 cursor-pointer">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </span>
+        `);
+      });
 
       if (currentZone) {
         const zoneNames = {
@@ -3935,7 +3996,7 @@
         tags.push(`
           <span class="inline-flex items-center gap-1 bg-purple-50 text-purple-800 border border-purple-200 px-2.5 py-1 rounded-full text-xs font-semibold">
             エリア: ${zoneNames[currentZone]}
-            <button onclick="currentZone=null; updateAreaCardUI(); renderCards();" class="hover:text-purple-950 ml-1">
+            <button onclick="currentZone=null; updateAreaCardUI(); renderCards();" class="hover:text-purple-950 ml-1 cursor-pointer">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </span>
@@ -3946,7 +4007,7 @@
         tags.push(`
           <span class="inline-flex items-center gap-1 bg-coral-50 text-coral-800 border border-coral-200 px-2.5 py-1 rounded-full text-xs font-semibold">
             保存済みのみ (${favorites.length}件)
-            <button onclick="showOnlyFavs=false; updateFavButtonState(); renderCards();" class="hover:text-coral-950 ml-1">
+            <button onclick="showOnlyFavs=false; updateFavButtonState(); renderCards();" class="hover:text-coral-950 ml-1 cursor-pointer">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </span>
@@ -3957,10 +4018,19 @@
         tags.push(`
           <span class="inline-flex items-center gap-1 bg-brand-50 text-brand-800 border border-brand-200 px-2.5 py-1 rounded-full text-xs font-semibold">
             検索: "${searchQuery}"
-            <button onclick="searchInput.value=''; searchQuery=''; clearSearchBtn.classList.add('hidden'); renderCards();" class="hover:text-brand-950 ml-1">
+            <button onclick="searchInput.value=''; searchQuery=''; clearSearchBtn.classList.add('hidden'); renderCards();" class="hover:text-brand-950 ml-1 cursor-pointer">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </span>
+        `);
+      }
+
+      // 複数条件適用時の全クリアボタン
+      if (tags.length >= 2) {
+        tags.push(`
+          <button onclick="toggleQuickFilter('all', false);" class="inline-flex items-center gap-1.5 bg-slate-200 hover:bg-slate-300 text-slate-800 px-3 py-1 rounded-full text-xs font-bold transition cursor-pointer shadow-2xs">
+            <i class="fa-solid fa-rotate-left text-slate-600"></i> 条件をすべて解除
+          </button>
         `);
       }
 
