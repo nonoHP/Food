@@ -174,7 +174,7 @@
             科学館や動物園から戻り、16時〜17時にホテル一楽へチェックイン。大きな荷物を部屋に置いた後、
             <strong class="text-slate-800 font-bold">「徒歩1〜8分以内のご近所」</strong>や<strong class="text-slate-800 font-bold">「駅からの帰り道」</strong>で、
             <span class="bg-emerald-100 text-emerald-800 px-1 py-0.5 rounded font-bold">祝日営業している店舗（全54店）</span>と
-            <span class="bg-rose-100 text-rose-800 px-1 py-0.5 rounded font-bold">祝日定休の注意店</span>を明確に判定。各店舗の食べログ／ホットペッパー／ぐるなび＆Googleマップへの直通リンクを完備しました。
+            <span class="bg-rose-100 text-rose-800 px-1 py-0.5 rounded font-bold">祝日定休の注意店</span>を明確に判定。各店舗の食べログ（公式直通検索）＆Googleマップへの直通リンクを完備しました。
           </p>
           
           <div class="flex flex-wrap gap-2 pt-1 text-xs">
@@ -182,7 +182,7 @@
               <i class="fa-solid fa-calendar-check text-emerald-600 mr-1.5"></i>祝日営業チェック機能付き
             </span>
             <span class="inline-flex items-center bg-white px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-2xs text-slate-700 font-medium">
-              <i class="fa-solid fa-utensils text-amber-500 mr-1.5"></i>食べログ・グルメサイト直通
+              <i class="fa-solid fa-utensils text-amber-500 mr-1.5"></i>食べログ公式検索連携
             </span>
             <span class="inline-flex items-center bg-white px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-2xs text-slate-700 font-medium">
               <i class="fa-solid fa-person-walking text-brand-600 mr-1.5"></i>ホテル徒歩1〜12分圏内
@@ -387,7 +387,7 @@
 
         <!-- Holiday Check Toggle & Sort Select -->
         <div class="flex flex-wrap items-center gap-2 shrink-0">
-          <!-- ★ 祝日営業チェックボックス/トグル ★ -->
+          <!-- 祝日営業チェックボックストグル -->
           <label class="flex items-center gap-2 cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-2 rounded-xl text-xs font-bold transition select-none shadow-2xs">
             <input type="checkbox" id="holidayOpenOnlyToggle" class="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500 accent-emerald-600 cursor-pointer">
             <span class="flex items-center gap-1.5">
@@ -611,9 +611,13 @@
 
   <!-- ================= 9. Data and Application Logic ================= -->
   <script>
+    // ★ Googleスプレッドシート連携URL設定 ★
+    // スプレッドシートを「ウェブに公開（CSV）」にしたURLをここに設定すると、自動的にスプレッドシートから読み込まれます。
+    // 例: "https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?gid=0&single=true&output=csv"
+    const GOOGLE_SHEETS_CSV_URL = "";
+
     // 60店舗のマスターデータベース
-    // 優先順位（1.食べログ, 2.ホットペッパー, 3.ぐるなび）に基づき各店舗に1つのURLを設定
-    const RESTAURANTS = [
+    let RESTAURANTS = [
       // --- 1. 子連れ安心・定番定食＆うどん (ゾーンA・B・D) ---
       {
         id: 1,
@@ -636,7 +640,7 @@
         tags: ["魚定食", "取り分け", "人気", "お子様歓迎"],
         highlight: "福岡の新鮮魚定食が常時30〜40種。焼き魚や煮魚をご飯・豚汁とお子さまと取り分けでき、栄養満点で味も極上。",
         kidsPoint: "子供用の小さな器やスプーンを気持ちよく用意してくれます。17時開店直後なら行列なしでスムーズ。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40018593/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 2,
@@ -659,7 +663,7 @@
         tags: ["博多うどん", "やわらか麺", "通し営業", "出汁が絶品"],
         highlight: "昭和26年創業の博多うどんの真髄。出汁が染み渡る天然昆布・鰹節スープと、5歳児の胃に超優しいふんわりやわ麺。",
         kidsPoint: "通し営業なので16時台の超早夕飯が可能。えび天うどん・ごぼ天うどんと、かしわおにぎりを取り分け推奨。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40003770/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 3,
@@ -682,7 +686,7 @@
         tags: ["座敷あり", "24時間", "ごぼ天", "ネギ入れ放題"],
         highlight: "福岡県民のソウルフード。小上がり座敷があり、うどん、そば、丼もの、もつ鍋（夕方〜）まで揃う万能ファミレス的存在。",
         kidsPoint: "座敷でゆっくりでき、うどんカッターの貸出やお子さま食器完備。どんなに時間がズレても開いている絶対の安心感。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40032959/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 4,
@@ -705,7 +709,7 @@
         tags: ["駅直結", "名物槍ごぼ天", "白丸うどん", "ベビーカー可"],
         highlight: "槍に見立てた30cm以上の長〜いごぼ天が大迫力！5歳のお子さまも見た瞬間に大喜び間違いなしの名店。",
         kidsPoint: "駅高架下の広い店舗。薬院駅で電車を降りてホテルへ歩き始める前の腹ごしらえに最適。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40044567/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 5,
@@ -728,7 +732,7 @@
         tags: ["ホテル2分", "小上がり掘りごたつ", "手作り定食＆一品", "アットホーム"],
         highlight: "ホテル一楽の裏手すぐ！おばんざい、焼き魚、出汁巻き卵、鶏の唐揚げ、優しいおにぎりなど、家庭的で上質な料理が揃う。",
         kidsPoint: "靴を脱いで上がれる掘りごたつ席があり、女将さんがとても温かい。歩いて2分で帰れる立地は神。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40050604/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 6,
@@ -751,7 +755,7 @@
         tags: ["ホテル3分", "おでん", "炊き餃子", "座敷"],
         highlight: "熱々の染み染みおでんと名物「炊き餃子」。鶏白湯スープで炊いた餃子はニンニク控えめでスープまでゴクゴク飲める美味しさ。",
         kidsPoint: "大根や玉子のおでん、うどん麺を炊き餃子スープに投入する〆がお子さまに大ウケ。座敷あり。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40028246/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 7,
@@ -774,7 +778,7 @@
         tags: ["博多皿うどん", "中華", "パリパリorもちもち", "炒飯絶品"],
         highlight: "博多名物「博多皿うどん」の最高峰！自家製の太麺を野菜や豚肉の旨味スープで炒め焼きした絶品。パリパリ細麺もあります。",
         kidsPoint: "野菜がたっぷり柔らかく煮込まれており5歳児でも食べやすい。具沢山チャーハンも大人気。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40051152/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 8,
@@ -797,7 +801,7 @@
         tags: ["博多一口餃子", "パリッと皮", "ホテル4分", "小上がり"],
         highlight: "薄皮でカリッと香ばしい博多一口餃子。小ぶりなので5歳児の口にもすっぽり入り、何個でもパクパク食べられます。",
         kidsPoint: "おにぎりや卵スープもあり、サクッと30分〜45分で夕飯を済ませてホテルへ戻るクイック利用にも最適。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40001859/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 9,
@@ -820,7 +824,7 @@
         tags: ["名物焼餃子", "肉汁爆発", "本場点心", "大人気行列店"],
         highlight: "福岡の中華・餃子界のレジェンド！皮から手作りの焼き餃子は肉まんのようなもっちり感で肉汁たっぷり。",
         kidsPoint: "店内が広くファミレス並みの席幅。17:00開店の10分前に並べば1巡目でゆったり入店できます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40000527/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 10,
@@ -843,7 +847,7 @@
         tags: ["16時開店", "ハッピーアワー焼餃子半額", "コスパ最強", "パリパリ一口餃子"],
         highlight: "なんと16時オープン！18:30までのハッピーアワーは焼き餃子（7個）が約150円台という驚異のコスパ。",
         kidsPoint: "夕方16:30に行けば店内は空いており、待たずに即提供。魯肉飯（ルーローハン）やエビチリなど子供喜ぶ中華も。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40048602/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
 
       // --- 2. ご当地名物（もつ鍋・水炊き・とりかわ・焼鳥） ---
@@ -868,7 +872,7 @@
         tags: ["水炊き", "完全個室", "無添加黄金スープ", "大人の名店"],
         highlight: "古民家を改装した落ち着いた佇まい。白濁させずじっくり引いた黄金の澄んだ鶏スープは雑味がなく、子供でもごくごく飲める上品さ。",
         kidsPoint: "座敷の完全個室があり、他のお客さんに気兼ねなく食事できます。〆の卵雑炊は絶品。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40000045/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 12,
@@ -891,7 +895,7 @@
         tags: ["個室", "白味噌もつ鍋", "塩もつ鍋", "掘りごたつ"],
         highlight: "極上の和牛もつと京都の西京味噌をブレンドした白味噌もつ鍋。唐辛子を別皿にしてもらえるので、甘みたっぷりのスープでお子さまもOK。",
         kidsPoint: "全席が仕切られた掘りごたつ個室・半個室。子供用の取り皿やスプーン完備。ちゃんぽん麺の〆が大好評。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40033100/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 13,
@@ -914,7 +918,7 @@
         tags: ["もつ鍋", "やましょう鍋（ミルフィーユ）", "座敷多数", "醤油ベース"],
         highlight: "もつ鍋はもちろん、鹿児島産黒豚と白菜を重ねた「やましょう鍋」が名物。あっさり和風出汁でお子さまもモリモリ食べられます。",
         kidsPoint: "2階・3階に広々とした座敷席が多く、子連れファミリーの利用実績多数。17時開店。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40000057/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 14,
@@ -937,7 +941,7 @@
         tags: ["ぐるぐる鶏皮", "博多名物", "座敷あり", "超人気"],
         highlight: "何日もかけて脂を落とし、タレに漬け込んで焼きを繰り返した博多名物「ぐるぐる鶏皮」。外はカリッ、中はモチモチで脂っこくない！",
         kidsPoint: "2階に座敷があります。つくねや豚バラ、焼きおにぎりなど子どもが大好きな串メニューが豊富。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40000155/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 15,
@@ -960,7 +964,7 @@
         tags: ["元祖とりかわ", "串焼き", "福岡名物"],
         highlight: "とりかわブームの火付け役。香ばしい皮タレ焼きは何本でも食べられると子供にも大評判。",
         kidsPoint: "白金店は比較的アットホームで席の予約可能。17時台の早い時間が落ち着いていて安全。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40003058/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 16,
@@ -983,7 +987,7 @@
         tags: ["老舗もつ鍋", "座敷完備", "アットホーム", "伝統の味"],
         highlight: "昭和の風情を残すもつ鍋の隠れた名店。新鮮なもつとキャベツ、ニラの旨味が染み出た醤油スープが絶品。",
         kidsPoint: "ゆったりとした座敷があり、お子さま連れに優しい接客で地元ファミリーから長年愛されています。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40000054/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 17,
@@ -1006,7 +1010,7 @@
         tags: ["極上焼鳥", "豚バラ", "すき焼き串", "スタイリッシュ"],
         highlight: "博多焼鳥を全国区・世界に広めた最高峰ブランド。名物の豚バラ串、エンドウ豆の串揚げ、和牛すき焼き串など感動の連続。",
         kidsPoint: "煙モクモク系ではなく、清潔でお洒落な空間。17:00予約なら子連れでもリラックスして楽しめます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40003445/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 18,
@@ -1029,7 +1033,7 @@
         tags: ["ホテル6分", "掘りごたつ座敷", "コスパ良し", "鶏スープ無料"],
         highlight: "炭火で丁寧に焼き上げる本格焼鳥。身がふっくらジューシーな串が1本150円〜と良心価格。",
         kidsPoint: "奥に靴を脱いで上がれる掘りごたつ座敷があり、子供連れ歓迎。最後にもらえる温かい鶏スープが体に沁みます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40026210/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 19,
@@ -1052,7 +1056,7 @@
         tags: ["ミシュラン掲載", "上質空間", "濃厚白濁水炊き", "通し営業"],
         highlight: "丸鶏を長時間炊き上げた濃厚コラーゲンスープが特徴の水炊き専門店。洗練された接客と空間づくりは抜群。",
         kidsPoint: "昼から通し営業のため16時などの変則時間でも予約可能。辛味ゼロの上品なスープなので子供も大満足。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40036130/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 20,
@@ -1075,7 +1079,7 @@
         tags: ["16時開店", "掘りごたつ", "長州黒かしわ", "手羽先"],
         highlight: "16時オープンが嬉しい本格焼鳥店。長州黒かしわを使ったこだわりの焼鳥と、名物のとろける白レバーや手羽先が絶品。",
         kidsPoint: "掘りごたつ席があり、16時台は比較的空いていて親子2人でも落ち着いて食事できます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40050850/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
 
       // --- 3. ホテル直近（清川・徒歩1〜4分）の救世主店 ---
@@ -1100,7 +1104,7 @@
         tags: ["ホテル徒歩1分", "小上がり座敷", "16時オープン", "肉豆腐", "出汁巻き"],
         highlight: "ホテル一楽の角を曲がってすぐ！16時オープンで小上がりの座敷あり。名物の黒毛和牛肉豆腐や出汁巻き玉子は子供も大好き。",
         kidsPoint: "驚異の近さ。万が一子供が眠ってしまっても抱っこして1分でホテルのベッドへ連れて帰れます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40061989/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 22,
@@ -1123,7 +1127,7 @@
         tags: ["ホテル2分", "座敷あり", "町中華", "チャーハン", "唐揚げ"],
         highlight: "ボリューム満点でリーズナブルな街の中華屋さん。ラーメン＋炒飯セットや熱々小籠包など定番が驚きの安さ。",
         kidsPoint: "奥にお座敷があり、小さな子ども連れでも安心。取り分け用のお皿やフォークも常備。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40025176/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 23,
@@ -1146,7 +1150,7 @@
         tags: ["定食屋", "ホテル3分", "生姜焼き", "チキン南蛮", "安心ご飯"],
         highlight: "手作りの温かい定食が食べられるアットホームな食堂。ハンバーグ定食や唐揚げ定食など子供ウケ抜群のメニュー揃い。",
         kidsPoint: "居酒屋の雰囲気が苦手な場合、定食でササッとバランスの良いご飯を食べさせられる安心スポット。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40054178/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 24,
@@ -1169,7 +1173,7 @@
         tags: ["ホテル4分", "讃岐系手打ちうどん", "天ぷら揚げたて", "座敷"],
         highlight: "名店仕込みのツルツル手打ちうどんと揚げたてサクサク天ぷら。夜はお酒も一品料理も楽しめます。",
         kidsPoint: "うどんの出汁がとても優しく、ちくわ天やかしわ天は子供の大好物。小上がりでくつろげます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40059336/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 25,
@@ -1192,7 +1196,7 @@
         tags: ["ホテル3分", "小上がり座敷", "炭火焼鳥", "アットホーム"],
         highlight: "地元住民が普段使いする気取らない焼鳥屋さん。つくねや豚バラ、ポテトフライなど子どもが喜ぶ一品も多数。",
         kidsPoint: "小上がり座敷があり、ご主人が子供にもとても優しく対応してくれます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40029519/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
 
       // --- 4. 食べ放題・ガッツリお肉・鍋 ---
@@ -1217,7 +1221,7 @@
         tags: ["焼肉食べ放題", "5歳以下無料", "キッズメニュー", "デザート充実"],
         highlight: "プロが手切りする上質焼肉食べ放題。なんと<strong>5歳（未就学児）は完全無料！</strong>大人の料金だけでOKの最強コスパ。",
         kidsPoint: "お子さまうどん、コーンバター、ポテト、デザートまでタッチパネルで頼み放題。ボックス席で周囲も気になりません。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40039239/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 27,
@@ -1240,7 +1244,7 @@
         tags: ["ホテル5分", "黒毛和牛焼肉", "座敷あり", "ファミリー向け"],
         highlight: "上質な九州産和牛をリーズナブルに味わえる下町焼肉の名店。柔らかいカルビやロースはお子さまでも噛み切れます。",
         kidsPoint: "座敷席が充実しており、クッパやワカメスープ、ウインナーなど子ども対応メニューが豊富。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40003057/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 28,
@@ -1263,7 +1267,7 @@
         tags: ["しゃぶしゃぶ食べ放題", "未就学児無料", "野菜たっぷり", "16時オープン"],
         highlight: "お肉とお野菜のしゃぶしゃぶ食べ放題。未就学児は無料！2色鍋で1つを豆乳鍋や昆布出汁にすれば辛味ゼロで子供も安心。",
         kidsPoint: "つみれを自分でコネコネして鍋に入れるのが5歳児に大人気。16時オープン。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40020475/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 29,
@@ -1286,7 +1290,7 @@
         tags: ["幼児無料", "ロボット配膳", "ファミリー特化", "ポテト・うどん"],
         highlight: "ファミリー焼肉の決定版。幼児無料、配膳ロボットが席まで運んでくれるので5歳のお子さまが大興奮します。",
         kidsPoint: "お子さまそぼろご飯やジュース飲み放題、デザートバー感覚で楽しめます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40058223/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 30,
@@ -1309,7 +1313,7 @@
         tags: ["焼肉食べ放題あり", "小学生未満無料", "薬院駅近"],
         highlight: "食べ放題プランあり（小学生未満無料）。16:30オープンで早めの入店がしやすい大手チェーン。",
         kidsPoint: "ハニーマヨチキンやキッズカレープレートなど子供向けサイドメニューが充実。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40004546/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
 
       // --- 5. 大衆すぎない上質・ホテル内・静かな店 ---
@@ -1334,7 +1338,7 @@
         tags: ["ホテルレストラン", "極上オムライス", "ホテル接客", "ベビーカー完全対応"],
         highlight: "一流ホテルの安心感。名物のとろとろオムライスやハンバーグ、キッズプレートがあり、静かで優雅な空間。",
         kidsPoint: "子供が疲れてグズりそうでも、ホテルのプロフェッショナルな接客で優しく対応してくれます。授乳室・オムツ替え完璧。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40001061/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 32,
@@ -1357,7 +1361,7 @@
         tags: ["会席料理", "完全個室座敷", "眺望抜群", "記念日クオリティ"],
         highlight: "静かに落ち着いて美味しい和食を食べたい時の最高峰。最上階からの博多の夜景も楽しめます。",
         kidsPoint: "お子さま御膳の用意があり、完全個室ならどれだけリラックスしても大丈夫。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40001062/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 33,
@@ -1380,7 +1384,7 @@
         tags: ["博多割烹", "個室座敷", "旬の魚介", "大人の隠れ家"],
         highlight: "高砂の路地に佇む割烹。玄界灘の活魚と季節の食材を使った丁寧な料理が評判。",
         kidsPoint: "座敷個室の予約が可能。騒がしい居酒屋を避けたい親子旅にうってつけ。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40000043/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 34,
@@ -1403,7 +1407,7 @@
         tags: ["フランス料理", "街のビストロ", "スープ絶品", "落ち着いた雰囲気"],
         highlight: "肩肘張らずに美味しいフレンチが楽しめる名ビストロ。自家製パンと優しいポタージュスープが子供に大好評。",
         kidsPoint: "温かいマダムの接客で、ファミリーでも快く迎えてくれます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40002096/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 35,
@@ -1426,7 +1430,7 @@
         tags: ["ホテル中華", "王道本格中華", "ふかひれ", "チャーハン"],
         highlight: "老舗ホテルの高級本格中華。蟹肉入り炒飯や春巻き、点心など、上品でコクのある中華をゆったり堪能できます。",
         kidsPoint: "17時オープン。広々とした席配置で子供用ハイチェアも完備。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40001063/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
 
       // --- 6. 安くて美味しい！街の愛され食堂＆うどん＆中華 ---
@@ -1451,7 +1455,7 @@
         tags: ["昭和レトロ地下街", "名物カレー", "ちゃんぽん", "安い"],
         highlight: "昭和レトロなビル地下に定食・カレー・うどん店が集合。安くてボリューム満点の隠れた穴場街。",
         kidsPoint: "渡辺通駅からホテル一楽へ向かう動線上に直結。雨に濡れずに移動できます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40004390/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 37,
@@ -1474,7 +1478,7 @@
         tags: ["長浜ラーメン", "あっさり豚骨", "ホテル5分", "お子様も食べやすい"],
         highlight: "長浜系のあっさりマイルドな豚骨ラーメン。豚骨臭が強すぎず、5歳児でもスープをごくごく飲める優しい味。",
         kidsPoint: "替え玉100円台。ラーメンを大盛りにしてお子さまとシェアすれば格安で満足できます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40003774/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 38,
@@ -1497,7 +1501,7 @@
         tags: ["ホテル4分", "小上がり", "パラパラ炒飯", "皿うどん"],
         highlight: "地元住民に愛される老舗町中華。醤油ラーメンや炒飯、皿うどんなど何を食べても懐かしく美味。",
         kidsPoint: "座敷があり、取り分けに便利なメニューばかり。提供スピードも早い。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40020986/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 39,
@@ -1520,7 +1524,7 @@
         tags: ["半熟卵天", "きつねうどん", "コシのある麺"],
         highlight: "サクッと揚がった半熟卵の天ぷらと、黄金の鰹出汁。甘いお揚げのきつねうどんはお子さま大絶賛。",
         kidsPoint: "早い時間から開いており、疲れた胃腸に染み渡る優しさ。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400105/40003055/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 40,
@@ -1543,7 +1547,7 @@
         tags: ["田中精肉店系列", "豚汁定食", "とり天", "ご飯おかわり"],
         highlight: "肉屋が手がける究極の定食屋。具沢山の大きな豚汁とサクサクとり天定食が名物。",
         kidsPoint: "通し営業でテーブル席多数。ご飯やお漬物、ふりかけなど子供が喜ぶ工夫がたくさん。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40001073/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
 
       // --- 7. 単品が安い！お財布に優しい名店 ---
@@ -1568,7 +1572,7 @@
         tags: ["鮮魚が安い", "ホテル4分", "単品充実", "掘りごたつ"],
         highlight: "魚屋直営だからできる圧倒的な鮮度と安さ！刺身の盛り合わせが破格で、焼き魚・天ぷらも単品300円〜500円台がズラリ。",
         kidsPoint: "フライドポテトや枝豆、おにぎりなど単品を安く組み合わせてお子さま専用セットが作れます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40037305/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 42,
@@ -1591,7 +1595,7 @@
         tags: ["16時開店", "小上がり", "焼き鳥1本100円〜", "単品格安"],
         highlight: "16時開店！串焼きが1本100円台、名物のハムカツやポテトサラダも200〜300円台と驚異のお手頃感。",
         kidsPoint: "早い時間はファミリー客も多く、小上がりで足を伸ばしてのんびりできます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40048184/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 43,
@@ -1614,7 +1618,7 @@
         tags: ["ホテル2分", "座敷あり", "博多B級鉄板焼肉", "ご飯が進む"],
         highlight: "キャベツと豚ハラミ肉を熱々の鉄板で炒め、辛味噌を溶かして食べる博多名物鉄板焼肉（子供用は味噌抜きで甘口対応可能）。",
         kidsPoint: "ホテルから歩いて2分。座敷があり、白いご飯にワンバウンドさせて食べるお肉は子供も夢中になります。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40049215/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 44,
@@ -1637,7 +1641,7 @@
         tags: ["ホテル3分", "座敷", "単品焼肉安い", "アットホーム"],
         highlight: "ホルモンやカルビの単品が500円〜600円台とリーズナブル。好きな部位だけ少しずつ注文できます。",
         kidsPoint: "座敷席完備で煙の排煙もしっかり。ホテル激近なので匂いがついてもすぐお風呂に入れます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40045100/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 45,
@@ -1660,7 +1664,7 @@
         tags: ["皿うどん元祖", "博多駅直結エリア", "老舗中華"],
         highlight: "科学館から七隈線でホテルへ戻る途中で、博多駅で降りてサクッと名物皿うどんを食べるルート用。",
         kidsPoint: "夕方17時台はすぐ座れます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400101/40000366/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 46,
@@ -1683,7 +1687,7 @@
         tags: ["天ぷら揚げたて", "出汁うどん", "安い早い旨い"],
         highlight: "注文が入ってから揚げる熱々の野菜天やえび天が乗ったうどん。キムチや高菜の無料コーナーも充実。",
         kidsPoint: "とにかく提供が早く、入店から退店まで30分以内で済むため、ぐずりそうな時に大助かり。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40026209/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 47,
@@ -1706,7 +1710,7 @@
         tags: ["ワイワイセット", "おもちゃ付き", "通し営業", "安心品質"],
         highlight: "「どうしてもご当地系を子どもが嫌がった時の最終防衛線」。国産野菜と無添加パティで親も安心。",
         kidsPoint: "5歳児歓喜のおもちゃ付きキッズセットがあり、店内清潔でトイレも綺麗。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40012351/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 48,
@@ -1729,7 +1733,7 @@
         tags: ["木製ワンプレート", "キッズプレート", "通し営業", "ソファー席"],
         highlight: "大人気のチーズバーグディッシュやキッズうどん、ポテトフライ。扉型メニューにお子さまも大はしゃぎ。",
         kidsPoint: "完全ボックス席でゆったり。アレルギー対応メニューも完璧。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40006240/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 49,
@@ -1752,7 +1756,7 @@
         tags: ["パスタ", "ピザ", "キッズメニュー", "ドリンクバー"],
         highlight: "子供が大好きなミートソースやカルボナーラ、パリパリのクリスピーピザをシェアして食べられます。",
         kidsPoint: "ドリンクバーやキッズパスタセットがあり、確実にご機嫌になってくれます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40006241/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 50,
@@ -1775,7 +1779,7 @@
         tags: ["和定食", "お子様ランチあり", "だし無料サービス", "ご飯おかわり無料"],
         highlight: "チキン南蛮やしまほっけ定食など安定の和洋定食。お子様ランチ（プリン付き）も用意されています。",
         kidsPoint: "無料で注げる「温かいかつお出汁」で、最後に出汁茶漬けを作ると子どもが喜んで食べます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40030912/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 51,
@@ -1798,7 +1802,7 @@
         tags: ["ドラえもん弁当", "ホテル1分", "お部屋でゆっくり", "疲労困憊時の最強策"],
         highlight: "「子供が眠くて限界！お店で座っていられない！」という緊急事態の最強の味方。ホテル一楽から走って1分。",
         kidsPoint: "ドラえもんランチ（おにぎり・から揚げ・シール付き）を買って、ホテルのテレビを見ながら部屋で食べれば平和そのもの。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40037418/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 52,
@@ -1821,7 +1825,7 @@
         tags: ["座敷", "和食居酒屋", "唐揚げ", "お刺身"],
         highlight: "落ち着いた木造の和風居酒屋。焼き魚、出し巻き玉子、山芋鉄板など福岡の定番居酒屋メニューが手頃に味わえます。",
         kidsPoint: "靴を脱いで上がれる掘りごたつ席で、リラックスして過ごせます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40036125/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 53,
@@ -1844,7 +1848,7 @@
         tags: ["ホテル4分", "小上がり", "炭火焼", "つくねチーズ"],
         highlight: "子供が大好きなチーズつくねやウインナー串が人気。炭火の香ばしさと特製甘ダレが抜群です。",
         kidsPoint: "小上がり席があり、店員さんもアットホームで親切。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40039120/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 54,
@@ -1867,7 +1871,7 @@
         tags: ["イタリアン", "ホテル3分", "窯焼きピザ", "生パスタ"],
         highlight: "ホテルすぐ近くのカジュアルイタリアン。モチモチの窯焼きマルゲリータピザやボロネーゼパスタが人気。",
         kidsPoint: "ピザを小さくカットして取り分けでき、オレンジジュースやジェラートも楽しめます。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40026211/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
 
       // --- 8. 【重要】要注意店（祝日定休・全席喫煙など事前に知っておくべき店） ---
@@ -1892,7 +1896,7 @@
         tags: ["祝日定休", "行ってはいけない", "代替：因幡うどん"],
         highlight: "<strong>【警告：11/3祝日は休み】</strong>博多うどんの有名店ですが、祝日は営業していません。現地に行って閉まっている悲劇を避けてください！",
         kidsPoint: "<strong>【代替店案内】</strong>うどん希望なら、祝日も開いている「因幡うどん 渡辺通店（徒歩6分）」または「ウエスト清川店（徒歩5分）」へ向かってください。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40000346/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 56,
@@ -1915,7 +1919,7 @@
         tags: ["大人の酒場", "席間隔狭い", "喫煙注意", "代替：やりうどん"],
         highlight: "うどん居酒屋ブームの超有名店ですが、店内が狭く大人の飲酒空間です。夜はアルコール中心で賑やかすぎ、5歳児連れには不向き。",
         kidsPoint: "<strong>【代替店案内】</strong>同じ薬院エリアなら、駅直結で席が広々した「博多やりうどん別邸 薬院店」が圧倒的に快適です。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400104/40024982/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 57,
@@ -1938,7 +1942,7 @@
         tags: ["祝日定休", "代替：一心亭清川店"],
         highlight: "昭和豚骨の有名店ですが祝日は休業。ラーメンならホテル近くの「長浜ラーメン 一心亭 清川店」へどうぞ。",
         kidsPoint: "代替店の一心亭ならホテルから徒歩5分で、テーブル席もあり子供用小椀もあります。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400101/40000369/" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 58,
@@ -1961,7 +1965,7 @@
         tags: ["受動喫煙注意", "席狭小", "代替：弥七・粋恭"],
         highlight: "高砂・清川の路地にある一部の大衆焼鳥店は、小規模店特例で「全席喫煙可（タバコ充満）」の店が散見されます。",
         kidsPoint: "5歳のお子さまの健康を守るため、禁煙が徹底されている「弥七」「とりかわ粋恭」「あつもの屋」などを推奨します。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/rstLst/?sk=%E7%84%BC%E9%B3%A5+%E9%AB%98%E7%A0%82+%E6%B8%85%E5%B7%9D" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 59,
@@ -1984,7 +1988,7 @@
         tags: ["屋台体験", "トイレなし", "長蛇の列", "5歳には過酷"],
         highlight: "博多名物屋台ですが、祝日の夜は1時間以上の大行列。簡易ベンチは狭く、公衆トイレまで遠く、11月夜の冷え込みは5歳児に危険。",
         kidsPoint: "屋台気分を味わうなら、屋内の店舗型居酒屋「弐ノ弐」や「あつもの屋」で温かいおでん・餃子を食べる方が遥かに安心です。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/rstLst/?sk=%E5%A4%A9%E7%A5%9E+%E5%B1%8B%E5%8F%B0" }
+        gourmet: { provider: "食べログ", url: "" }
       },
       {
         id: 60,
@@ -2007,7 +2011,7 @@
         tags: ["超大行列（1〜2時間待ち）", "仕切り席", "親子会話困難"],
         highlight: "全国的人気の一蘭ですが、祝日は観光客で60〜100分待ち。1席ごとに木の仕切りがあるため、5歳児の食事介助が非常に困難です。",
         kidsPoint: "豚骨ラーメンなら、並ばずにテーブルでゆっくり食べられる「一心亭 清川店（ホテル徒歩5分）」が圧倒的におすすめです。",
-        gourmet: { provider: "食べログ", url: "https://tabelog.com/fukuoka/A4001/A400103/40000158/" }
+        gourmet: { provider: "食べログ", url: "" }
       }
     ];
 
@@ -2059,11 +2063,114 @@
     const modalHolidayBanner = document.getElementById('modalHolidayBanner');
 
     // 初期化
-    function init() {
+    async function init() {
       updateFavBadge();
       updateHolidayOpenCount();
       setupEventListeners();
+
+      // もしGoogleスプレッドシートの公開CSV URLが指定されている場合は非同期で読み込み
+      if (GOOGLE_SHEETS_CSV_URL && GOOGLE_SHEETS_CSV_URL.trim() !== '') {
+        await loadFromGoogleSheets(GOOGLE_SHEETS_CSV_URL);
+      }
+
       renderCards();
+    }
+
+    // Googleスプレッドシートの公開CSVからデータを自動同期する関数
+    async function loadFromGoogleSheets(csvUrl) {
+      try {
+        const res = await fetch(csvUrl);
+        if (!res.ok) throw new Error('Network response was not ok');
+        const csvText = await res.text();
+        const parsedData = parseCsvToRestaurants(csvText);
+        if (parsedData && parsedData.length > 0) {
+          RESTAURANTS = parsedData;
+          updateHolidayOpenCount();
+          console.log('Successfully synced data from Google Sheets!');
+        }
+      } catch (err) {
+        console.warn('Failed to load from Google Sheets, using local fallback:', err);
+      }
+    }
+
+    // 簡易CSVパーサー
+    function parseCsvToRestaurants(csvText) {
+      const lines = csvText.trim().split(/\r?\n/);
+      if (lines.length < 2) return null;
+      
+      const result = [];
+      for (let i = 1; i < lines.length; i++) {
+        // カンマ区切り（ダブルクォート対応）
+        const row = [];
+        let inQuotes = false;
+        let token = '';
+        for (let char of lines[i]) {
+          if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            row.push(token.trim());
+            token = '';
+          } else {
+            token += char;
+          }
+        }
+        row.push(token.trim());
+
+        if (row.length >= 12 && row[1]) {
+          const id = parseInt(row[0]) || i;
+          const name = row[1];
+          const kana = row[2] || '';
+          const area = row[3] || '';
+          const distWalk = row[4] || '';
+          const holidayStatus = row[5] || 'open';
+          const holidayHours = row[6] || '';
+          const budget = row[7] || '';
+          const seatType = row[8] || '';
+          const smoke = row[9] || '全席禁煙';
+          const highlight = row[10] || '';
+          const kidsPoint = row[11] || '';
+          const provider = row[12] || '食べログ';
+          const url = row[13] || '';
+
+          // 既存リストからzoneやcategories、tagsをマージまたは推定
+          const existing = RESTAURANTS.find(r => r.id === id) || {};
+
+          result.push({
+            id: id,
+            name: name,
+            kana: kana,
+            zone: existing.zone || 'zone_d',
+            area: area,
+            distWalk: distWalk,
+            distMeters: existing.distMeters || 300,
+            holidayHours: holidayHours,
+            openTime: existing.openTime || 17.0,
+            holidayStatus: holidayStatus,
+            budget: budget,
+            budgetScore: existing.budgetScore || 3000,
+            categories: existing.categories || ['casual_kids'],
+            seatType: seatType,
+            smoke: smoke,
+            isCaution: holidayStatus === 'closed' || holidayStatus === 'caution',
+            recommended: existing.recommended || 90,
+            tags: existing.tags || [],
+            highlight: highlight,
+            kidsPoint: kidsPoint,
+            gourmet: { provider: provider, url: url }
+          });
+        }
+      }
+      return result;
+    }
+
+    // 各店舗の安全なグルメURL取得ヘルパー
+    // 個別URLが空または未入力の場合、確実にその店舗が開く店舗名公式検索URLに自動フォールバック
+    function getSafeGourmetUrl(item) {
+      if (item.gourmet && item.gourmet.url && item.gourmet.url.trim() !== '') {
+        return item.gourmet.url.trim();
+      }
+      // 安全な店舗名直接検索URL（食べログ）
+      return `https://tabelog.com/rst/rstsearch?sk=${encodeURIComponent(item.name + ' 福岡')}`;
     }
 
     // 祝日営業店数のバッジカウント
@@ -2306,9 +2413,11 @@
       // タグ
       modalTags.innerHTML = item.tags.map(t => `<span class="bg-slate-100 text-slate-700 text-[10px] px-2 py-0.5 rounded-md font-medium border border-slate-200">${t}</span>`).join('');
 
-      // グルメサイトリンク（食べログ等）
-      modalGourmetBtn.href = item.gourmet.url;
-      modalGourmetText.textContent = `${item.gourmet.provider}で見る`;
+      // グルメサイトリンク（安全なURL）
+      const safeGourmetUrl = getSafeGourmetUrl(item);
+      const provider = (item.gourmet && item.gourmet.provider) ? item.gourmet.provider : '食べログ';
+      modalGourmetBtn.href = safeGourmetUrl;
+      modalGourmetText.textContent = `${provider}で見る`;
 
       // マップURL
       const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' 福岡')}`;
@@ -2400,6 +2509,8 @@
         const zoneBadge = getZoneBadgeHtml(item.zone);
         const holidayBadge = getHolidayBadgeHtml(item.holidayStatus);
         const topStrip = getZoneTopBorderClass(item.zone);
+        const safeGourmetUrl = getSafeGourmetUrl(item);
+        const provider = (item.gourmet && item.gourmet.provider) ? item.gourmet.provider : '食べログ';
 
         // 要注意カードと通常カードのスタイリング分岐
         const borderClass = item.isCaution 
@@ -2515,14 +2626,14 @@
                   <i class="fa-solid fa-circle-info text-slate-500 mr-0.5"></i>詳細
                 </button>
                 <a 
-                  href="${item.gourmet.url}" 
+                  href="${safeGourmetUrl}" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-1.5 rounded-xl transition flex items-center justify-center gap-1 text-[11px] shadow-2xs"
-                  title="${item.gourmet.provider}でメニュー・口コミを見る"
+                  title="${provider}でメニュー・口コミを見る"
                 >
                   <i class="fa-solid fa-utensils text-amber-100"></i>
-                  <span>${item.gourmet.provider}</span>
+                  <span>${provider}</span>
                 </a>
                 <a 
                   href="${mapUrl}" 
