@@ -612,9 +612,8 @@
   <!-- ================= 9. Data and Application Logic ================= -->
   <script>
     // ★ Googleスプレッドシート連携URL設定 ★
-    // スプレッドシートを「ウェブに公開（CSV）」にしたURLをここに設定すると、自動的にスプレッドシートから読み込まれます。
-    // 例: "https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?gid=0&single=true&output=csv"
-    const GOOGLE_SHEETS_CSV_URL = "";
+    // スプレッドシートを「ウェブに公開（CSV）」にしたURLを設定済み。自動的にスプレッドシートから最新データを同期します。
+    const GOOGLE_SHEETS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTzJ5H8NmTalFAxn8bngdZNrVPzerXu4EvMMXUzzTk8Fcw5CFf9rkvFyBqMBkQr7RlTavAl4sppPbud/pub?gid=0&single=true&output=csv";
 
     // 60店舗のマスターデータベース
     let RESTAURANTS = [
