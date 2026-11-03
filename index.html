@@ -103,486 +103,251 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col pb-16 md:pb-0">
 
-  <!-- ================= 1. Top Announcement Sticky Header ================= -->
-  <header class="glass-nav text-white border-b border-brand-800/40 sticky top-0 z-40 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6 flex items-center justify-between gap-3">
+  <!-- ================= 1. Modern Slim Header & Smart Filter Bar (Sticky Top) ================= -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
+    <div class="max-w-7xl mx-auto px-3.5 py-2.5 sm:px-6 flex items-center justify-between gap-2.5">
       
-      <!-- Logo & Title -->
-      <div class="flex items-center space-x-3 min-w-0">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-teal-400 flex items-center justify-center shadow-md shrink-0">
-          <i class="fa-solid fa-utensils text-white text-base"></i>
+      <!-- Brand & Hotel Info -->
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center text-white shadow-xs shrink-0">
+          <i class="fa-solid fa-utensils text-xs sm:text-sm"></i>
         </div>
         <div class="truncate">
-          <div class="flex items-center gap-2">
-            <span class="bg-coral-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs shrink-0">
-              祝日 11/3
+          <div class="flex items-center gap-1.5">
+            <span class="bg-amber-100 text-amber-900 text-[10px] font-black px-1.5 py-0.2 rounded-md shrink-0">
+              11/3(祝)
             </span>
-            <h1 class="text-sm sm:text-base md:text-lg font-bold tracking-tight text-white truncate font-display">
-              ホテル一楽 周辺ディナー探索ナビ
+            <h1 class="text-xs sm:text-sm md:text-base font-extrabold text-slate-900 tracking-tight truncate">
+              ホテル一楽 周辺グルメ探索ナビ
             </h1>
           </div>
-          <p class="text-[11px] text-teal-200 flex items-center gap-1.5 mt-0.5 truncate">
-            <span><i class="fa-solid fa-child-reaching text-amber-300"></i> 大人1名＋5歳児安心（ホテル一楽周辺・実在確認・全50店・モーニング12店）</span>
+          <p class="text-[10px] sm:text-[11px] text-slate-500 flex items-center gap-1 truncate mt-0.5">
+            <i class="fa-solid fa-hotel text-amber-600 text-[10px]"></i>
+            <span class="font-medium">清川・高砂至近 実在確認50店（大人1名＋5歳児安心）</span>
           </p>
         </div>
       </div>
-      
-      <!-- Quick Nav Action Buttons -->
-      <div class="flex items-center gap-2 text-xs shrink-0">
-        <a href="#strategy" class="hidden sm:flex bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-xl border border-white/20 transition items-center gap-1.5">
-          <i class="fa-solid fa-map-location-dot text-brand-300"></i>
-          <span>エリア俯瞰</span>
-        </a>
-        <a href="#schedule" class="hidden sm:flex bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-xl border border-white/20 transition items-center gap-1.5">
-          <i class="fa-solid fa-clock text-amber-300"></i>
-          <span>16:30戦略</span>
-        </a>
-        <button id="showFavOnlyBtn" class="bg-coral-500 hover:bg-coral-600 active:scale-95 text-white px-3 py-1.5 rounded-xl font-semibold transition flex items-center gap-1.5 shadow-md">
-          <i class="fa-solid fa-heart text-rose-200"></i>
+
+      <!-- Quick Action: Favorites Bookmark Filter -->
+      <div class="flex items-center gap-2 shrink-0">
+        <button id="showFavOnlyBtn" class="bg-rose-50 hover:bg-rose-100 border border-rose-200 active:scale-95 text-rose-600 px-2.5 sm:px-3 py-1.5 rounded-xl font-bold text-xs transition flex items-center gap-1.5 shadow-2xs cursor-pointer">
+          <i class="fa-solid fa-heart text-rose-500 text-xs"></i>
           <span class="hidden xs:inline">保存済み</span>
-          <span id="favCountBadge" class="bg-white text-coral-600 text-[10px] font-black rounded-full px-1.5 py-0.2 shadow-xs">0</span>
+          <span id="favCountBadge" class="bg-rose-500 text-white text-[10px] font-black rounded-full px-1.5 py-0.2 shadow-xs">0</span>
         </button>
       </div>
 
     </div>
 
-    <!-- ================= ページの頭のクイック絞り込みボタンバー (常時上部固定) ================= -->
-    <div class="bg-brand-950/90 border-t border-brand-800/70 px-3 py-2 sm:px-6 backdrop-blur-md">
-      <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 overflow-x-auto no-scrollbar py-0.5">
-        <div class="flex items-center gap-1.5 shrink-0 text-xs font-bold text-teal-300 mr-1 select-none">
-          <i class="fa-solid fa-filter text-amber-400"></i>
-          <span class="whitespace-nowrap">絞り込み:</span>
-          <span id="topResultCountBadge" class="bg-amber-400 text-slate-900 text-[10px] font-black px-2 py-0.5 rounded-full ml-0.5 shadow-xs">60件</span>
+    <!-- ================= 横スクロール式スマートフィルターピルバー (ヘッダー直下) ================= -->
+    <div class="bg-slate-50/95 border-t border-slate-200/70 px-3 py-2 overflow-x-auto no-scrollbar">
+      <div class="max-w-7xl mx-auto flex items-center gap-1.5 no-scrollbar" id="topQuickFilterButtons">
+        
+        <!-- 件数バッジ -->
+        <div class="flex items-center gap-1 shrink-0 text-slate-500 text-[11px] font-extrabold mr-1 select-none">
+          <i class="fa-solid fa-sliders text-amber-500"></i>
+          <span id="topResultCountBadge" class="bg-slate-900 text-white text-[10px] font-black px-2 py-0.5 rounded-full shadow-xs">50件</span>
         </div>
-        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar" id="topQuickFilterButtons">
-          <button data-quick="all" class="top-filter-btn active bg-white text-brand-900 font-extrabold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition shadow-xs flex items-center gap-1 cursor-pointer">
-            すべて (50)
-          </button>
-          <button data-quick="morning" class="top-filter-btn bg-amber-600/90 hover:bg-amber-500 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-300/40 cursor-pointer">
-            <i class="fa-solid fa-sun text-yellow-300"></i>
-            <span>☀️ モーニング (12)</span>
-          </button>
-          <button data-quick="open" class="top-filter-btn bg-emerald-800/90 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-emerald-500/40 cursor-pointer">
-            <i class="fa-solid fa-calendar-check text-emerald-300"></i>
-            <span>祝日営業 (48)</span>
-          </button>
-          <button data-quick="kids" class="top-filter-btn bg-amber-700/90 hover:bg-amber-600 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-400/40 cursor-pointer">
-            <i class="fa-solid fa-child-reaching text-amber-200"></i>
-            <span>キッズメニュー有 (12)</span>
-          </button>
-          <button data-quick="hotel_near" class="top-filter-btn bg-purple-800/90 hover:bg-purple-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-purple-400/40 cursor-pointer">
-            <i class="fa-solid fa-person-walking text-purple-200"></i>
-            <span>徒歩3分以内 (21)</span>
-          </button>
-          <button data-quick="tatami" class="top-filter-btn bg-amber-800/90 hover:bg-amber-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-400/40 cursor-pointer">
-            <i class="fa-solid fa-couch text-amber-200"></i>
-            <span>座敷・個室 (18)</span>
-          </button>
-          <button data-quick="early" class="top-filter-btn bg-blue-800/90 hover:bg-blue-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-blue-400/40 cursor-pointer">
-            <i class="fa-solid fa-clock text-blue-200"></i>
-            <span>16時〜17時開店</span>
-          </button>
-          <button data-quick="casual_kids" class="top-filter-btn bg-cyan-800/90 hover:bg-cyan-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-cyan-400/40 cursor-pointer">
-            <i class="fa-solid fa-bowl-food text-cyan-200"></i>
-            <span>うどん・定食 (29)</span>
-          </button>
-          <button data-quick="local" class="top-filter-btn bg-red-800/90 hover:bg-red-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-red-400/40 cursor-pointer">
-            <i class="fa-solid fa-fire text-red-200"></i>
-            <span>もつ鍋・水炊き (13)</span>
-          </button>
-        </div>
+
+        <!-- フィルターピル群（タップで多段掛け合わせ） -->
+        <button data-quick="all" class="top-filter-btn active bg-slate-900 text-white font-extrabold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition shadow-xs flex items-center gap-1 cursor-pointer">
+          すべて (50)
+        </button>
+        <button data-quick="morning" class="top-filter-btn bg-white hover:bg-amber-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
+          <i class="fa-solid fa-sun text-amber-500"></i>
+          <span>☀️ モーニング (12)</span>
+        </button>
+        <button data-quick="hotel_near" class="top-filter-btn bg-white hover:bg-purple-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
+          <i class="fa-solid fa-person-walking text-purple-600"></i>
+          <span>徒歩3分以内 (21)</span>
+        </button>
+        <button data-quick="tatami" class="top-filter-btn bg-white hover:bg-amber-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
+          <i class="fa-solid fa-couch text-amber-600"></i>
+          <span>座敷・個室 (18)</span>
+        </button>
+        <button data-quick="kids" class="top-filter-btn bg-white hover:bg-emerald-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
+          <i class="fa-solid fa-child-reaching text-emerald-600"></i>
+          <span>キッズメニュー有 (12)</span>
+        </button>
+        <button data-quick="early" class="top-filter-btn bg-white hover:bg-blue-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
+          <i class="fa-solid fa-clock text-blue-600"></i>
+          <span>17時前開店 (37)</span>
+        </button>
+        <button data-quick="casual_kids" class="top-filter-btn bg-white hover:bg-teal-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
+          <i class="fa-solid fa-bowl-food text-teal-600"></i>
+          <span>うどん・定食 (29)</span>
+        </button>
+        <button data-quick="local" class="top-filter-btn bg-white hover:bg-red-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
+          <i class="fa-solid fa-fire text-red-600"></i>
+          <span>もつ鍋・水炊き (13)</span>
+        </button>
+        <button data-quick="cheap_delicious" class="top-filter-btn bg-white hover:bg-emerald-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
+          <i class="fa-solid fa-thumbs-up text-emerald-600"></i>
+          <span>安くて美味い (23)</span>
+        </button>
+        <button data-quick="open" class="top-filter-btn bg-white hover:bg-emerald-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
+          <i class="fa-solid fa-calendar-check text-emerald-600"></i>
+          <span>祝日営業 (48)</span>
+        </button>
+        <button data-quick="caution" class="top-filter-btn bg-white hover:bg-rose-50 text-rose-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-rose-200 cursor-pointer shadow-2xs">
+          <i class="fa-solid fa-triangle-exclamation text-rose-500"></i>
+          <span>祝日注意 (2)</span>
+        </button>
+
       </div>
     </div>
   </header>
 
-  <!-- ================= 2. Hero & Context Banner ================= -->
-  <section class="bg-gradient-to-b from-white via-slate-50 to-slate-100 border-b border-slate-200 relative overflow-hidden">
-    <!-- 装飾背景サークル -->
-    <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-100/40 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-100/40 rounded-full blur-3xl pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:py-8 relative">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        
-        <div class="lg:col-span-8 space-y-3.5">
-          <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 text-brand-800 text-xs px-3.5 py-1.5 rounded-full font-semibold shadow-2xs">
-            <i class="fa-solid fa-hotel text-brand-600"></i>
-            拠点：ホテル一楽（福岡市中央区清川2丁目5-5）
-          </div>
-          
-          <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 leading-tight">
-            5歳児と2人旅。疲れてぐずる前に<br class="hidden sm:inline">
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-700 via-brand-600 to-teal-500">
-              「近さ・早さ・座敷・祝日営業」
-            </span>
-            で選ぶ安心ディナー。
-          </h2>
-          
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
-            科学館や動物園から戻り、16時〜17時にホテル一楽へチェックイン。大きな荷物を部屋に置いた後、
-            <strong class="text-slate-800 font-bold">「徒歩1〜8分以内のご近所」</strong>や<strong class="text-slate-800 font-bold">「駅からの帰り道」</strong>で、
-            <span class="bg-emerald-100 text-emerald-800 px-1 py-0.5 rounded font-bold">祝日営業している店舗（全54店）</span>と
-            <span class="bg-rose-100 text-rose-800 px-1 py-0.5 rounded font-bold">祝日定休の注意店</span>を明確に判定。各店舗の公式予約グルメサイト（食べログ／ホットペッパー等）＆Googleマップへの直通リンクを完備しました。
-          </p>
-          
-          <div class="flex flex-wrap gap-2 pt-1 text-xs">
-            <span class="inline-flex items-center bg-white px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-2xs text-slate-700 font-medium">
-              <i class="fa-solid fa-calendar-check text-emerald-600 mr-1.5"></i>祝日営業チェック機能付き
-            </span>
-            <span class="inline-flex items-center bg-white px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-2xs text-slate-700 font-medium">
-              <i class="fa-solid fa-utensils text-amber-500 mr-1.5"></i>食べログ＆ホットペッパー公式連携
-            </span>
-            <span class="inline-flex items-center bg-white px-3 py-1.5 rounded-xl border border-slate-200/80 shadow-2xs text-slate-700 font-medium">
-              <i class="fa-solid fa-person-walking text-brand-600 mr-1.5"></i>ホテル徒歩1〜12分圏内
-            </span>
-          </div>
-
-          <!-- ページの頭のクリック絞り込みボタン群 (Hero内) -->
-          <div class="pt-3 border-t border-slate-200/70">
-            <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
-              <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                <i class="fa-solid fa-layer-group text-brand-600"></i>
-                条件をタップして徐々に絞り込み（複数選択可能）：
-              </span>
-              <span class="text-[11px] text-slate-500 font-medium bg-slate-100 px-2 py-0.5 rounded-md">
-                ※タップで追加・もう一度押して解除
-              </span>
-            </div>
-            <div class="flex flex-wrap gap-2" id="heroQuickButtons">
-              <button data-quick="morning" class="hero-chip-btn bg-amber-500 hover:bg-amber-600 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
-                <i class="fa-solid fa-sun text-yellow-200"></i>
-                <span>☀️ モーニング・朝食 (12)</span>
-              </button>
-              <button data-quick="open" class="hero-chip-btn bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
-                <i class="fa-solid fa-calendar-check text-emerald-200"></i>
-                <span>祝日営業 (48)</span>
-              </button>
-              <button data-quick="kids" class="hero-chip-btn bg-amber-600 hover:bg-amber-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
-                <i class="fa-solid fa-child-reaching text-amber-100"></i>
-                <span>キッズメニュー有 (12)</span>
-              </button>
-              <button data-quick="hotel_near" class="hero-chip-btn bg-purple-600 hover:bg-purple-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
-                <i class="fa-solid fa-person-walking text-purple-200"></i>
-                <span>徒歩3分以内 (21)</span>
-              </button>
-              <button data-quick="tatami" class="hero-chip-btn bg-amber-700 hover:bg-amber-800 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
-                <i class="fa-solid fa-couch text-amber-200"></i>
-                <span>座敷・個室 (18)</span>
-              </button>
-              <button data-quick="early" class="hero-chip-btn bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
-                <i class="fa-solid fa-clock text-blue-200"></i>
-                <span>16時〜17時開店</span>
-              </button>
-              <button data-quick="casual_kids" class="hero-chip-btn bg-teal-600 hover:bg-teal-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
-                <i class="fa-solid fa-bowl-food text-teal-200"></i>
-                <span>うどん・定食 (29)</span>
-              </button>
-              <button data-quick="all" class="hero-chip-btn bg-white hover:bg-slate-100 active:scale-95 text-slate-700 text-xs px-3 py-2 rounded-xl font-bold transition border border-slate-300 flex items-center gap-1.5 cursor-pointer shadow-2xs">
-                <i class="fa-solid fa-rotate-left text-slate-500"></i>
-                <span>全50店表示</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mini Stats Summary Box (Clickable Quick Filter Cards) -->
-        <div class="lg:col-span-4 bg-white/95 backdrop-blur-md rounded-2xl p-5 border border-brand-200/80 shadow-glass">
-          <div class="flex items-center justify-between mb-3 pb-2.5 border-b border-slate-100">
-            <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-              <i class="fa-solid fa-chart-pie text-brand-600"></i> 目的から即時絞り込み
-            </span>
-            <span class="bg-gradient-to-r from-emerald-600 to-teal-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-2xs">
-              タップで即反映
-            </span>
-          </div>
-          
-          <div class="grid grid-cols-2 gap-2 text-center" id="heroStatFilterButtons">
-            <button data-quick="open" class="hero-stat-btn group bg-emerald-50/90 hover:bg-emerald-100 p-2.5 rounded-xl border border-emerald-300 transition hover:shadow-xs text-center cursor-pointer">
-              <span class="block text-2xl font-extrabold text-emerald-700 font-display group-hover:scale-105 transition-transform">54<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
-              <span class="text-[11px] text-emerald-950 font-bold block">✅ 祝日営業店</span>
-              <span class="text-[9px] text-emerald-700 block mt-0.5">タップで絞り込み</span>
-            </button>
-            <button data-quick="kids" class="hero-stat-btn group bg-amber-50/90 hover:bg-amber-100 p-2.5 rounded-xl border border-amber-300 transition hover:shadow-xs text-center cursor-pointer">
-              <span class="block text-2xl font-extrabold text-amber-700 font-display group-hover:scale-105 transition-transform">15<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
-              <span class="text-[11px] text-amber-950 font-bold block">👶 キッズメニュー有</span>
-              <span class="text-[9px] text-amber-700 block mt-0.5">タップで絞り込み</span>
-            </button>
-            <button data-quick="tatami" class="hero-stat-btn group bg-slate-50/90 hover:bg-slate-100 p-2.5 rounded-xl border border-slate-300 transition hover:shadow-xs text-center cursor-pointer">
-              <span class="block text-2xl font-extrabold text-coral-600 font-display group-hover:scale-105 transition-transform">22<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
-              <span class="text-[11px] text-slate-800 font-bold block">🛋️ 座敷・個室</span>
-              <span class="text-[9px] text-slate-500 block mt-0.5">タップで絞り込み</span>
-            </button>
-            <button data-quick="hotel_near" class="hero-stat-btn group bg-purple-50/90 hover:bg-purple-100 p-2.5 rounded-xl border border-purple-300 transition hover:shadow-xs text-center cursor-pointer">
-              <span class="block text-2xl font-extrabold text-purple-700 font-display group-hover:scale-105 transition-transform">23<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
-              <span class="text-[11px] text-purple-950 font-bold block">🏨 徒歩3分以内</span>
-              <span class="text-[9px] text-purple-700 block mt-0.5">タップで絞り込み</span>
-            </button>
-            <button data-quick="early" class="hero-stat-btn group bg-blue-50/90 hover:bg-blue-100 p-2.5 rounded-xl border border-blue-300 transition hover:shadow-xs text-center cursor-pointer">
-              <span class="block text-2xl font-extrabold text-brand-700 font-display group-hover:scale-105 transition-transform">18<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
-              <span class="text-[11px] text-blue-950 font-bold block">⏰ 16時〜17時開店</span>
-              <span class="text-[9px] text-blue-700 block mt-0.5">タップで絞り込み</span>
-            </button>
-            <button data-quick="caution" class="hero-stat-btn group bg-rose-50/90 hover:bg-rose-100 p-2.5 rounded-xl border border-rose-300 transition hover:shadow-xs text-center cursor-pointer">
-              <span class="block text-2xl font-extrabold text-rose-600 font-display group-hover:scale-105 transition-transform">6<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
-              <span class="text-[11px] text-rose-950 font-bold block">⚠️ 祝日休・注意店</span>
-              <span class="text-[9px] text-rose-700 block mt-0.5">タップで絞り込み</span>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 3. Strategy Guide & Interactive Area Map ================= -->
-  <section id="strategy" class="max-w-7xl mx-auto px-4 py-8 sm:px-6 w-full space-y-6">
+  <!-- ================= 2. Main Container (Mobile First: Instant Access to Cards) ================= -->
+  <main class="max-w-7xl mx-auto px-3.5 py-3 sm:px-6 w-full space-y-3">
     
-    <!-- ゾーン俯瞰図（クリックで即座に絞り込み可能） -->
-    <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4 border-b border-slate-100 pb-3">
-        <div>
-          <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-            <i class="fa-solid fa-map-location-dot text-brand-600"></i>
-            駅〜ホテル一楽 徒歩ルート＆4大エリア構造
-          </h2>
-          <p class="text-xs text-slate-500 mt-0.5">※カードをタップすると該当エリアの店舗にワンクリックで絞り込めます</p>
-        </div>
-        <div class="flex items-center gap-2 text-xs">
-          <button id="resetAreaFilterBtn" class="text-brand-600 hover:text-brand-700 font-semibold underline text-xs">
-            すべてのエリアを表示
-          </button>
-        </div>
-      </div>
-
-      <!-- Area Cards Flow (Clickable Filter Cards) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
-        
-        <!-- Zone D: 清川 (最推し) -->
-        <button 
-          data-zone="zone_d" 
-          class="area-filter-card text-left bg-gradient-to-br from-purple-50 to-slate-50 border-2 border-purple-200 hover:border-purple-500 rounded-xl p-3.5 transition duration-200 cursor-pointer shadow-2xs group"
-        >
-          <div class="flex items-center justify-between font-bold text-purple-900 mb-1.5">
-            <span class="flex items-center gap-1.5 text-sm">
-              <i class="fa-solid fa-hotel text-purple-600"></i> 清川 (ゾーンD)
-            </span>
-            <span class="text-[10px] bg-purple-600 text-white font-extrabold px-2 py-0.5 rounded-full shadow-2xs">
-              徒歩1〜4分【最推し】
-            </span>
-          </div>
-          <p class="text-slate-600 mb-2 leading-relaxed text-[11px]">
-            <strong>ホテル一楽の目と鼻の先！</strong>一度チェックインして部屋着・手ぶらで出られる最強エリア。子供が眠くなっても抱っこですぐ帰室可能。
-          </p>
-          <div class="text-[11px] font-semibold text-purple-800 bg-white/80 p-2 rounded-lg border border-purple-100">
-            主な店：たんか、海鳴、サンデリカ、スタミナ亭、おたびしょ、弐ノ弐
-          </div>
-        </button>
-
-        <!-- Zone C: 高砂 -->
-        <button 
-          data-zone="zone_c" 
-          class="area-filter-card text-left bg-gradient-to-br from-amber-50 to-slate-50 border-2 border-amber-200 hover:border-amber-500 rounded-xl p-3.5 transition duration-200 cursor-pointer shadow-2xs group"
-        >
-          <div class="flex items-center justify-between font-bold text-amber-900 mb-1.5">
-            <span class="flex items-center gap-1.5 text-sm">
-              <i class="fa-solid fa-arrows-split-up-and-left text-amber-600"></i> 高砂 (ゾーンC)
-            </span>
-            <span class="text-[10px] bg-amber-200 text-amber-900 px-2 py-0.5 rounded-full font-bold">
-              徒歩5〜8分
-            </span>
-          </div>
-          <p class="text-slate-600 mb-2 leading-relaxed text-[11px]">
-            駅とホテルの間。落ち着いた水炊き、個室もつ鍋、丁寧な焼鳥店など、大衆すぎず上質な名店が集まるエリア。
-          </p>
-          <div class="text-[11px] font-semibold text-amber-800 bg-white/80 p-2 rounded-lg border border-amber-100">
-            主な店：水炊きぜんざい、こうづき、弥七、いってつ
-          </div>
-        </button>
-
-        <!-- Zone A: 渡辺通 -->
-        <button 
-          data-zone="zone_a" 
-          class="area-filter-card text-left bg-gradient-to-br from-blue-50 to-slate-50 border-2 border-blue-200 hover:border-blue-500 rounded-xl p-3.5 transition duration-200 cursor-pointer shadow-2xs group"
-        >
-          <div class="flex items-center justify-between font-bold text-blue-900 mb-1.5">
-            <span class="flex items-center gap-1.5 text-sm">
-              <i class="fa-solid fa-train-subway text-blue-600"></i> 渡辺通駅 (ゾーンA)
-            </span>
-            <span class="text-[10px] bg-blue-200 text-blue-900 px-2 py-0.5 rounded-full font-bold">
-              徒歩10〜12分
-            </span>
-          </div>
-          <p class="text-slate-600 mb-2 leading-relaxed text-[11px]">
-            地下鉄下車直後に寄り道できる大通り沿い。ホテルニューオータニ、梅山鉄平食堂、因幡うどんなど大箱・安心店が集中。
-          </p>
-          <div class="text-[11px] font-semibold text-blue-800 bg-white/80 p-2 rounded-lg border border-blue-100">
-            主な店：梅山鉄平食堂、因幡うどん、サンセルコ
-          </div>
-        </button>
-
-        <!-- Zone B: 薬院 -->
-        <button 
-          data-zone="zone_b" 
-          class="area-filter-card text-left bg-gradient-to-br from-emerald-50 to-slate-50 border-2 border-emerald-200 hover:border-emerald-500 rounded-xl p-3.5 transition duration-200 cursor-pointer shadow-2xs group"
-        >
-          <div class="flex items-center justify-between font-bold text-emerald-900 mb-1.5">
-            <span class="flex items-center gap-1.5 text-sm">
-              <i class="fa-solid fa-train text-emerald-600"></i> 薬院駅 (ゾーンB)
-            </span>
-            <span class="text-[10px] bg-emerald-200 text-emerald-900 px-2 py-0.5 rounded-full font-bold">
-              徒歩12〜14分
-            </span>
-          </div>
-          <p class="text-slate-600 mb-2 leading-relaxed text-[11px]">
-            西鉄・地下鉄の結節点。駅直結の「やりうどん」や、餃子李、ぴかいち、大衆中華など子どもが喜ぶ麺・粉ものが充実。
-          </p>
-          <div class="text-[11px] font-semibold text-emerald-800 bg-white/80 p-2 rounded-lg border border-emerald-100">
-            主な店：餃子李、博多やりうどん、とりかわ粋恭
-          </div>
-        </button>
-
-      </div>
-    </div>
-
-    <!-- 16:30〜ゴールデンタイム戦略 (Schedule & Pro Tips) -->
-    <div id="schedule" class="bg-gradient-to-r from-amber-500/10 via-brand-500/10 to-transparent border-l-4 border-amber-500 bg-white rounded-r-2xl p-5 shadow-sm">
-      <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2 mb-2">
-        <i class="fa-regular fa-clock text-amber-600 text-base"></i>
-        【5歳児連れの鉄則】16:30〜17:30 スタートが成功の鍵
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-slate-700 mt-3">
-        <div class="bg-white/90 p-3.5 rounded-xl border border-amber-200/60 shadow-2xs">
-          <span class="font-bold text-amber-900 block mb-1 flex items-center gap-1.5">
-            <span class="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px]">1</span>
-            17時前入店で完全混雑回避
-          </span>
-          科学館・動物園で歩き回った5歳児は19時を過ぎると電池切れに。祝日の福岡の人気店は18:30以降満席になりますが、<strong>16:00〜17:00なら予約なしでも座敷に入りやすい</strong>です。
-        </div>
-        <div class="bg-white/90 p-3.5 rounded-xl border border-amber-200/60 shadow-2xs">
-          <span class="font-bold text-amber-900 block mb-1 flex items-center gap-1.5">
-            <span class="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px]">2</span>
-            ホテル一楽で先に荷物置き
-          </span>
-          渡辺通駅からホテルへ到着後、まずはチェックインしてお手洗いと荷物預け。身軽になってから徒歩1〜3分の清川・高砂エリアに出向くのが最も疲れ知らずです。
-        </div>
-        <div class="bg-white/90 p-3.5 rounded-xl border border-amber-200/60 shadow-2xs">
-          <span class="font-bold text-amber-900 block mb-1 flex items-center gap-1.5">
-            <span class="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px]">3</span>
-            もつ鍋・水炊きの「薄味・単品」対応
-          </span>
-          もつ鍋はお子さまには唐辛子（鷹の爪）抜き、または水炊きや鶏雑炊、唐揚げ、つくね等の単品注文がおすすめ。本リストではお子さまが食べられるメニューがある店を厳選しています。
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= 4. Controls: Filter, Search, Sort ================= -->
-    <div id="restaurantSection" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4 scroll-mt-24">
+    <!-- 検索バー ＆ クイックトグル・並び替え（スマホ画面最上部に即座に表示） -->
+    <div class="bg-white rounded-2xl p-3 sm:p-3.5 border border-slate-200/80 shadow-xs flex flex-col md:flex-row gap-2.5 items-stretch md:items-center justify-between">
       
-      <!-- Search & Sort Row -->
-      <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
-        <!-- Search Input -->
-        <div class="relative flex-1">
-          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-          <input 
-            type="text" 
-            id="searchInput" 
-            placeholder="店名、料理（うどん・もつ鍋・焼鳥・餃子）、特徴（座敷・徒歩1分）で検索..." 
-            class="w-full pl-10 pr-9 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 bg-slate-50/70 transition"
-          >
-          <button id="clearSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1">
-            <i class="fa-solid fa-circle-xmark"></i>
-          </button>
-        </div>
-
-        <!-- Holiday Check Toggle, Kids Menu Toggle & Sort Select -->
-        <div class="flex flex-wrap items-center gap-2 shrink-0">
-          <!-- 祝日営業チェックボックストグル -->
-          <label class="flex items-center gap-2 cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-2 rounded-xl text-xs font-bold transition select-none shadow-2xs">
-            <input type="checkbox" id="holidayOpenOnlyToggle" class="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500 accent-emerald-600 cursor-pointer">
-            <span class="flex items-center gap-1.5">
-              <i class="fa-solid fa-calendar-check text-emerald-600"></i>
-              <span>祝日営業店のみ表示</span>
-            </span>
-            <span id="holidayOpenCountBadge" class="bg-emerald-600 text-white text-[10px] px-1.5 py-0.2 rounded-full font-black">54</span>
-          </label>
-
-          <!-- お子様メニューありトグル -->
-          <label class="flex items-center gap-2 cursor-pointer bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-900 px-3 py-2 rounded-xl text-xs font-bold transition select-none shadow-2xs">
-            <input type="checkbox" id="kidsMenuOnlyToggle" class="w-4 h-4 text-amber-600 rounded focus:ring-amber-500 accent-amber-600 cursor-pointer">
-            <span class="flex items-center gap-1.5">
-              <i class="fa-solid fa-child-reaching text-amber-600"></i>
-              <span>お子様メニューあり</span>
-            </span>
-            <span id="kidsMenuCountBadge" class="bg-amber-600 text-white text-[10px] px-1.5 py-0.2 rounded-full font-black">16</span>
-          </label>
-
-          <!-- Sort Select -->
-          <div class="flex items-center gap-1.5">
-            <div class="hidden sm:flex items-center gap-1 text-xs text-slate-500 whitespace-nowrap font-medium">
-              <i class="fa-solid fa-arrow-down-short-wide text-brand-600"></i> 並び替え:
-            </div>
-            <select id="sortSelect" class="bg-slate-50 border border-slate-300 text-slate-800 text-xs sm:text-sm rounded-xl py-2 px-3 focus:outline-none focus:ring-2 focus:ring-brand-500 font-medium">
-              <option value="recommended">★ おすすめ順</option>
-              <option value="distance_asc">ホテルから近い順（徒歩）</option>
-              <option value="price_asc">予算が安い順（親子2名）</option>
-              <option value="early_open">早く開く店（16:00〜17:00）</option>
-            </select>
-          </div>
-        </div>
+      <!-- 検索入力 -->
+      <div class="relative flex-1">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="店名、料理（もつ鍋・うどん・焼鳥）、座敷、徒歩..." 
+          class="w-full pl-9 pr-8 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 bg-slate-50/60 transition"
+        >
+        <button id="clearSearchBtn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1">
+          <i class="fa-solid fa-circle-xmark text-xs"></i>
+        </button>
       </div>
 
-      <!-- Quick Filter Chips & Category Tabs -->
-      <div class="space-y-2.5">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-bold text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
-            <i class="fa-solid fa-layer-group text-brand-600"></i> カテゴリーで絞り込み（複数選択で掛け合わせ可能）
-          </span>
-          <span id="resultCountText" class="text-xs font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
-            該当：60件
-          </span>
-        </div>
-        
-        <div class="flex flex-wrap gap-1.5 sm:gap-2" id="categoryTabContainer">
-          <button data-cat="all" class="cat-btn active bg-brand-600 text-white text-xs px-3.5 py-2 rounded-xl font-semibold transition shadow-xs">
-            すべて (50)
-          </button>
-          <button data-cat="morning" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-sun text-amber-500 mr-1"></i>☀️ モーニング・朝食 (12)
-          </button>
-          <button data-cat="hotel_near" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-person-walking text-purple-600 mr-1"></i>ホテル徒歩3分以内 (21)
-          </button>
-          <button data-cat="tatami" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-couch text-amber-600 mr-1"></i>座敷・小上がり・個室 (18)
-          </button>
-          <button data-cat="casual_kids" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-bowl-food text-blue-600 mr-1"></i>子連れ定番・うどん定食 (29)
-          </button>
-          <button data-cat="local" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-fire text-red-600 mr-1"></i>ご当地（もつ鍋・水炊き・焼鳥）(13)
-          </button>
-          <button data-cat="cheap_delicious" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-thumbs-up text-emerald-600 mr-1"></i>安くて美味い・中華・居酒屋 (23)
-          </button>
-          <button data-cat="buffet" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-utensils text-orange-600 mr-1"></i>食べ放題・焼肉 (1)
-          </button>
-          <button data-cat="upscale" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-gem text-indigo-600 mr-1"></i>大衆でない上質・ホテル内 (8)
-          </button>
-          <button data-cat="caution" class="cat-btn bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs px-3 py-2 rounded-xl font-semibold transition">
-            <i class="fa-solid fa-triangle-exclamation text-rose-500 mr-1"></i>要注意・祝日休店 (2)
-          </button>
-        </div>
-      </div>
+      <!-- トグル・並び替えコントロール -->
+      <div class="flex items-center gap-2 justify-between md:justify-end flex-wrap">
+        <!-- 祝日営業トグル -->
+        <label class="flex items-center gap-1.5 cursor-pointer bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1.5 rounded-xl text-xs font-bold transition select-none">
+          <input type="checkbox" id="holidayOpenOnlyToggle" class="w-3.5 h-3.5 text-emerald-600 rounded focus:ring-emerald-500 accent-emerald-600 cursor-pointer">
+          <span class="text-[11px] sm:text-xs">祝日営業</span>
+          <span id="holidayOpenCountBadge" class="bg-emerald-600 text-white text-[9px] px-1.5 py-0.2 rounded-full font-black">48</span>
+        </label>
 
-      <!-- Active Filters Status Bar -->
-      <div id="filterTagContainer" class="flex flex-wrap items-center gap-2 pt-1 text-xs"></div>
+        <!-- キッズメニュートグル -->
+        <label class="flex items-center gap-1.5 cursor-pointer bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1.5 rounded-xl text-xs font-bold transition select-none">
+          <input type="checkbox" id="kidsMenuOnlyToggle" class="w-3.5 h-3.5 text-amber-600 rounded focus:ring-amber-500 accent-amber-600 cursor-pointer">
+          <span class="text-[11px] sm:text-xs">キッズメニュー</span>
+          <span id="kidsMenuCountBadge" class="bg-amber-600 text-white text-[9px] px-1.5 py-0.2 rounded-full font-black">12</span>
+        </label>
+
+        <!-- 並び替えセレクタ -->
+        <select id="sortSelect" class="bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl py-1.5 px-2.5 focus:outline-none focus:ring-2 focus:ring-amber-500 font-bold">
+          <option value="recommended">★ おすすめ順</option>
+          <option value="distance_asc">ホテルから近い順</option>
+          <option value="price_asc">予算が手頃な順</option>
+          <option value="early_open">17時前開店順</option>
+        </select>
+      </div>
 
     </div>
 
-    <!-- ================= 5. Restaurant Cards Grid (Rendered by JS) ================= -->
-    <div id="restaurantGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <!-- スマートな折りたたみ式アコーディオン：旅の攻略＆エリア解説（必要な時だけサッと開くので邪魔にならない） -->
+    <details class="group bg-gradient-to-r from-amber-50/70 via-white to-slate-50 rounded-2xl border border-amber-200/60 overflow-hidden shadow-2xs">
+      <summary class="flex items-center justify-between p-3 sm:px-4 cursor-pointer select-none text-xs font-bold text-amber-950 hover:bg-amber-100/40 transition">
+        <span class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-lg bg-amber-500 text-white flex items-center justify-center text-xs shadow-2xs">
+            <i class="fa-solid fa-lightbulb"></i>
+          </span>
+          <span>5歳児連れの安心ヒント（16:30戦略）＆ 4大エリア解説</span>
+        </span>
+        <span class="text-amber-700 text-xs font-medium flex items-center gap-1 shrink-0">
+          <span class="group-open:hidden">解説を見る</span>
+          <span class="hidden group-open:inline">閉じる</span>
+          <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+        </span>
+      </summary>
+      
+      <div class="p-3.5 pt-1 border-t border-amber-100 space-y-3 text-xs text-slate-700">
+        <!-- 攻略Tips 3枚 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+          <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+            <span class="font-bold text-slate-900 block mb-1 flex items-center gap-1.5 text-amber-800">
+              <i class="fa-solid fa-clock text-amber-500"></i> 17時前入店で完全混雑回避
+            </span>
+            <p class="text-[11px] text-slate-600 leading-relaxed">
+              科学館や動物園で歩いた5歳児は19時を過ぎると眠気が出やすいです。祝日の人気店も<strong>16:00〜17:00なら予約なしで座敷に入りやすい</strong>です。
+            </p>
+          </div>
+          <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+            <span class="font-bold text-slate-900 block mb-1 flex items-center gap-1.5 text-purple-800">
+              <i class="fa-solid fa-hotel text-purple-500"></i> ホテル一楽に荷物を置いてすぐ出発
+            </span>
+            <p class="text-[11px] text-slate-600 leading-relaxed">
+              まずはホテルへチェックインして荷物を部屋へ。身軽になってから徒歩1〜3分の清川・高砂エリアに出向くのが最も疲れ知らずです。
+            </p>
+          </div>
+          <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+            <span class="font-bold text-slate-900 block mb-1 flex items-center gap-1.5 text-emerald-800">
+              <i class="fa-solid fa-utensils text-emerald-500"></i> もつ鍋・水炊きの取り分け
+            </span>
+            <p class="text-[11px] text-slate-600 leading-relaxed">
+              もつ鍋はお子様用に唐辛子抜き、または水炊き・鶏雑炊・唐揚げ・うどん等の単品注文で親子美味しく楽しめます。
+            </p>
+          </div>
+        </div>
+
+        <!-- エリア選択カード -->
+        <div class="pt-1">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-bold text-slate-800 text-[11px]">エリア別クイック絞り込み（タップで選択）：</span>
+            <button id="resetAreaFilterBtn" class="text-brand-600 hover:text-brand-700 font-semibold underline text-[11px] cursor-pointer">
+              エリア解除
+            </button>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <button data-zone="zone_d" class="area-filter-card text-left bg-purple-50/80 hover:bg-purple-100 border border-purple-200 rounded-xl p-2.5 transition cursor-pointer">
+              <div class="font-bold text-purple-900 text-xs flex items-center justify-between">
+                <span>清川 (ゾーンD)</span>
+                <span class="text-[9px] bg-purple-600 text-white px-1.5 py-0.2 rounded">徒歩1〜4分</span>
+              </div>
+              <p class="text-[10px] text-slate-500 mt-1 truncate">ホテル直近！手ぶらで出られる最推し</p>
+            </button>
+            <button data-zone="zone_c" class="area-filter-card text-left bg-amber-50/80 hover:bg-amber-100 border border-amber-200 rounded-xl p-2.5 transition cursor-pointer">
+              <div class="font-bold text-amber-900 text-xs flex items-center justify-between">
+                <span>高砂 (ゾーンC)</span>
+                <span class="text-[9px] bg-amber-200 text-amber-900 px-1.5 py-0.2 rounded">徒歩5〜8分</span>
+              </div>
+              <p class="text-[10px] text-slate-500 mt-1 truncate">落ち着いた名店・水炊き・もつ鍋</p>
+            </button>
+            <button data-zone="zone_a" class="area-filter-card text-left bg-blue-50/80 hover:bg-blue-100 border border-blue-200 rounded-xl p-2.5 transition cursor-pointer">
+              <div class="font-bold text-blue-900 text-xs flex items-center justify-between">
+                <span>渡辺通 (ゾーンA)</span>
+                <span class="text-[9px] bg-blue-200 text-blue-900 px-1.5 py-0.2 rounded">徒歩10〜12分</span>
+              </div>
+              <p class="text-[10px] text-slate-500 mt-1 truncate">地下鉄駅近・大箱・うどん・定食</p>
+            </button>
+            <button data-zone="zone_b" class="area-filter-card text-left bg-emerald-50/80 hover:bg-emerald-100 border border-emerald-200 rounded-xl p-2.5 transition cursor-pointer">
+              <div class="font-bold text-emerald-900 text-xs flex items-center justify-between">
+                <span>薬院 (ゾーンB)</span>
+                <span class="text-[9px] bg-emerald-200 text-emerald-900 px-1.5 py-0.2 rounded">徒歩12〜14分</span>
+              </div>
+              <p class="text-[10px] text-slate-500 mt-1 truncate">餃子・うどん・子供が喜ぶ麺処</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 適用中フィルタータグ表示バー（絞り込み中のみ表示） -->
+    <div id="filterTagContainer" class="flex flex-wrap items-center gap-1.5 text-xs empty:hidden"></div>
+
+    <!-- 結果件数ステータスバー -->
+    <div class="flex items-center justify-between px-1 pt-1">
+      <div class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span id="resultCountText">該当：50件</span>
+      </div>
+      <button onclick="toggleQuickFilter('all', false);" class="text-[11px] text-slate-400 hover:text-slate-600 underline cursor-pointer">
+        フィルター全解除
+      </button>
+    </div>
+
+    <!-- レストランカードグリッド（即座にここに到達！） -->
+<div id="restaurantGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       <!-- Dynamic rendering via JavaScript -->
     </div>
 
@@ -726,20 +491,20 @@
   </div>
 
   <!-- ================= 7. Mobile Floating Bottom Bar ================= -->
-  <div class="md:hidden fixed bottom-0 left-0 right-0 glass-nav border-t border-brand-800/40 px-4 py-2.5 z-40 flex items-center justify-around text-[10px] text-slate-300">
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center gap-1 hover:text-white">
-      <i class="fa-solid fa-house text-sm"></i>
+  <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-2 z-40 flex items-center justify-around text-[10px] text-slate-600 shadow-lg">
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center gap-0.5 hover:text-slate-900 cursor-pointer">
+      <i class="fa-solid fa-house text-sm text-slate-700"></i>
       <span>トップ</span>
     </button>
-    <a href="#strategy" class="flex flex-col items-center gap-1 hover:text-white">
-      <i class="fa-solid fa-map-location-dot text-sm text-brand-300"></i>
-      <span>エリア</span>
-    </a>
-    <button onclick="document.getElementById('searchInput').focus();" class="flex flex-col items-center gap-1 hover:text-white">
-      <i class="fa-solid fa-magnifying-glass text-sm"></i>
-      <span>検索</span>
+    <button onclick="document.getElementById('searchInput').focus();" class="flex flex-col items-center gap-0.5 hover:text-slate-900 cursor-pointer">
+      <i class="fa-solid fa-magnifying-glass text-sm text-slate-700"></i>
+      <span>探す</span>
     </button>
-    <button onclick="document.getElementById('showFavOnlyBtn').click();" class="flex flex-col items-center gap-1 text-coral-400 hover:text-coral-300">
+    <button onclick="toggleQuickFilter('morning', false);" class="flex flex-col items-center gap-0.5 hover:text-slate-900 cursor-pointer">
+      <i class="fa-solid fa-sun text-sm text-amber-500"></i>
+      <span>朝食</span>
+    </button>
+    <button onclick="document.getElementById('showFavOnlyBtn').click();" class="flex flex-col items-center gap-0.5 text-rose-500 hover:text-rose-600 cursor-pointer">
       <i class="fa-solid fa-heart text-sm"></i>
       <span>保存 (<span id="mobileFavCount">0</span>)</span>
     </button>
@@ -3198,97 +2963,28 @@
     }
     window.toggleQuickFilter = toggleQuickFilter;
 
-    // 全フィルターUIの双方向同期
+    // 全フィルターUIの双方向同期（モダンPill UI対応）
     function syncAllFilterUI() {
       // チェックボックストグルの同期
       holidayOpenOnlyToggle.checked = holidayOpenOnly;
       if (kidsMenuOnlyToggle) kidsMenuOnlyToggle.checked = kidsMenuOnly;
 
-      // 上部固定バー（.top-filter-btn）の同期
+      // 上部スマートフィルターPill（.top-filter-btn）の同期
       const topBtns = document.querySelectorAll('.top-filter-btn');
       topBtns.forEach(btn => {
         const q = btn.dataset.quick;
         const active = isFilterActive(q);
         if (q === 'all') {
           if (active) {
-            btn.className = 'top-filter-btn active bg-white text-brand-900 font-extrabold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition shadow-xs flex items-center gap-1 cursor-pointer ring-2 ring-amber-400';
+            btn.className = 'top-filter-btn active bg-slate-900 text-white font-extrabold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition shadow-xs flex items-center gap-1 cursor-pointer ring-2 ring-amber-400';
           } else {
-            btn.className = 'top-filter-btn bg-white/10 hover:bg-white/20 text-white font-medium text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1 cursor-pointer';
+            btn.className = 'top-filter-btn bg-white hover:bg-slate-100 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1 border border-slate-200 cursor-pointer shadow-2xs';
           }
         } else {
           if (active) {
-            btn.className = 'top-filter-btn active bg-white text-brand-900 font-black text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition shadow-md flex items-center gap-1.5 cursor-pointer ring-2 ring-amber-400 scale-[1.03]';
+            btn.className = 'top-filter-btn active bg-slate-900 text-white font-extrabold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition shadow-md flex items-center gap-1.5 cursor-pointer ring-2 ring-amber-400 scale-[1.02]';
           } else {
-            btn.classList.remove('active', 'bg-white', 'text-brand-900', 'ring-2', 'ring-amber-400', 'font-black', 'scale-[1.03]');
-            if (q === 'morning') btn.className = 'top-filter-btn bg-amber-600/90 hover:bg-amber-500 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-300/40 cursor-pointer';
-            else if (q === 'open') btn.className = 'top-filter-btn bg-emerald-800/90 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-emerald-500/40 cursor-pointer';
-            else if (q === 'kids') btn.className = 'top-filter-btn bg-amber-700/90 hover:bg-amber-600 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-400/40 cursor-pointer';
-            else if (q === 'hotel_near') btn.className = 'top-filter-btn bg-purple-800/90 hover:bg-purple-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-purple-400/40 cursor-pointer';
-            else if (q === 'tatami') btn.className = 'top-filter-btn bg-amber-800/90 hover:bg-amber-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-400/40 cursor-pointer';
-            else if (q === 'early') btn.className = 'top-filter-btn bg-blue-800/90 hover:bg-blue-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-blue-400/40 cursor-pointer';
-            else if (q === 'casual_kids') btn.className = 'top-filter-btn bg-cyan-800/90 hover:bg-cyan-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-cyan-400/40 cursor-pointer';
-            else if (q === 'local') btn.className = 'top-filter-btn bg-red-800/90 hover:bg-red-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-red-400/40 cursor-pointer';
-            else btn.className = 'top-filter-btn bg-white/10 hover:bg-white/20 text-white font-medium text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1 cursor-pointer';
-          }
-        }
-      });
-
-      // ヒーロー内ボタン（.hero-chip-btn）の同期
-      const heroChipBtns = document.querySelectorAll('.hero-chip-btn');
-      heroChipBtns.forEach(btn => {
-        const q = btn.dataset.quick;
-        const active = isFilterActive(q);
-        if (q === 'all') {
-          if (active) {
-            btn.classList.add('ring-2', 'ring-brand-600', 'bg-brand-50', 'text-brand-900', 'font-black');
-          } else {
-            btn.classList.remove('ring-2', 'ring-brand-600', 'bg-brand-50', 'text-brand-900', 'font-black');
-          }
-        } else {
-          if (active) {
-            btn.classList.add('ring-4', 'ring-offset-2', 'ring-brand-600', 'scale-105', 'font-black', 'shadow-md');
-          } else {
-            btn.classList.remove('ring-4', 'ring-offset-2', 'ring-brand-600', 'scale-105', 'font-black', 'shadow-md');
-          }
-        }
-      });
-
-      // ヒーロー集計カード（.hero-stat-btn）の同期
-      const heroStatBtns = document.querySelectorAll('.hero-stat-btn');
-      heroStatBtns.forEach(btn => {
-        const q = btn.dataset.quick;
-        const active = isFilterActive(q);
-        if (active) {
-          btn.classList.add('ring-3', 'ring-brand-600', 'ring-offset-1', 'scale-[1.03]', 'shadow-md');
-        } else {
-          btn.classList.remove('ring-3', 'ring-brand-600', 'ring-offset-1', 'scale-[1.03]', 'shadow-md');
-        }
-      });
-
-      // 下部カテゴリーボタン（categoryButtons）の同期
-      categoryButtons.forEach(btn => {
-        const cat = btn.dataset.cat;
-        if (cat === 'all') {
-          const isAll = selectedCategories.size === 0;
-          if (isAll) {
-            btn.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-xs');
-            btn.classList.remove('bg-slate-100', 'text-slate-700');
-          } else {
-            btn.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-xs');
-            btn.classList.add('bg-slate-100', 'text-slate-700');
-          }
-        } else {
-          const isSelected = selectedCategories.has(cat);
-          if (isSelected) {
-            btn.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-xs', 'ring-2', 'ring-brand-400', 'font-bold');
-            btn.classList.remove('bg-slate-100', 'text-slate-700', 'bg-rose-50', 'text-rose-700');
-          } else {
-            btn.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-xs', 'ring-2', 'ring-brand-400', 'font-bold');
-            if (cat === 'caution') {
-              btn.classList.add('bg-rose-50', 'text-rose-700');
-            } else {
-              btn.classList.add('bg-slate-100', 'text-slate-700');
-            }
+            btn.className = 'top-filter-btn bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200/90 cursor-pointer shadow-2xs';
           }
         }
       });
@@ -3513,7 +3209,7 @@
 
       noResults.classList.add('hidden');
 
-      // HTMLカードの生成
+      // HTMLカードの生成（洗練されたモダンマガジン調・モバイル快適UI）
       const cardsHtml = filtered.map(item => {
         const isFav = favorites.includes(item.id);
         const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' 福岡')}`;
@@ -3524,28 +3220,26 @@
         const gourmetStyle = getGourmetBtnStyle(provider);
 
         // 要注意カードと通常カードのスタイリング分岐
-        const borderClass = item.isCaution 
-          ? 'border-rose-300 bg-rose-50/50 shadow-sm' 
-          : 'border-slate-200/90 bg-white hover:border-brand-400 hover:shadow-card-hover';
+        const cardStyleClass = item.isCaution 
+          ? 'border-rose-200 bg-rose-50/40 shadow-xs' 
+          : 'border-slate-200/90 bg-white hover:border-amber-400/80 hover:shadow-md';
 
-        // 祝日営業表示のスタイル分岐
+        // 祝日営業表示
         let holidayHourDisplay = '';
         if (item.holidayStatus === 'closed') {
           holidayHourDisplay = `
-            <div class="flex items-start justify-between bg-rose-100/90 -mx-1.5 px-2 py-1 rounded-lg border border-rose-200">
-              <span class="text-rose-800 font-extrabold whitespace-nowrap mr-2 flex items-center gap-1">
-                <i class="fa-solid fa-circle-xmark text-rose-600"></i>祝日営業:
-              </span>
-              <span class="font-extrabold text-rose-700 text-right">❌ 祝日は休み（営業なし）</span>
+            <div class="flex items-center justify-between bg-rose-50 px-2.5 py-1 rounded-lg border border-rose-200/80 text-rose-800 text-[11px] font-bold">
+              <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-xmark text-rose-500"></i>祝日営業:</span>
+              <span class="font-extrabold text-rose-700">❌ 祝日は休み（営業なし）</span>
             </div>
           `;
         } else {
           holidayHourDisplay = `
-            <div class="flex items-start justify-between bg-emerald-50/70 -mx-1.5 px-2 py-1 rounded-lg">
-              <span class="text-slate-700 font-bold whitespace-nowrap mr-2 flex items-center gap-1">
-                <i class="fa-solid fa-calendar-check text-emerald-600"></i>祝日営業:
+            <div class="flex items-center justify-between bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-100 text-[11px]">
+              <span class="text-slate-500 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-clock text-amber-500"></i>祝日営業:
               </span>
-              <span class="font-extrabold text-slate-900 text-right ${item.openTime <= 16.5 ? 'text-coral-600 font-black' : ''}">
+              <span class="font-extrabold text-slate-800 ${item.openTime <= 16.5 ? 'text-coral-600 font-black' : ''}">
                 ${item.holidayHours}
               </span>
             </div>
@@ -3555,132 +3249,134 @@
         return `
           <div 
             onclick="openDetail(${item.id})"
-            class="relative flex flex-col rounded-2xl border ${borderClass} transition-all duration-200 overflow-hidden group cursor-pointer"
+            class="relative flex flex-col rounded-2xl border ${cardStyleClass} transition-all duration-200 overflow-hidden group cursor-pointer"
           >
             <!-- Top color accent stripe -->
             <div class="h-1.5 w-full ${topStrip}"></div>
             
-            <!-- Card Header -->
-            <div class="p-4 sm:p-5 pb-2">
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <div class="flex items-center gap-1.5 flex-wrap">
-                  <span class="text-[10px] font-black text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md font-display">No.${item.id}</span>
-                  ${holidayBadge}
-                  ${zoneBadge}
-                  <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2 py-0.5 rounded-md border border-slate-200">
-                    <i class="fa-solid fa-person-walking text-brand-600 mr-0.5"></i>${item.distWalk}
-                  </span>
-                </div>
-                
-                <!-- Favorite Bookmark Button -->
-                <button 
-                  type="button"
-                  onclick="toggleFav(${item.id}, event)" 
-                  class="w-9 h-9 rounded-full flex items-center justify-center transition-all ${isFav ? 'bg-red-50 text-red-500 hover:bg-red-100 heart-bounce' : 'bg-slate-100 text-slate-400 hover:text-red-400 hover:bg-slate-200'}"
-                  title="${isFav ? 'お気に入りから解除' : 'お気に入りに追加'}"
-                >
-                  <i class="fa-${isFav ? 'solid' : 'regular'} fa-heart text-base"></i>
-                </button>
-              </div>
-
-              <!-- Title & Kana -->
-              <h3 class="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-brand-700 transition leading-snug">
-                ${item.name}
-              </h3>
-              <p class="text-[11px] text-slate-400 -mt-0.5 mb-2">${item.kana}</p>
-
-              <!-- Tags -->
-              <div class="flex flex-wrap gap-1 mb-2">
-                ${item.hasKidsMenu ? '<span class="bg-emerald-50 text-emerald-800 text-[10px] px-2 py-0.5 rounded-md border border-emerald-200 font-extrabold flex items-center gap-1"><i class="fa-solid fa-child-reaching text-emerald-600"></i>キッズメニュー有</span>' : ''}
-                ${item.tags.map(t => `<span class="bg-slate-50 text-slate-600 text-[10px] px-2 py-0.5 rounded-md border border-slate-200 font-medium">${t}</span>`).join('')}
-              </div>
-            </div>
-
-            <!-- Key Specs Table / Info Box -->
-            <div class="px-4 sm:px-5 py-2.5 bg-slate-50/80 border-y border-slate-100 text-xs space-y-1.5 text-slate-700">
-              ${holidayHourDisplay}
-              <div class="flex items-center justify-between">
-                <span class="text-slate-500 font-medium whitespace-nowrap mr-2"><i class="fa-solid fa-coins text-amber-600 w-3.5"></i>親子予算:</span>
-                <span class="font-bold text-slate-900">${item.budget}</span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-slate-500 font-medium whitespace-nowrap mr-2"><i class="fa-solid fa-chair text-brand-600 w-3.5"></i>席タイプ:</span>
-                <span class="text-slate-800 font-semibold truncate">${item.seatType}</span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-slate-500 font-medium whitespace-nowrap mr-2"><i class="fa-solid fa-ban-smoking text-emerald-600 w-3.5"></i>禁煙環境:</span>
-                <span class="text-emerald-700 font-bold">${item.smoke}</span>
-              </div>
-
-              <!-- 料理・お酒価格目安 -->
-              <div class="pt-1.5 mt-1 border-t border-slate-200/70 grid grid-cols-2 gap-1.5 text-[11px]">
-                <div class="bg-white/90 rounded-lg p-1.5 border border-slate-200/80">
-                  <span class="text-slate-400 block text-[9px] font-bold mb-0.5 flex items-center gap-1">
-                    <i class="fa-solid fa-utensils text-brand-600"></i>料理目安
-                  </span>
-                  <span class="font-bold text-slate-800 truncate block text-[11px]" title="${item.dishPrice}">${item.dishPrice}</span>
-                </div>
-                <div class="bg-white/90 rounded-lg p-1.5 border border-slate-200/80">
-                  <span class="text-slate-400 block text-[9px] font-bold mb-0.5 flex items-center gap-1">
-                    <i class="fa-solid fa-wine-glass text-purple-600"></i>お酒・飲物
-                  </span>
-                  <span class="font-bold text-slate-800 truncate block text-[11px]" title="${item.drinkPrice}">${item.drinkPrice}</span>
-                </div>
-              </div>
-              ${item.hasMorning ? `
-              <!-- 朝食・モーニング情報 -->
-              <div class="mt-1.5 bg-amber-50/90 rounded-lg p-2 border border-amber-300 text-[11px] leading-relaxed text-amber-950 flex items-start gap-1.5 shadow-2xs">
-                <i class="fa-solid fa-sun text-amber-500 mt-0.5 text-xs"></i>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center justify-between gap-1">
-                    <span class="font-black text-amber-950">☀️ 朝食・モーニング</span>
-                    <span class="bg-amber-200 text-amber-900 text-[10px] font-bold px-1.5 py-0.2 rounded whitespace-nowrap">${item.morningHours || '朝営業あり'}</span>
-                  </div>
-                  <span class="text-amber-900 block truncate text-[11px] font-bold mt-0.5" title="${item.morningMenu || ''}">${item.morningMenu || '朝食メニュー提供あり'}</span>
-                </div>
-              </div>
-              ` : ''}
-            </div>
-
-            <!-- Highlights & Kids Details -->
-            <div class="p-4 sm:p-5 pt-3 text-xs flex-1 flex flex-col justify-between space-y-3">
+            <!-- Card Body -->
+            <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
+              
+              <!-- Upper section: Badges, Title, Meta -->
               <div>
-                <p class="text-slate-700 leading-relaxed font-normal mb-2.5">
+                <!-- Top Badges & Fav -->
+                <div class="flex items-center justify-between gap-1.5 mb-2">
+                  <div class="flex items-center gap-1.5 flex-wrap">
+                    ${holidayBadge}
+                    ${zoneBadge}
+                    <span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-slate-200">
+                      <i class="fa-solid fa-person-walking text-amber-600 mr-0.5"></i>${item.distWalk}
+                    </span>
+                  </div>
+                  
+                  <!-- Favorite Bookmark -->
+                  <button 
+                    type="button"
+                    onclick="toggleFav(${item.id}, event)" 
+                    class="w-8 h-8 rounded-full flex items-center justify-center transition-all shrink-0 ${isFav ? 'bg-rose-50 text-rose-500 heart-bounce shadow-2xs' : 'bg-slate-100/80 text-slate-400 hover:text-rose-500 hover:bg-slate-200'}"
+                    title="${isFav ? 'お気に入りから解除' : 'お気に入りに追加'}"
+                  >
+                    <i class="fa-${isFav ? 'solid' : 'regular'} fa-heart text-sm"></i>
+                  </button>
+                </div>
+
+                <!-- Title & Kana -->
+                <h3 class="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-amber-600 transition leading-snug">
+                  ${item.name}
+                </h3>
+                <p class="text-[11px] text-slate-400 mb-2">${item.kana}</p>
+
+                <!-- Tags & Badges -->
+                <div class="flex flex-wrap gap-1 mb-2.5">
+                  ${item.hasKidsMenu ? '<span class="bg-emerald-50 text-emerald-800 text-[10px] px-2 py-0.5 rounded-md border border-emerald-200 font-extrabold flex items-center gap-1"><i class="fa-solid fa-child-reaching text-emerald-600"></i>キッズメニュー有</span>' : ''}
+                  ${item.tags.map(t => `<span class="bg-slate-50 text-slate-600 text-[10px] px-1.5 py-0.5 rounded-md border border-slate-200/80 font-medium">${t}</span>`).join('')}
+                </div>
+
+                <!-- Hours & Specs -->
+                <div class="space-y-1.5 mb-2.5">
+                  ${holidayHourDisplay}
+                  
+                  <div class="grid grid-cols-2 gap-1.5 text-[11px]">
+                    <div class="bg-slate-50/80 px-2 py-1.5 rounded-lg border border-slate-100 flex items-center justify-between">
+                      <span class="text-slate-400 text-[10px] font-bold">予算目安</span>
+                      <span class="font-extrabold text-slate-800">${item.budget}</span>
+                    </div>
+                    <div class="bg-slate-50/80 px-2 py-1.5 rounded-lg border border-slate-100 flex items-center justify-between truncate">
+                      <span class="text-slate-400 text-[10px] font-bold">お席</span>
+                      <span class="font-bold text-slate-800 truncate" title="${item.seatType}">${item.seatType}</span>
+                    </div>
+                  </div>
+
+                  <!-- 料理目安 & お酒目安 -->
+                  <div class="grid grid-cols-2 gap-1.5 text-[11px]">
+                    <div class="bg-amber-50/50 px-2 py-1.5 rounded-lg border border-amber-100/80">
+                      <span class="text-amber-800/80 block text-[9px] font-bold mb-0.5">
+                        <i class="fa-solid fa-utensils text-amber-600 mr-0.5"></i>料理目安
+                      </span>
+                      <span class="font-bold text-slate-800 truncate block text-[11px]" title="${item.dishPrice}">${item.dishPrice}</span>
+                    </div>
+                    <div class="bg-purple-50/50 px-2 py-1.5 rounded-lg border border-purple-100/80">
+                      <span class="text-purple-800/80 block text-[9px] font-bold mb-0.5">
+                        <i class="fa-solid fa-wine-glass text-purple-600 mr-0.5"></i>ドリンク
+                      </span>
+                      <span class="font-bold text-slate-800 truncate block text-[11px]" title="${item.drinkPrice}">${item.drinkPrice}</span>
+                    </div>
+                  </div>
+
+                  ${item.hasMorning ? `
+                  <!-- 朝食・モーニング情報 -->
+                  <div class="bg-amber-50/90 rounded-lg p-2 border border-amber-200 text-[11px] leading-relaxed text-amber-950 flex items-start gap-1.5 shadow-2xs">
+                    <i class="fa-solid fa-sun text-amber-500 mt-0.5 text-xs"></i>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between gap-1">
+                        <span class="font-extrabold text-amber-950">☀️ 朝食・モーニング</span>
+                        <span class="bg-amber-200 text-amber-900 text-[10px] font-bold px-1.5 py-0.2 rounded">${item.morningHours || '朝営業あり'}</span>
+                      </div>
+                      <span class="text-amber-900 block truncate text-[11px] font-medium mt-0.5" title="${item.morningMenu || ''}">${item.morningMenu || '朝食メニュー提供あり'}</span>
+                    </div>
+                  </div>
+                  ` : ''}
+                </div>
+
+                <!-- Highlight comment -->
+                <p class="text-xs text-slate-600 leading-relaxed mb-2 line-clamp-2">
                   ${item.highlight}
                 </p>
-                
-                <div class="bg-amber-50/90 border border-amber-200/90 rounded-xl p-3 text-[11px] leading-relaxed text-amber-950">
-                  <div class="flex items-center justify-between gap-1 mb-1.5 pb-1 border-b border-amber-200/60">
-                    <span class="font-extrabold flex items-center gap-1 text-amber-950">
-                      <i class="fa-solid fa-bowl-food text-amber-600 text-xs"></i> お子様メニュー:
+
+                <!-- お子様安心ポイント -->
+                <div class="bg-amber-50/80 border border-amber-200/70 rounded-xl p-2.5 text-[11px] leading-relaxed text-amber-950">
+                  <div class="flex items-center justify-between gap-1 mb-1 pb-1 border-b border-amber-200/50">
+                    <span class="font-bold flex items-center gap-1 text-amber-950 text-[10px]">
+                      <i class="fa-solid fa-bowl-food text-amber-600"></i> お子様メニュー:
                     </span>
-                    <span class="${item.hasKidsMenu ? 'bg-emerald-600 text-white' : 'bg-amber-200 text-amber-900'} text-[10px] font-black px-2 py-0.5 rounded-full shrink-0 shadow-2xs">
-                      ${item.hasKidsMenu ? '専用メニューあり' : '取り分け対応'}
+                    <span class="${item.hasKidsMenu ? 'bg-emerald-600 text-white' : 'bg-amber-200 text-amber-900'} text-[9px] font-black px-1.5 py-0.2 rounded-full shrink-0">
+                      ${item.hasKidsMenu ? '専用メニュー有' : '取り分け対応'}
                     </span>
                   </div>
-                  <p class="text-[11px] font-bold text-amber-900 mb-1">
+                  <p class="text-[11px] font-bold text-amber-950 truncate mb-0.5">
                     ${item.kidsMenu}
                   </p>
-                  <p class="text-[10px] text-amber-800">
+                  <p class="text-[10px] text-amber-800 line-clamp-2">
                     <i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i>${item.kidsPoint}
                   </p>
                 </div>
+
               </div>
 
-              <!-- Action Link (Detail + Gourmet + Google Map) -->
+              <!-- Action Link Buttons (Detail + Gourmet + Google Map) -->
               <div class="pt-1 flex items-center gap-1.5" onclick="event.stopPropagation()">
                 <button 
                   onclick="openDetail(${item.id})"
-                  class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2 px-2.5 rounded-xl transition text-center text-xs border border-slate-200 shrink-0"
+                  class="bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold py-2 px-2.5 rounded-xl transition text-center text-xs border border-slate-200 shrink-0 cursor-pointer shadow-2xs"
                   title="詳細を見る"
                 >
-                  <i class="fa-solid fa-circle-info text-slate-500 mr-0.5"></i>詳細
+                  <i class="fa-solid fa-circle-info text-slate-400 mr-0.5"></i>詳細
                 </button>
                 <a 
                   href="${safeGourmetUrl}" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  class="flex-1 ${gourmetStyle.btnClass} font-bold py-2 px-1.5 rounded-xl transition flex items-center justify-center gap-1 text-[11px] shadow-2xs"
+                  class="flex-1 ${gourmetStyle.btnClass} font-bold py-2 px-1.5 rounded-xl transition flex items-center justify-center gap-1 text-xs shadow-2xs"
                   title="${provider}でメニュー・口コミを見る"
                 >
                   ${gourmetStyle.iconHtml}
@@ -3690,18 +3386,18 @@
                   href="${mapUrl}" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  class="flex-1 bg-slate-900 hover:bg-brand-600 text-white font-semibold py-2 px-1.5 rounded-xl transition flex items-center justify-center gap-1 text-[11px] shadow-2xs"
+                  class="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-bold py-2 px-1.5 rounded-xl transition flex items-center justify-center gap-1 text-xs shadow-2xs"
                   title="Googleマップで場所を見る"
                 >
-                  <i class="fa-solid fa-location-arrow text-brand-300"></i>
+                  <i class="fa-solid fa-location-arrow text-amber-300"></i>
                   <span>マップ</span>
                 </a>
               </div>
+
             </div>
 
           </div>
-        `;
-      }).join('');
+        `;      }).join('');
 
       restaurantGrid.innerHTML = cardsHtml;
     }
