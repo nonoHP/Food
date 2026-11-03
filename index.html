@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ホテル一楽周辺 子連れ祝日ディナー＆モーニング探索ガイド【清川・高砂至近 実在厳選50店】</title>
+  <title>ホテル一楽周辺 子連れ祝日ディナー＆モーニング探索ガイド【清川・高砂至近 実在厳選58店】</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -123,7 +123,7 @@
           </div>
           <p class="text-[10px] sm:text-[11px] text-slate-500 flex items-center gap-1 truncate mt-0.5">
             <i class="fa-solid fa-hotel text-amber-600 text-[10px]"></i>
-            <span class="font-medium">清川・高砂至近 実在確認50店（大人1名＋5歳児安心）</span>
+            <span class="font-medium">清川・高砂至近 実在確認58店（大人1名＋5歳児安心）</span>
           </p>
         </div>
       </div>
@@ -142,20 +142,19 @@
     <!-- ================= 横スクロール式スマートフィルターピルバー (ヘッダー直下) ================= -->
     <div class="bg-slate-50/95 border-t border-slate-200/70 px-3 py-2 overflow-x-auto no-scrollbar">
       <div class="max-w-7xl mx-auto flex items-center gap-1.5 no-scrollbar" id="topQuickFilterButtons">
-        
         <!-- 件数バッジ -->
         <div class="flex items-center gap-1 shrink-0 text-slate-500 text-[11px] font-extrabold mr-1 select-none">
           <i class="fa-solid fa-sliders text-amber-500"></i>
-          <span id="topResultCountBadge" class="bg-slate-900 text-white text-[10px] font-black px-2 py-0.5 rounded-full shadow-xs">50件</span>
+          <span id="topResultCountBadge" class="bg-slate-900 text-white text-[10px] font-black px-2 py-0.5 rounded-full shadow-xs">58件</span>
         </div>
 
         <!-- フィルターピル群（タップで多段掛け合わせ） -->
         <button data-quick="all" class="top-filter-btn active bg-slate-900 text-white font-extrabold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition shadow-xs flex items-center gap-1 cursor-pointer">
-          すべて (50)
+          すべて (58)
         </button>
         <button data-quick="morning" class="top-filter-btn bg-white hover:bg-amber-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
           <i class="fa-solid fa-sun text-amber-500"></i>
-          <span>☀️ モーニング (12)</span>
+          <span>☀️ モーニング (16)</span>
         </button>
         <button data-quick="hotel_near" class="top-filter-btn bg-white hover:bg-purple-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
           <i class="fa-solid fa-person-walking text-purple-600"></i>
@@ -163,38 +162,37 @@
         </button>
         <button data-quick="tatami" class="top-filter-btn bg-white hover:bg-amber-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
           <i class="fa-solid fa-couch text-amber-600"></i>
-          <span>座敷・個室 (18)</span>
+          <span>座敷・個室 (22)</span>
         </button>
         <button data-quick="kids" class="top-filter-btn bg-white hover:bg-emerald-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
           <i class="fa-solid fa-child-reaching text-emerald-600"></i>
-          <span>キッズメニュー有 (12)</span>
+          <span>キッズメニュー有 (15)</span>
         </button>
         <button data-quick="early" class="top-filter-btn bg-white hover:bg-blue-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
           <i class="fa-solid fa-clock text-blue-600"></i>
-          <span>17時前開店 (37)</span>
+          <span>17時前開店 (42)</span>
         </button>
         <button data-quick="casual_kids" class="top-filter-btn bg-white hover:bg-teal-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
           <i class="fa-solid fa-bowl-food text-teal-600"></i>
-          <span>うどん・定食 (29)</span>
+          <span>うどん・定食 (34)</span>
         </button>
         <button data-quick="local" class="top-filter-btn bg-white hover:bg-red-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
           <i class="fa-solid fa-fire text-red-600"></i>
-          <span>もつ鍋・水炊き (13)</span>
+          <span>もつ鍋・水炊き (17)</span>
         </button>
         <button data-quick="cheap_delicious" class="top-filter-btn bg-white hover:bg-emerald-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
           <i class="fa-solid fa-thumbs-up text-emerald-600"></i>
-          <span>安くて美味い (23)</span>
+          <span>安くて美味い (30)</span>
         </button>
         <button data-quick="open" class="top-filter-btn bg-white hover:bg-emerald-50 text-slate-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-slate-200 cursor-pointer shadow-2xs">
           <i class="fa-solid fa-calendar-check text-emerald-600"></i>
-          <span>祝日営業 (48)</span>
+          <span>祝日営業 (55)</span>
         </button>
         <button data-quick="caution" class="top-filter-btn bg-white hover:bg-rose-50 text-rose-700 font-bold text-xs px-3 py-1.5 rounded-full whitespace-nowrap transition flex items-center gap-1.5 border border-rose-200 cursor-pointer shadow-2xs">
           <i class="fa-solid fa-triangle-exclamation text-rose-500"></i>
-          <span>祝日注意 (2)</span>
+          <span>祝日注意 (3)</span>
         </button>
-
-      </div>
+</div>
     </div>
   </header>
 
@@ -224,14 +222,14 @@
         <label class="flex items-center gap-1.5 cursor-pointer bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1.5 rounded-xl text-xs font-bold transition select-none">
           <input type="checkbox" id="holidayOpenOnlyToggle" class="w-3.5 h-3.5 text-emerald-600 rounded focus:ring-emerald-500 accent-emerald-600 cursor-pointer">
           <span class="text-[11px] sm:text-xs">祝日営業</span>
-          <span id="holidayOpenCountBadge" class="bg-emerald-600 text-white text-[9px] px-1.5 py-0.2 rounded-full font-black">48</span>
+          <span id="holidayOpenCountBadge" class="bg-emerald-600 text-white text-[9px] px-1.5 py-0.2 rounded-full font-black">55</span>
         </label>
 
         <!-- キッズメニュートグル -->
         <label class="flex items-center gap-1.5 cursor-pointer bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1.5 rounded-xl text-xs font-bold transition select-none">
           <input type="checkbox" id="kidsMenuOnlyToggle" class="w-3.5 h-3.5 text-amber-600 rounded focus:ring-amber-500 accent-amber-600 cursor-pointer">
           <span class="text-[11px] sm:text-xs">キッズメニュー</span>
-          <span id="kidsMenuCountBadge" class="bg-amber-600 text-white text-[9px] px-1.5 py-0.2 rounded-full font-black">12</span>
+          <span id="kidsMenuCountBadge" class="bg-amber-600 text-white text-[9px] px-1.5 py-0.2 rounded-full font-black">15</span>
         </label>
 
         <!-- 並び替えセレクタ -->
@@ -339,7 +337,7 @@
     <div class="flex items-center justify-between px-1 pt-1">
       <div class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-        <span id="resultCountText">該当：50件</span>
+        <span id="resultCountText">該当：58件</span>
       </div>
       <button onclick="toggleQuickFilter('all', false);" class="text-[11px] text-slate-400 hover:text-slate-600 underline cursor-pointer">
         フィルター全解除
@@ -539,7 +537,7 @@
     // スプレッドシートを「ウェブに公開（CSV）」にしたURLを設定済み。自動的にスプレッドシートから最新データを同期します。
     const GOOGLE_SHEETS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTzJ5H8NmTalFAxn8bngdZNrVPzerXu4EvMMXUzzTk8Fcw5CFf9rkvFyBqMBkQr7RlTavAl4sppPbud/pub?gid=0&single=true&output=csv";
 
-    // 実在厳選50店舗のマスターデータベース（ホテル一楽近辺・清川高砂充実）
+    // 実在厳選58店舗のマスターデータベース（ホテル一楽近辺・清川高砂充実）
     let RESTAURANTS = [
   {
     "id": 1,
@@ -1900,9 +1898,9 @@
     "area": "渡辺通",
     "distWalk": "徒歩8分",
     "distMeters": 650,
-    "holidayHours": "07:00〜18:00（通し営業）",
+    "holidayHours": "日曜日・祝日定休（11/3は休み）",
     "openTime": 7,
-    "holidayStatus": "open",
+    "holidayStatus": "closed",
     "budget": "600円〜950円",
     "budgetScore": 750,
     "categories": [
@@ -1911,15 +1909,14 @@
     ],
     "seatType": "テーブル席・カウンター席",
     "smoke": "完全禁煙",
-    "isCaution": false,
+    "isCaution": true,
     "recommended": 91,
     "tags": [
-      "純喫茶",
-      "モーニング",
-      "厚切りトースト",
-      "朝カレー"
+      "老舗純喫茶",
+      "日祝定休注意",
+      "平日モーニング"
     ],
-    "highlight": "昭和の風情が残る渡辺通の老舗純喫茶。朝7時から糸島産たまごを使ったスクランブルエッグや厚切りバタートーストのモーニングセット、コクのある朝カレーが味わえます。",
+    "highlight": "渡辺通の老舗レトロ純喫茶。※日曜日・祝日は定休日のため11/3(祝)は休業となります。平日の朝食利用等にご活用ください。",
     "kidsPoint": "バタートーストや卵料理、バナナジュースなど子供が食べやすいメニューが充実。朝早い出発前の腹ごしらえに便利。",
     "gourmet": {
       "provider": "食べログ",
@@ -2540,8 +2537,332 @@
     "kidsMenu": "なし（パフェ・アイス・ホットサンド等のおやつに最高）",
     "hasKidsMenu": false,
     "hasMorning": false
-  }
-];
+  },
+  {
+    "id": 51,
+    "name": "元祖びっくり亭 住吉店",
+    "kana": "びっくりてい すみよしてん",
+    "zone": "zone_a",
+    "area": "住吉5丁目（成城ビル1F・ホテル徒歩7分）",
+    "distWalk": "徒歩7分",
+    "distMeters": 490,
+    "holidayHours": "11:00〜15:00 / 17:00〜21:00（祝日営業・無休）",
+    "openTime": 17,
+    "holidayStatus": "open",
+    "budget": "1,800円〜2,800円",
+    "budgetScore": 2300,
+    "categories": [
+      "tatami",
+      "local",
+      "cheap_delicious"
+    ],
+    "seatType": "お座敷席（4人×4卓）・テーブル席",
+    "smoke": "完全禁煙",
+    "isCaution": false,
+    "recommended": 95,
+    "tags": [
+      "博多名物鉄板焼肉",
+      "お座敷あり",
+      "キャベツたっぷり",
+      "ホテル徒歩7分"
+    ],
+    "highlight": "博多ソウルフードの代名詞！熱々鉄板で炒めた豚ハラミ肉とキャベツが山盛り。秘伝の辛味噌は別添えなので、お子様には味噌なしの甘辛旨味でご飯がモリモリ進みます。",
+    "kidsPoint": "靴を脱いで上がれるお座敷席が4卓完備されており、5歳児連れでも安心。お肉と甘いキャベツは子供受け抜群で、ご飯大盛りや味噌汁をシェアできます（鉄板の火傷だけご注意ください）。",
+    "gourmet": {
+      "provider": "食べログ",
+      "url": "https://tabelog.com/fukuoka/A4001/A400103/40061596/"
+    },
+    "dishPrice": "焼肉 1人前（キャベツ・豚肉）900円 / 1.5人前 1,300円 / ご飯（中）200円",
+    "drinkPrice": "生ビール 550円 / ハイボール 450円 / ソフトドリンク 200円",
+    "kidsMenu": "なし（辛味噌別添えで甘辛肉キャベツ＆ご飯取り分け◎）",
+    "hasKidsMenu": false,
+    "hasMorning": false
+  },
+  {
+    "id": 52,
+    "name": "博多とりかわ大臣 住吉5丁目串房",
+    "kana": "はかたとりかわだいじん",
+    "zone": "zone_a",
+    "area": "住吉5丁目（成城ビル1F・ホテル徒歩7分）",
+    "distWalk": "徒歩7分",
+    "distMeters": 490,
+    "holidayHours": "17:00〜24:00（L.O.23:30・無休）",
+    "openTime": 17,
+    "holidayStatus": "open",
+    "budget": "2,200円〜3,500円",
+    "budgetScore": 2800,
+    "categories": [
+      "tatami",
+      "local",
+      "cheap_delicious",
+      "casual_kids"
+    ],
+    "seatType": "小上がり座敷席・テーブル席",
+    "smoke": "分煙・禁煙席あり",
+    "isCaution": false,
+    "recommended": 96,
+    "tags": [
+      "博多ぐるぐるとりかわ",
+      "小上がり座敷あり",
+      "1本139円〜",
+      "ホテル徒歩7分"
+    ],
+    "highlight": "何本でも食べられる博多名物「ぐるぐるとりかわ」が1本139円！外はカリッ、中はモチッとした食感で脂っこくなく、タレも塩も絶品。びっくり亭と同じ敷地内にあります。",
+    "kidsPoint": "靴を脱いで寛げる小上がり座敷席がありファミリー利用多数。とりかわタレ串、甘いタレつくね、豚バラ、鶏そぼろご飯、おにぎりなど5歳児が喜ぶ串とご飯ものが大充実。",
+    "gourmet": {
+      "provider": "ホットペッパー",
+      "url": "https://www.hotpepper.jp/strJ001144211/"
+    },
+    "dishPrice": "博多とりかわ（タレ・塩）1本 139円 / 豚バラ 150円 / つくね 160円 / 焼きおにぎり 220円",
+    "drinkPrice": "生ビール 490円 / ハイボール 420円 / オレンジジュース 220円",
+    "kidsMenu": "なし（つくね・とりかわ・豚バラ・おにぎり取り分け豊富）",
+    "hasKidsMenu": false,
+    "hasMorning": false
+  },
+  {
+    "id": 53,
+    "name": "やよい軒 高砂店",
+    "kana": "やよいけん たかさごてん",
+    "zone": "zone_c",
+    "area": "高砂1丁目（東映ホテル隣・ホテル徒歩5分）",
+    "distWalk": "徒歩5分",
+    "distMeters": 380,
+    "holidayHours": "09:00〜23:00（祝日も朝9時から通し営業！）",
+    "openTime": 9,
+    "holidayStatus": "open",
+    "budget": "1,400円〜2,200円",
+    "budgetScore": 1800,
+    "categories": [
+      "casual_kids",
+      "cheap_delicious"
+    ],
+    "seatType": "ゆったりボックスシート席・テーブル席",
+    "smoke": "完全禁煙",
+    "isCaution": false,
+    "recommended": 93,
+    "tags": [
+      "朝9時〜通し営業",
+      "お子様ランチあり",
+      "ボックス席",
+      "ホテル徒歩5分"
+    ],
+    "highlight": "ホテル一楽から高砂へ徒歩5分。福岡東映ホテルのすぐ並びにある定食店。朝9時から夜23時まで営業しており、朝食にも早めの夕食にも使える圧倒的な安心感があります。",
+    "kidsPoint": "おもちゃ＆ゼリー付きの「お子様ランチ（ハンバーグ・エビフライ・ポテト）」完備！背もたれの高いボックスシート席で子供が落ち着いて座れ、ご飯おかわり自由です。",
+    "gourmet": {
+      "provider": "公式・食べログ",
+      "url": "https://tabelog.com/fukuoka/A4001/A400103/40026362/"
+    },
+    "dishPrice": "生姜焼き定食 730円 / から揚げ定食 790円 / サバ塩焼き定食 770円",
+    "drinkPrice": "生ビール 490円 / お茶・お水（セルフ無料）",
+    "kidsMenu": "お子様ランチ（おもちゃ・ふりかけ・ゼリー付 約500円）完備",
+    "hasKidsMenu": true,
+    "hasMorning": true,
+    "morningHours": "09:00〜11:00",
+    "morningMenu": "納豆朝食 400円 / 目玉焼き朝食 490円 / しゃけ朝食 560円（ご飯おかわり自由）"
+  },
+  {
+    "id": 54,
+    "name": "マクドナルド 薬院駅前店",
+    "kana": "まくどなるど やくいんえきまえてん",
+    "zone": "zone_a",
+    "area": "渡辺通2丁目（渡辺通り沿い・ホテル徒歩8分）",
+    "distWalk": "徒歩8分",
+    "distMeters": 560,
+    "holidayHours": "24時間営業（朝マック 05:00〜10:30）",
+    "openTime": 5,
+    "holidayStatus": "open",
+    "budget": "1,000円〜1,500円",
+    "budgetScore": 1200,
+    "categories": [
+      "casual_kids",
+      "cheap_delicious"
+    ],
+    "seatType": "テーブル席・ソファー席",
+    "smoke": "完全禁煙",
+    "isCaution": false,
+    "recommended": 92,
+    "tags": [
+      "24時間営業",
+      "ハッピーセット",
+      "朝マック",
+      "ホテル徒歩8分"
+    ],
+    "highlight": "子供連れ旅行の究極のセーフティネット。子供が歩き疲れてぐずった時や、急ぎで食べさせたい朝・夜に大活躍。モバイルオーダーで席まで運んでくれます。",
+    "kidsPoint": "選べるおもちゃ付き「ハッピーセット（プチパンケーキ／ナゲット／チーズバーガー＋ポテトS＋ドリンク）」完備。朝マックのホットケーキも5歳児に大人気です。",
+    "gourmet": {
+      "provider": "公式マップ",
+      "url": "https://map.mcdonalds.co.jp/map/40539"
+    },
+    "dishPrice": "ハッピーセット 520円〜 / ビッグマックセット 750円 / チキンマックナゲット 260円",
+    "drinkPrice": "ソフトドリンクS 120円 / プレミアムローストコーヒー 120円",
+    "kidsMenu": "ハッピーセット各種（おもちゃ・サイド・ドリンク付）",
+    "hasKidsMenu": true,
+    "hasMorning": true,
+    "morningHours": "05:00〜10:30",
+    "morningMenu": "朝マック：ホットケーキセット 560円 / ソーセージエッグマフィンセット 520円"
+  },
+  {
+    "id": 55,
+    "name": "吉野家 那の川店（クッキング＆コンフォート）",
+    "kana": "よしのや なのかわてん",
+    "zone": "zone_d",
+    "area": "白金2丁目（百年橋通り・ホテル南へ徒歩6分）",
+    "distWalk": "徒歩6分",
+    "distMeters": 450,
+    "holidayHours": "24時間営業（祝日も無休）",
+    "openTime": 0,
+    "holidayStatus": "open",
+    "budget": "1,000円〜1,600円",
+    "budgetScore": 1300,
+    "categories": [
+      "casual_kids",
+      "cheap_delicious"
+    ],
+    "seatType": "カフェ風テーブル席・ソファー席・カウンター",
+    "smoke": "完全禁煙",
+    "isCaution": false,
+    "recommended": 91,
+    "tags": [
+      "新型カフェ風吉野家",
+      "お子様セットあり",
+      "24時間営業",
+      "ホテル徒歩6分"
+    ],
+    "highlight": "従来のカウンター店と異なり、カフェのような明るく落ち着いたテーブル席を備えた新型「クッキング＆コンフォート」店舗。ドリンクバーや揚げたて唐揚げも楽しめます。",
+    "kidsPoint": "ジュースとゼリーが付いた「お子様牛丼セット」「お子様カレーセット」（各約400円）完備。テーブル席で親子ゆったり座れ、気兼ねなく食事ができます。",
+    "gourmet": {
+      "provider": "公式マップ",
+      "url": "https://stores.yoshinoya.com/yoshinoya/spot/detail?code=046522"
+    },
+    "dishPrice": "牛丼（並）498円 / から揚げ定食 767円 / 牛鮭定食 734円",
+    "drinkPrice": "ドリンクバー 162円 / 生ビール 382円",
+    "kidsMenu": "お子様セット（ミニ牛丼またはミニカレー＋ジュース＋ゼリー 約400円）",
+    "hasKidsMenu": true,
+    "hasMorning": true,
+    "morningHours": "04:00〜11:00",
+    "morningMenu": "朝定食（納豆定食 430円 / 焼魚定食 520円 / 特朝定食 630円）"
+  },
+  {
+    "id": 56,
+    "name": "居酒屋 善乃膳（ぜんのぜん）",
+    "kana": "ぜんのぜん",
+    "zone": "zone_d",
+    "area": "清川3丁目（清川ロータリーそば・ホテル徒歩5分）",
+    "distWalk": "徒歩5分",
+    "distMeters": 390,
+    "holidayHours": "17:30〜翌5:30（祝日営業・無休）",
+    "openTime": 17.5,
+    "holidayStatus": "open",
+    "budget": "2,800円〜4,000円",
+    "budgetScore": 3200,
+    "categories": [
+      "tatami",
+      "local",
+      "cheap_delicious"
+    ],
+    "seatType": "掘りごたつ個室・お座敷席（最大30名）・カウンター",
+    "smoke": "分煙配慮あり",
+    "isCaution": false,
+    "recommended": 93,
+    "tags": [
+      "広々掘りごたつ座敷",
+      "博多もつ鍋",
+      "炭火焼鳥",
+      "ホテル徒歩5分"
+    ],
+    "highlight": "清川エリアで貴重な「広々とした掘りごたつ個室・座敷」を完備した居酒屋。博多もつ鍋や炭火焼鳥、玄界灘の刺身など博多の美味が手頃に揃います。",
+    "kidsPoint": "足を伸ばしてゆっくりくつろげる座敷があり、周りを気にせず過ごせます。焼き鳥のつくねやウインナー、鶏唐揚げ、山盛りポテト、おにぎりなど子供向けメニュー豊富。",
+    "gourmet": {
+      "provider": "ホットペッパー",
+      "url": "https://www.hotpepper.jp/strJ001009139/"
+    },
+    "dishPrice": "博多もつ鍋 1人前 1,380円 / 焼鳥盛り合わせ 980円 / 若鶏唐揚げ 650円 / おにぎり 220円",
+    "drinkPrice": "生ビール 520円 / ハイボール 450円 / 各種ソフトドリンク 280円",
+    "kidsMenu": "なし（つくね・唐揚げ・ポテト・鍋取り分け◎）",
+    "hasKidsMenu": false,
+    "hasMorning": false
+  },
+  {
+    "id": 57,
+    "name": "とりなべ マルニ",
+    "kana": "とりなべ まるに",
+    "zone": "zone_c",
+    "area": "高砂2丁目（日赤通り寄り・ホテル徒歩6分）",
+    "distWalk": "徒歩6分",
+    "distMeters": 460,
+    "holidayHours": "17:30〜23:00（L.O.22:30・祝日営業）",
+    "openTime": 17.5,
+    "holidayStatus": "open",
+    "budget": "3,800円〜5,500円",
+    "budgetScore": 4500,
+    "categories": [
+      "tatami",
+      "local",
+      "upscale"
+    ],
+    "seatType": "掘りごたつお座敷席・テーブル席",
+    "smoke": "完全禁煙",
+    "isCaution": false,
+    "recommended": 95,
+    "tags": [
+      "天草大王の鶏鍋",
+      "掘りごたつ座敷",
+      "大人の隠れ家名店",
+      "ホテル徒歩6分"
+    ],
+    "highlight": "幻の地鶏「天草大王」を贅沢に使った黄金スープのとり鍋が評判の高砂の名店。水炊きの上品さと地鶏の濃厚なコクを両立した極上スープは、一口飲むと感動する美味しさです。",
+    "kidsPoint": "掘りごたつ座敷席があり落ち着いて食事ができます。辛味のない優しい出汁のスープと柔らかい鶏肉、〆の卵雑炊は5歳のお子様も夢中で食べる絶品です。",
+    "gourmet": {
+      "provider": "食べログ",
+      "url": "https://tabelog.com/fukuoka/A4001/A400104/40051187/"
+    },
+    "dishPrice": "天草大王とりなべ 1人前 2,800円 / 鶏たたき 850円 / 地鶏唐揚げ 750円 / 卵雑炊セット 500円",
+    "drinkPrice": "生ビール 600円 / ハイボール 550円 / ソフトドリンク 350円",
+    "kidsMenu": "なし（優しい鶏鍋・つくね・卵雑炊の取り分けが絶品◎）",
+    "hasKidsMenu": false,
+    "hasMorning": false
+  },
+  {
+    "id": 58,
+    "name": "ウエスト 渡辺通り店",
+    "kana": "うえすと わたなべどおりてん",
+    "zone": "zone_c",
+    "area": "高砂1丁目（渡辺通南交差点・ホテル徒歩6分）",
+    "distWalk": "徒歩6分",
+    "distMeters": 420,
+    "holidayHours": "24時間営業（祝日も無休）",
+    "openTime": 0,
+    "holidayStatus": "open",
+    "budget": "900円〜1,600円",
+    "budgetScore": 1200,
+    "categories": [
+      "casual_kids",
+      "cheap_delicious"
+    ],
+    "seatType": "テーブル席・カウンター",
+    "smoke": "完全禁煙",
+    "isCaution": false,
+    "recommended": 94,
+    "tags": [
+      "24時間営業うどん",
+      "もつ鍋1人前390円〜",
+      "子供椅子あり",
+      "ホテル徒歩6分"
+    ],
+    "highlight": "福岡県民のソウルフード「ウエスト」の高砂1丁目店。やわらかく出汁の効いた博多うどんは小さな子供の胃袋に最も優しく、夕方17時からは名物のもつ鍋が1人前390円〜楽しめます。",
+    "kidsPoint": "子供用の取り分け茶碗・スプーンフォーク完備。丸天うどんやかき揚げ、かしわおにぎりなど子供が食べやすいうどんメニューが注文後すぐに出てきます。",
+    "gourmet": {
+      "provider": "公式・食べログ",
+      "url": "https://tabelog.com/fukuoka/A4001/A400103/40026363/"
+    },
+    "dishPrice": "ごぼう天うどん 530円 / 丸天うどん 510円 / もつ鍋（夕方〜）1人前 390円 / かしわおにぎり 240円",
+    "drinkPrice": "瓶ビール 550円 / ハイボール 350円 / ソフトドリンク 180円",
+    "kidsMenu": "なし（やわらかうどん・おにぎり・鍋取り分け◎）",
+    "hasKidsMenu": false,
+    "hasMorning": true,
+    "morningHours": "24時間朝食対応",
+    "morningMenu": "朝うどんセット 450円 / 朝定食 520円"
+  }];
 
     // お気に入り保存用（LocalStorage）
     let favorites = JSON.parse(localStorage.getItem('ichiraku_favs') || '[]');
