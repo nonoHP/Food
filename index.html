@@ -145,6 +145,49 @@
       </div>
 
     </div>
+
+    <!-- ================= ページの頭のクイック絞り込みボタンバー (常時上部固定) ================= -->
+    <div class="bg-brand-950/90 border-t border-brand-800/70 px-3 py-2 sm:px-6 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 overflow-x-auto no-scrollbar py-0.5">
+        <div class="flex items-center gap-1.5 shrink-0 text-xs font-bold text-teal-300 mr-1 select-none">
+          <i class="fa-solid fa-filter text-amber-400"></i>
+          <span class="whitespace-nowrap">即時絞り込み:</span>
+        </div>
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar" id="topQuickFilterButtons">
+          <button data-quick="all" class="top-filter-btn active bg-white text-brand-900 font-extrabold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition shadow-xs flex items-center gap-1 cursor-pointer">
+            すべて (60)
+          </button>
+          <button data-quick="open" class="top-filter-btn bg-emerald-800/90 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-emerald-500/40 cursor-pointer">
+            <i class="fa-solid fa-calendar-check text-emerald-300"></i>
+            <span>祝日営業 (54)</span>
+          </button>
+          <button data-quick="kids" class="top-filter-btn bg-amber-700/90 hover:bg-amber-600 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-400/40 cursor-pointer">
+            <i class="fa-solid fa-child-reaching text-amber-200"></i>
+            <span>キッズメニュー有 (15)</span>
+          </button>
+          <button data-quick="hotel_near" class="top-filter-btn bg-purple-800/90 hover:bg-purple-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-purple-400/40 cursor-pointer">
+            <i class="fa-solid fa-person-walking text-purple-200"></i>
+            <span>徒歩3分以内 (23)</span>
+          </button>
+          <button data-quick="tatami" class="top-filter-btn bg-amber-800/90 hover:bg-amber-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-amber-400/40 cursor-pointer">
+            <i class="fa-solid fa-couch text-amber-200"></i>
+            <span>座敷・個室 (22)</span>
+          </button>
+          <button data-quick="early" class="top-filter-btn bg-blue-800/90 hover:bg-blue-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-blue-400/40 cursor-pointer">
+            <i class="fa-solid fa-clock text-blue-200"></i>
+            <span>16時〜17時開店</span>
+          </button>
+          <button data-quick="casual_kids" class="top-filter-btn bg-cyan-800/90 hover:bg-cyan-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-cyan-400/40 cursor-pointer">
+            <i class="fa-solid fa-bowl-food text-cyan-200"></i>
+            <span>うどん・定食 (18)</span>
+          </button>
+          <button data-quick="local" class="top-filter-btn bg-red-800/90 hover:bg-red-700 text-white font-bold text-xs px-3 py-1.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5 border border-red-400/40 cursor-pointer">
+            <i class="fa-solid fa-fire text-red-200"></i>
+            <span>もつ鍋・水炊き (15)</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </header>
 
   <!-- ================= 2. Hero & Context Banner ================= -->
@@ -188,36 +231,88 @@
               <i class="fa-solid fa-person-walking text-brand-600 mr-1.5"></i>ホテル徒歩1〜12分圏内
             </span>
           </div>
+
+          <!-- ページの頭のクリック絞り込みボタン群 (Hero内) -->
+          <div class="pt-3 border-t border-slate-200/70">
+            <span class="text-xs font-bold text-slate-700 block mb-2 flex items-center gap-1.5">
+              <i class="fa-solid fa-hand-pointer text-brand-600 animate-pulse"></i>
+              条件ボタンをクリックして一覧を即時絞り込み：
+            </span>
+            <div class="flex flex-wrap gap-2" id="heroQuickButtons">
+              <button data-quick="open" class="hero-chip-btn bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
+                <i class="fa-solid fa-calendar-check text-emerald-200"></i>
+                <span>祝日営業 (54)</span>
+              </button>
+              <button data-quick="kids" class="hero-chip-btn bg-amber-500 hover:bg-amber-600 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
+                <i class="fa-solid fa-child-reaching text-amber-100"></i>
+                <span>キッズメニュー有 (15)</span>
+              </button>
+              <button data-quick="hotel_near" class="hero-chip-btn bg-purple-600 hover:bg-purple-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
+                <i class="fa-solid fa-person-walking text-purple-200"></i>
+                <span>徒歩3分以内 (23)</span>
+              </button>
+              <button data-quick="tatami" class="hero-chip-btn bg-amber-700 hover:bg-amber-800 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
+                <i class="fa-solid fa-couch text-amber-200"></i>
+                <span>座敷・個室 (22)</span>
+              </button>
+              <button data-quick="early" class="hero-chip-btn bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
+                <i class="fa-solid fa-clock text-blue-200"></i>
+                <span>16時〜17時開店</span>
+              </button>
+              <button data-quick="casual_kids" class="hero-chip-btn bg-teal-600 hover:bg-teal-700 active:scale-95 text-white text-xs px-3 py-2 rounded-xl font-bold transition shadow-xs flex items-center gap-1.5 cursor-pointer">
+                <i class="fa-solid fa-bowl-food text-teal-200"></i>
+                <span>うどん・定食 (18)</span>
+              </button>
+              <button data-quick="all" class="hero-chip-btn bg-white hover:bg-slate-100 active:scale-95 text-slate-700 text-xs px-3 py-2 rounded-xl font-bold transition border border-slate-300 flex items-center gap-1.5 cursor-pointer shadow-2xs">
+                <i class="fa-solid fa-rotate-left text-slate-500"></i>
+                <span>全60店表示</span>
+              </button>
+            </div>
+          </div>
         </div>
 
-        <!-- Mini Stats Summary Box -->
-        <div class="lg:col-span-4 bg-white/90 backdrop-blur-md rounded-2xl p-5 border border-brand-200/70 shadow-glass">
-          <div class="flex items-center justify-between mb-3.5 pb-2.5 border-b border-slate-100">
+        <!-- Mini Stats Summary Box (Clickable Quick Filter Cards) -->
+        <div class="lg:col-span-4 bg-white/95 backdrop-blur-md rounded-2xl p-5 border border-brand-200/80 shadow-glass">
+          <div class="flex items-center justify-between mb-3 pb-2.5 border-b border-slate-100">
             <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-              <i class="fa-solid fa-chart-pie text-brand-600"></i> 祝日営業チェック集計
+              <i class="fa-solid fa-chart-pie text-brand-600"></i> 目的から即時絞り込み
             </span>
             <span class="bg-gradient-to-r from-emerald-600 to-teal-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-2xs">
-              祝日11/3調査済
+              タップで即反映
             </span>
           </div>
           
-          <div class="grid grid-cols-2 gap-2.5 text-center">
-            <div class="bg-emerald-50/80 p-2.5 rounded-xl border border-emerald-200 transition hover:border-emerald-400">
-              <span class="block text-2xl font-extrabold text-emerald-700 font-display">54<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
-              <span class="text-[11px] text-emerald-900 font-bold">✅ 祝日営業店</span>
-            </div>
-            <div class="bg-rose-50/80 p-2.5 rounded-xl border border-rose-200 transition hover:border-rose-400">
-              <span class="block text-2xl font-extrabold text-rose-600 font-display">6<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
-              <span class="text-[11px] text-rose-900 font-bold">⚠️ 祝日休・注意店</span>
-            </div>
-            <div class="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/60 transition hover:border-coral-300">
-              <span class="block text-2xl font-extrabold text-coral-600 font-display">22<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
-              <span class="text-[11px] text-slate-600 font-medium">座敷・小上がりあり</span>
-            </div>
-            <div class="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/60 transition hover:border-brand-300">
-              <span class="block text-2xl font-extrabold text-brand-700 font-display">18<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
-              <span class="text-[11px] text-slate-600 font-medium">16時〜17時開店</span>
-            </div>
+          <div class="grid grid-cols-2 gap-2 text-center" id="heroStatFilterButtons">
+            <button data-quick="open" class="hero-stat-btn group bg-emerald-50/90 hover:bg-emerald-100 p-2.5 rounded-xl border border-emerald-300 transition hover:shadow-xs text-center cursor-pointer">
+              <span class="block text-2xl font-extrabold text-emerald-700 font-display group-hover:scale-105 transition-transform">54<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
+              <span class="text-[11px] text-emerald-950 font-bold block">✅ 祝日営業店</span>
+              <span class="text-[9px] text-emerald-700 block mt-0.5">タップで絞り込み</span>
+            </button>
+            <button data-quick="kids" class="hero-stat-btn group bg-amber-50/90 hover:bg-amber-100 p-2.5 rounded-xl border border-amber-300 transition hover:shadow-xs text-center cursor-pointer">
+              <span class="block text-2xl font-extrabold text-amber-700 font-display group-hover:scale-105 transition-transform">15<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
+              <span class="text-[11px] text-amber-950 font-bold block">👶 キッズメニュー有</span>
+              <span class="text-[9px] text-amber-700 block mt-0.5">タップで絞り込み</span>
+            </button>
+            <button data-quick="tatami" class="hero-stat-btn group bg-slate-50/90 hover:bg-slate-100 p-2.5 rounded-xl border border-slate-300 transition hover:shadow-xs text-center cursor-pointer">
+              <span class="block text-2xl font-extrabold text-coral-600 font-display group-hover:scale-105 transition-transform">22<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
+              <span class="text-[11px] text-slate-800 font-bold block">🛋️ 座敷・個室</span>
+              <span class="text-[9px] text-slate-500 block mt-0.5">タップで絞り込み</span>
+            </button>
+            <button data-quick="hotel_near" class="hero-stat-btn group bg-purple-50/90 hover:bg-purple-100 p-2.5 rounded-xl border border-purple-300 transition hover:shadow-xs text-center cursor-pointer">
+              <span class="block text-2xl font-extrabold text-purple-700 font-display group-hover:scale-105 transition-transform">23<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
+              <span class="text-[11px] text-purple-950 font-bold block">🏨 徒歩3分以内</span>
+              <span class="text-[9px] text-purple-700 block mt-0.5">タップで絞り込み</span>
+            </button>
+            <button data-quick="early" class="hero-stat-btn group bg-blue-50/90 hover:bg-blue-100 p-2.5 rounded-xl border border-blue-300 transition hover:shadow-xs text-center cursor-pointer">
+              <span class="block text-2xl font-extrabold text-brand-700 font-display group-hover:scale-105 transition-transform">18<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
+              <span class="text-[11px] text-blue-950 font-bold block">⏰ 16時〜17時開店</span>
+              <span class="text-[9px] text-blue-700 block mt-0.5">タップで絞り込み</span>
+            </button>
+            <button data-quick="caution" class="hero-stat-btn group bg-rose-50/90 hover:bg-rose-100 p-2.5 rounded-xl border border-rose-300 transition hover:shadow-xs text-center cursor-pointer">
+              <span class="block text-2xl font-extrabold text-rose-600 font-display group-hover:scale-105 transition-transform">6<span class="text-xs font-normal text-slate-500 ml-0.5">店舗</span></span>
+              <span class="text-[11px] text-rose-950 font-bold block">⚠️ 祝日休・注意店</span>
+              <span class="text-[9px] text-rose-700 block mt-0.5">タップで絞り込み</span>
+            </button>
           </div>
         </div>
 
@@ -367,7 +462,7 @@
     </div>
 
     <!-- ================= 4. Controls: Filter, Search, Sort ================= -->
-    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+    <div id="restaurantSection" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4 scroll-mt-24">
       
       <!-- Search & Sort Row -->
       <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
@@ -438,16 +533,16 @@
             すべて (60)
           </button>
           <button data-cat="hotel_near" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-person-walking text-purple-600 mr-1"></i>ホテル徒歩3分以内 (15)
+            <i class="fa-solid fa-person-walking text-purple-600 mr-1"></i>ホテル徒歩3分以内 (23)
           </button>
           <button data-cat="tatami" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
             <i class="fa-solid fa-couch text-amber-600 mr-1"></i>座敷・小上がり・個室 (22)
           </button>
           <button data-cat="casual_kids" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-bowl-food text-blue-600 mr-1"></i>子連れ定番・うどん定食 (12)
+            <i class="fa-solid fa-bowl-food text-blue-600 mr-1"></i>子連れ定番・うどん定食 (18)
           </button>
           <button data-cat="local" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
-            <i class="fa-solid fa-fire text-red-600 mr-1"></i>ご当地（もつ鍋・水炊き・焼鳥）(16)
+            <i class="fa-solid fa-fire text-red-600 mr-1"></i>ご当地（もつ鍋・水炊き・焼鳥）(15)
           </button>
           <button data-cat="cheap_delicious" class="cat-btn bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-3.5 py-2 rounded-xl font-medium transition">
             <i class="fa-solid fa-thumbs-up text-emerald-600 mr-1"></i>安くて美味い・中華・居酒屋 (14)
@@ -3141,6 +3236,7 @@
       // 祝日営業のみトグル
       holidayOpenOnlyToggle.addEventListener('change', (e) => {
         holidayOpenOnly = e.target.checked;
+        updateQuickButtonsUI(holidayOpenOnly ? 'open' : 'all');
         renderCards();
       });
 
@@ -3148,9 +3244,21 @@
       if (kidsMenuOnlyToggle) {
         kidsMenuOnlyToggle.addEventListener('change', (e) => {
           kidsMenuOnly = e.target.checked;
+          updateQuickButtonsUI(kidsMenuOnly ? 'kids' : 'all');
           renderCards();
         });
       }
+
+      // ページの頭のクイック絞り込みボタン（上部バー・ヒーロー内・集計カード）
+      document.querySelectorAll('.top-filter-btn, .hero-chip-btn, .hero-stat-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const quickType = btn.dataset.quick;
+          if (quickType) {
+            applyQuickFilter(quickType, true);
+          }
+        });
+      });
 
       // 検索バー
       searchInput.addEventListener('input', (e) => {
@@ -3190,6 +3298,7 @@
           currentCategory = btn.dataset.cat;
           showOnlyFavs = false; // カテゴリ変更時はお気に入り限定を解除
           updateFavButtonState();
+          updateQuickButtonsUI(currentCategory);
           renderCards();
         });
       });
@@ -3250,6 +3359,7 @@
 
         updateAreaCardUI();
         updateFavButtonState();
+        updateQuickButtonsUI('all');
         renderCards();
       });
 
@@ -3298,6 +3408,130 @@
       } else {
         showFavOnlyBtn.classList.remove('ring-2', 'ring-white', 'bg-coral-600');
       }
+    }
+
+    // ページの頭のクイック絞り込み実行ロジック
+    function applyQuickFilter(type, shouldScroll = true) {
+      if (type === 'all') {
+        currentCategory = 'all';
+        currentZone = null;
+        holidayOpenOnly = false;
+        kidsMenuOnly = false;
+        showOnlyFavs = false;
+        currentSort = 'recommended';
+        sortSelect.value = 'recommended';
+        searchQuery = '';
+        searchInput.value = '';
+        clearSearchBtn.classList.add('hidden');
+      } else if (type === 'open') {
+        holidayOpenOnly = true;
+        kidsMenuOnly = false;
+        currentCategory = 'all';
+        showOnlyFavs = false;
+      } else if (type === 'kids') {
+        kidsMenuOnly = true;
+        holidayOpenOnly = false;
+        currentCategory = 'all';
+        showOnlyFavs = false;
+      } else if (type === 'hotel_near') {
+        currentCategory = 'hotel_near';
+        holidayOpenOnly = false;
+        kidsMenuOnly = false;
+        showOnlyFavs = false;
+      } else if (type === 'tatami') {
+        currentCategory = 'tatami';
+        holidayOpenOnly = false;
+        kidsMenuOnly = false;
+        showOnlyFavs = false;
+      } else if (type === 'early') {
+        currentSort = 'early_open';
+        sortSelect.value = 'early_open';
+        holidayOpenOnly = true;
+        kidsMenuOnly = false;
+        currentCategory = 'all';
+        showOnlyFavs = false;
+      } else if (type === 'casual_kids') {
+        currentCategory = 'casual_kids';
+        holidayOpenOnly = false;
+        kidsMenuOnly = false;
+        showOnlyFavs = false;
+      } else if (type === 'local') {
+        currentCategory = 'local';
+        holidayOpenOnly = false;
+        kidsMenuOnly = false;
+        showOnlyFavs = false;
+      } else if (type === 'caution') {
+        currentCategory = 'caution';
+        holidayOpenOnly = false;
+        kidsMenuOnly = false;
+        showOnlyFavs = false;
+      }
+
+      // トグルチェックボックスの同期
+      holidayOpenOnlyToggle.checked = holidayOpenOnly;
+      if (kidsMenuOnlyToggle) kidsMenuOnlyToggle.checked = kidsMenuOnly;
+
+      // 下部カテゴリタブの同期
+      categoryButtons.forEach(b => {
+        b.classList.remove('active', 'bg-brand-600', 'text-white');
+        if (b.dataset.cat === currentCategory) {
+          b.classList.add('active', 'bg-brand-600', 'text-white');
+        } else if (b.dataset.cat === 'caution') {
+          b.classList.add('bg-rose-50', 'text-rose-700');
+        } else {
+          b.classList.add('bg-slate-100', 'text-slate-700');
+        }
+      });
+
+      // クイックボタンUI同期
+      updateQuickButtonsUI(type);
+
+      updateAreaCardUI();
+      updateFavButtonState();
+      renderCards();
+
+      // カード一覧（レストランセクション）へスクロール
+      if (shouldScroll) {
+        const target = document.getElementById('restaurantSection');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    // ページの頭のクイックボタンのアクティブ表示更新
+    function updateQuickButtonsUI(activeType) {
+      const topBtns = document.querySelectorAll('.top-filter-btn');
+      topBtns.forEach(btn => {
+        const q = btn.dataset.quick;
+        if (q === activeType) {
+          btn.classList.add('active', 'bg-white', 'text-brand-900', 'ring-2', 'ring-amber-400', 'font-black');
+          btn.classList.remove('text-white');
+        } else {
+          btn.classList.remove('active', 'bg-white', 'text-brand-900', 'ring-2', 'ring-amber-400', 'font-black');
+          btn.classList.add('text-white');
+        }
+      });
+
+      const heroChipBtns = document.querySelectorAll('.hero-chip-btn');
+      heroChipBtns.forEach(btn => {
+        const q = btn.dataset.quick;
+        if (q === activeType) {
+          btn.classList.add('ring-2', 'ring-brand-700', 'ring-offset-2', 'scale-105', 'font-black');
+        } else {
+          btn.classList.remove('ring-2', 'ring-brand-700', 'ring-offset-2', 'scale-105', 'font-black');
+        }
+      });
+
+      const heroStatBtns = document.querySelectorAll('.hero-stat-btn');
+      heroStatBtns.forEach(btn => {
+        const q = btn.dataset.quick;
+        if (q === activeType) {
+          btn.classList.add('ring-2', 'ring-brand-600', 'ring-offset-1', 'scale-[1.02]');
+        } else {
+          btn.classList.remove('ring-2', 'ring-brand-600', 'ring-offset-1', 'scale-[1.02]');
+        }
+      });
     }
 
     // お気に入りトグル処理
